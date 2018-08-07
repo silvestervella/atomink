@@ -1,0 +1,37 @@
+/* Left sidebar */
+#left-sidebar-outer {
+    position: fixed;
+    z-index: 8;
+    padding: 0;
+    width: 10%;
+    color: #ffffff;
+    #left-sidebar {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        .logo {
+            width: 100%;
+            img {
+                width: 90%;
+                display: block;
+                margin: 30px auto 0 auto;
+            }
+        }
+        .menu-button {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%) ;
+            left: 50%;
+            font-size: 20px;
+            color: #ffffff;
+        }
+        #copyright {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 200px;
+            transform: translateY(-30px) rotate(-90deg);
+            transform-origin: 0% 50%;
+        }
+    }
+}

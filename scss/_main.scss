@@ -1,0 +1,212 @@
+/**
+* 1. Main
+* 2. Home Page
+* 3. The Ink Page
+*/
+html {
+    height: 100%;
+    body {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+35,222222+100 */
+background: rgb(0,0,0); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(34,34,34,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 35%,rgba(34,34,34,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 35%,rgba(34,34,34,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#222222',GradientType=0 ); /* IE6-9 */
+        color: $grey;
+        font-family: $mainText;
+        font-size: 16px;
+        height: 100%;
+    }
+}
+header {
+    text-align: center;
+    position: absolute;
+}
+#wrapper {
+    padding: 0;
+    height: 100%;
+    position: relative;
+    main{
+        min-height: 100%;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+    }
+}
+p {
+    font-family: $mainText;
+    text-align: justify;
+    margin: 0 0 20px 0;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: $headingText;
+    font-weight: 400;
+    margin: 0;
+}
+button {
+    background: $primary;
+    border: 0;
+    font-family: $headingText;
+    @include no-outline;
+}
+input , input:hover , input:active , input:focus , select , select:active , select:focus , textarea {
+    @include no-outline;
+}
+a, a:active,a:focus,a:hover {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/**
+* 2. Home Page
+*/
+body.home {
+    #wrapper {
+        main {
+            text-align: center;
+        }
+    }
+}
+#canvas {
+    position: absolute;
+    opacity: 0.04;
+    left: 0;
+    width: 75%;
+    bottom: 0;
+}
+#top-image {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    top: 0;
+    overflow: hidden;
+    .image-outer {
+        width: 100%;
+        position: absolute;
+        display: none;
+        img {
+            width: 100%;
+            animation: headerImg 10s ease-in-out 2s infinite;
+            animation-fill-mode: backwards;
+            filter: saturate(40%) grayscale(30%) opacity(70%);
+        }
+    }
+}
+.image-overlay {
+    width: 100%;
+    height: 35%;
+    position: absolute;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222222+0,000000+100&0.15+1,1+95,1+100 */
+background: -moz-linear-gradient(top, rgba(34,34,34,0.15) 0%, rgba(34,34,34,0.15) 1%, rgba(2,2,2,1) 95%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(34,34,34,0.15) 0%,rgba(34,34,34,0.15) 1%,rgba(2,2,2,1) 95%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(34,34,34,0.15) 0%,rgba(34,34,34,0.15) 1%,rgba(2,2,2,1) 95%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26222222', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+.post-outer {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    color: #fff;
+    text-align: left;
+    .post-excerpt {
+        h1 {
+            font-size: 100px;
+            font-weight: 600;
+            line-height: 100px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+
+    .scroll {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        animation-name: scroll-outer;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        svg {
+            width: 45px;
+            position: relative;
+            transform: translateX(-50%);
+            #mouse {
+                opacity: 1;
+                animation-name: scroll-opac;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+            }
+            #wheel {
+                transform: translateY(0px);
+                animation-name: scroll-wheel;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+        }
+}
+
+/* 3. The Ink Page */
+body.postid-212 {
+    #active-post {
+        position: fixed;
+        width: 70%;
+        height: 100%;
+    }
+    .page-title {
+        position: relative;
+        height: 300px;
+        width: 30%;
+        left: 70%;
+        text-align: center;
+        span {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 70px;
+            color: #fff;
+            display: block;
+        }
+    }
+    #controls {
+        position: relative;
+        left: 70%;
+    }
+    
+    #gallery-posts-outer {
+        .gallery-post {
+            position: relative;
+            width: 10%;
+            left: 70%;
+            float: left
+        }
+    }
+}
+
+
+
+
+
+/* Generic classes */
+.opacTrans-anim {
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+}
+.opacTrans-anim2 {
+    opacity: 1 !important;
+    transform: translate(0px, -50%) !important;
+}
+.opac-anim {
+    opacity: 1 !important;
+}
+.pageTitle-anim {
+    opacity: 1 !important;
+    transform: translate(50%, 50%) !important;
+}
+.visible-post {
+    display: block !important;
+}

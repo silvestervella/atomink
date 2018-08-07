@@ -1,0 +1,27 @@
+/* Scroll Animation */
+@keyframes scroll-opac {
+    0% {opacity: 1;}
+    50% {opacity: 0.6;}
+    100% {opacity: 1;}
+}
+@keyframes scroll-wheel {
+    0% {transform: translateY(0px); opacity: 0}
+    25% { opacity: 1}
+    75% {transform: translateY(75px);opacity: 1}
+    100% {transform: translateY(0px); opacity: 0}
+}
+@keyframes scroll-outer {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+@keyframes scroll-fill {
+    0% {fill: lighten($grey, 50%); }
+    50% {fill: white;}
+    100% {fill: lighten($grey, 50%); }
+}
+@keyframes scroll-stroke {
+    0% {stroke: lighten($grey, 50%); }
+    50% {stroke: white;}
+    100% {stroke: lighten($grey, 50%); }
+}
