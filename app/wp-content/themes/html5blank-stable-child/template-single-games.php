@@ -13,8 +13,8 @@ get_header();
     <div class="page-title"><span><?php the_title(); ?></span></div>
 
     <div id="controls">
-      <button id="prev-post" href="javascript:void(0)" onclick="javascript: galleryPrev()">Prev</button>
-      <button id="next-post" href="javascript:void(0)" onclick="javascript: galleryNext()">Next</button>
+      <button id="prev-post">Prev</button>
+      <button id="next-post">Next</button>
     </div>
 
     <div id="gallery-posts-outer">

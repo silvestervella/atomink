@@ -136,38 +136,16 @@ jQuery(document).ready(function(){
   * 2. Menu animations
   */
  jQuery('.menu-button').click(function() {
-
-  var count = 0;
-
   jQuery('#main-nav-outer').fadeIn(400,function(){
     jQuery('#main-nav-outer > nav').fadeIn(200, function(){
-      /*
-          jQuery('#menu-main > li').each(function(){
-            jQuery(this).children().css({"width": (10 + count ) + "%", "left": "0"});
-            count += 10;
-          })
-          */
           jQuery('#wrapper').hide();
         });
-        jQuery('#main-nav-outer #search img').show().animate({ marginTop: '-350px', opacity: 1 }, 1000);
   });
 });
-
 jQuery('#menu-close').click(function(){
-  jQuery('#main-nav-outer #search img').animate({ marginTop: '165%' , opacity: 0 }, 1000);
-  /*
-  for (i = 1; i <= numOfLi; i++) {
-    jQuery('#menu-main > li > a').css({"width": "0%", "left": "-300px"});
-  }
-  */
   jQuery('#main-nav-outer').fadeOut(400, function(){
     jQuery('#wrapper').show();
-    setTimeout(function(){
-      jQuery('#main-nav-outer #search img').hide();
-    }, 700);
-
   });
-  count = 0;
 });
 
 
@@ -188,11 +166,11 @@ jQuery('#main-nav-outer').on(mousewheelevt, function(e) {
   return false;
 })
 
-
+/**
 var p = jQuery( ".buttons" );
 var position = p.position();
 jQuery( ".sb-page-title" ).css([ "left: " + position.left ]);
-
+ */
 
 
 
@@ -233,8 +211,10 @@ function topImgFade() {
         setTimeout(topImgFade, 4000);
     });
 }
+if (jQuery('body.home').length > 0) {
+  topImgFade();
+}
 
-topImgFade();
 
 
 
@@ -243,42 +223,6 @@ topImgFade();
  * 2. Gallery pagination
  */
 jQuery('.gallery-post').first().addClass('active-post');
-
-function galleryNext() {
-
-  var active = jQuery('.active-post'),
-  galleryPost = jQuery('.gallery-post');
-
-  if ( active.not('.gallery-post:last')) {
-    jQuery('.active-post').next().addClass('active-post').prev().removeClass('active');
-  } else {
-    galleryPost.first().addClass('active');
-  }
-
-  var galleryImgSrc = jQuery('.active-post > img').attr('src');
-
-  jQuery('#active-post > img').fadeOut(function(){
-    jQuery(this).attr('src' , galleryImgSrc )
-  }, 5000).fadeIn();
-
-}
-
-function galleryPrev() {
-
-   if ( active.not('.gallery-post:first')) {
-    jQuery('.active-post').prev().addClass('active-post').next().removeClass('active-post');
-  } else {
-    galleryPost.last().addClass('active-post');
-  }
-  
-  var galleryImgSrc = jQuery('.active > img').attr('src');
-
-  jQuery('#active-post > img').fadeOut(function(){
-    jQuery(this).attr('src' , galleryImgSrc )
-  }, 5000).fadeIn();
-
-};
-
 
 
 // End of window.load
