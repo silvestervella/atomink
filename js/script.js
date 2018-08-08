@@ -10,6 +10,7 @@
  * Window.load
  * 
  * 1. Top home images animaiton
+ * 2. Gallery pagination
  */
 
 jQuery(document).ready(function(){
@@ -239,7 +240,7 @@ topImgFade();
 
 
 /**
- * 5. Gallery pagination
+ * 2. Gallery pagination
  */
 jQuery('.gallery-post').first().addClass('active-post');
 
