@@ -175,7 +175,6 @@ jQuery( ".sb-page-title" ).css([ "left: " + position.left ]);
 
 
 
-
 // End of document.ready
 });
 
@@ -223,6 +222,16 @@ if (jQuery('body.home').length > 0) {
  * 2. Gallery pagination
  */
 jQuery('.gallery-post').first().addClass('active-post');
+/**
+jQuery('#controls > button').on('click' , function(){
+  if (jQuery(this).is('.prev-post')) {
+    prevPost();
+  } else {
+    nextPost();
+  }
+})
+ */
+
 
 
 // End of window.load
