@@ -222,6 +222,7 @@ if (jQuery('body.home').length > 0) {
  * 2. Gallery pagination
  */
 jQuery('.gallery-post').first().addClass('active-post');
+
 /**
 jQuery('#controls > button').on('click' , function(){
   if (jQuery(this).is('.prev-post')) {
@@ -231,6 +232,80 @@ jQuery('#controls > button').on('click' , function(){
   }
 })
  */
+var galleryPost = jQuery('.gallery-post'),
+    imgPosts = galleryPost.length-1,
+    imgCount = 0,
+    activeSrc = jQuery('.active-post > img').attr('src');
+
+
+function getElemnetsSize() {
+  var actvImg = jQuery('#active-post > img');
+
+    var atvImgH = actvImg.height(),
+    atvImgW = actvImg.width(),
+    atvDivH = actvImg.parent().height(),
+    atvDivW = actvImg.parent().width();
+
+    if (atvImgH > atvDivH) {
+      if (actvImg.is('.horizontal-anim')) {
+        actvImg.removeClass('horizontal-anim');
+      }
+      actvImg.addClass('vertical-anim').css({
+        'transition': 'transform 5s',
+        'transform' : 'translateY(-56px)'
+     });
+
+    } else {
+      if (actvImg.is('.vertical-anim')) {
+        actvImg.removeClass('vertical-anim');
+      }
+      actvImg.addClass('horizontal-anim').css({
+        'transition': 'transform 5s',
+        'transform' : 'translateX(-431px)'
+     });
+    }
+
+};
+
+function activeSrcFunc() {
+  jQuery('#active-post > img').fadeOut(function(){
+    jQuery(this).attr('src' , activeSrc);
+  }).fadeIn().load(function(){
+    getElemnetsSize();
+  })
+};
+activeSrcFunc();
+
+jQuery('#prev-post').click(function(){
+  var active = jQuery('.active-post');
+  if (imgCount == 0) {
+    active.removeClass('active-post');
+    galleryPost.last().addClass('active-post');
+    imgCount = imgPosts;
+    activeSrc  = jQuery('.active-post > img').attr('src');
+    activeSrcFunc(activeSrc);
+  } else {
+    active.prev().addClass('active-post').next().removeClass('active-post');
+    imgCount--;
+    activeSrc = jQuery('.active-post > img').attr('src');
+    activeSrcFunc(activeSrc);
+  }
+});
+jQuery('#next-post').click(function(){
+  var active = jQuery('.active-post');
+  if (imgCount < imgPosts) {
+    active.next().addClass('active-post').prev().removeClass('active-post');
+    imgCount++;
+    activeSrc = jQuery('.active-post > img').attr('src');
+    activeSrcFunc(activeSrc);
+  } else {
+    active.removeClass('active-post');
+    galleryPost.first().addClass('active-post');
+    imgCount = 0;
+    activeSrc = jQuery('.active-post > img').attr('src');
+    activeSrcFunc(activeSrc);
+  }
+});
 
 
 

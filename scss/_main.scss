@@ -156,6 +156,14 @@ body.postid-212 {
         position: fixed;
         width: 70%;
         height: 100%;
+        overflow: hidden;
+        img {
+            display: none;
+            min-width: 100%;
+            min-height: 100%;
+            max-width: unset;
+            position: relative;
+        }
     }
     .page-title {
         position: relative;

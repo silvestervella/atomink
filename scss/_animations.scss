@@ -25,3 +25,9 @@
     50% {stroke: white;}
     100% {stroke: lighten($grey, 50%); }
 }
+
+/* Home header img animation */
+@keyframes headerImg {
+    0%   {transform: translateY(-50%);}
+    100% {transform: translateY(0%)}
+}
