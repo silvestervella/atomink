@@ -248,23 +248,27 @@ function getElemnetsSize() {
 
     if (atvImgH > atvDivH) {
       if (actvImg.is('.horizontal-anim')) {
-        actvImg.removeClass('horizontal-anim');
+        actvImg.removeClass('horizontal-anim').css({
+          'top': '0',
+          'left': '0'
+        });
       }
       actvImg.addClass('vertical-anim').css({
-        'transition': 'transform 5s',
-        'transform' : 'translateY(-56px)'
-     });
+        'top': atvDivH - atvImgH
+      });;
+
 
     } else {
       if (actvImg.is('.vertical-anim')) {
-        actvImg.removeClass('vertical-anim');
+        actvImg.removeClass('vertical-anim').css({
+          'top': '0',
+          'left': '0'
+        });
       }
       actvImg.addClass('horizontal-anim').css({
-        'transition': 'transform 5s',
-        'transform' : 'translateX(-431px)'
-     });
+        'left': atvDivW - atvImgW
+      });;
     }
-
 };
 
 function activeSrcFunc() {
@@ -283,12 +287,12 @@ jQuery('#prev-post').click(function(){
     galleryPost.last().addClass('active-post');
     imgCount = imgPosts;
     activeSrc  = jQuery('.active-post > img').attr('src');
-    activeSrcFunc(activeSrc);
+    activeSrcFunc();
   } else {
     active.prev().addClass('active-post').next().removeClass('active-post');
     imgCount--;
     activeSrc = jQuery('.active-post > img').attr('src');
-    activeSrcFunc(activeSrc);
+    activeSrcFunc();
   }
 });
 jQuery('#next-post').click(function(){
@@ -297,15 +301,21 @@ jQuery('#next-post').click(function(){
     active.next().addClass('active-post').prev().removeClass('active-post');
     imgCount++;
     activeSrc = jQuery('.active-post > img').attr('src');
-    activeSrcFunc(activeSrc);
+    activeSrcFunc();
   } else {
     active.removeClass('active-post');
     galleryPost.first().addClass('active-post');
     imgCount = 0;
     activeSrc = jQuery('.active-post > img').attr('src');
-    activeSrcFunc(activeSrc);
+    activeSrcFunc();
   }
 });
+galleryPost.on('click' , function(){
+  jQuery('.active-post').removeClass('active-post');
+  jQuery(this).addClass('active-post');
+  activeSrc = jQuery('.active-post > img').attr('src');
+  activeSrcFunc();
+})
 
 
 

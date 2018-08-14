@@ -163,6 +163,14 @@ body.postid-212 {
             min-height: 100%;
             max-width: unset;
             position: relative;
+            top: 0;
+            left: 0;
+            &.horizontal-anim {
+                transition: left 7s;
+            }
+            &.vertical-anim {
+                transition: top 7s;
+            }
         }
     }
     .page-title {
@@ -191,7 +199,18 @@ body.postid-212 {
             position: relative;
             width: 10%;
             left: 70%;
-            float: left
+            float: left;
+            padding: 10px;
+            cursor: pointer;
+            &.active-post {
+                img {
+                    padding: 5px;
+                    border: 1px solid $primary
+                }
+            }
+            img {
+                transition: border 0.5s;
+            }
         }
     }
 }
