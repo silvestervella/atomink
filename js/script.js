@@ -246,7 +246,7 @@ function getElemnetsSize() {
     atvDivH = actvImg.parent().height(),
     atvDivW = actvImg.parent().width();
 
-    if (atvImgH > atvDivH) {
+    if (atvImgH > atvImgW) {
       if (actvImg.is('.horizontal-anim')) {
         actvImg.removeClass('horizontal-anim').css({
           'top': '0',
