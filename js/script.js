@@ -222,16 +222,6 @@ if (jQuery('body.home').length > 0) {
  * 2. Gallery pagination
  */
 jQuery('.gallery-post').first().addClass('active-post');
-
-/**
-jQuery('#controls > button').on('click' , function(){
-  if (jQuery(this).is('.prev-post')) {
-    prevPost();
-  } else {
-    nextPost();
-  }
-})
- */
 var galleryPost = jQuery('.gallery-post'),
     imgPosts = galleryPost.length-1,
     imgCount = 0,
@@ -316,6 +306,29 @@ galleryPost.on('click' , function(){
   activeSrc = jQuery('.active-post > img').attr('src');
   activeSrcFunc();
 })
+
+
+
+/**
+ * 3. Gallery thumbs positioning
+ */
+jQuery('.gallery-post').each(function(){
+var a = jQuery(this).prev().height(),
+b = jQuery(this).prev().prev().height(),
+c = jQuery(this).prev().prev().prev().height(),
+result = Math.max(a,b,c);
+
+console.log(a);
+console.log(b);
+console.log(c);
+console.log(result);
+console.log('ehe');
+
+jQuery(this).css({
+  'transform' : 'translateY('+ (c - result) +')'
+})
+
+});
 
 
 
