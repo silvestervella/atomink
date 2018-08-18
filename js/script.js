@@ -312,8 +312,11 @@ galleryPost.on('click' , function(){
 /**
  * 3. Gallery thumbs positioning
  */
-jQuery('.gallery-post').each(function(){
-var a = jQuery(this).prev().height(),
+
+
+
+jQuery('.gallery-post').each(function (index) {
+  var a = jQuery(this).prev().height(),
 b = jQuery(this).prev().prev().height(),
 c = jQuery(this).prev().prev().prev().height(),
 result = Math.max(a,b,c);
@@ -323,13 +326,8 @@ console.log(b);
 console.log(c);
 console.log(result);
 console.log('ehe');
-
-jQuery(this).css({
-  'transform' : 'translateY('+ (c - result) +')'
-})
-
+  jQuery(this).css('transform' , 'translateY('+ (c - result) +')');
 });
-
 
 
 // End of window.load
