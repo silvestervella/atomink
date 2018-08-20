@@ -18,7 +18,7 @@ get_header();
     </div>
 
     <div id="gallery-posts-outer">
-      <?php atominktheme_generate_gallery_posts('images' , 'date' , 'ASC' , '' , '' , 'header-back-images' , 'gallery-images' ); ?>
+      <?php atominktheme_generate_gallery_posts('images' , 'date' , 'ASC' , '' , '' , '' , 'gallery-images' ); ?>
     </div>
   </main>
 

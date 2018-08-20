@@ -159,18 +159,12 @@ body.postid-212 {
         overflow: hidden;
         img {
             display: none;
-            min-width: 100%;
-            min-height: 100%;
-            max-width: unset;
+            max-width: 80%;
+            max-height: 80%;
             position: relative;
-            top: 0;
-            left: 0;
-            &.horizontal-anim {
-                transition: left 7s;
-            }
-            &.vertical-anim {
-                transition: top 7s;
-            }
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
         }
     }
     .page-title {
@@ -200,10 +194,10 @@ body.postid-212 {
         width: 30%;
         .gallery-post {
             position: relative;
-            width: 33%;
-            float: left;
+            width: 32.8%;
             padding: 10px;
             cursor: pointer;
+            display: inline-block;
             &.active-post {
                 img {
                     padding: 5px;

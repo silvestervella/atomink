@@ -220,14 +220,14 @@ if (jQuery('body.home').length > 0) {
 
 /**
  * 2. Gallery pagination
- */
+*/
 jQuery('.gallery-post').first().addClass('active-post');
 var galleryPost = jQuery('.gallery-post'),
     imgPosts = galleryPost.length-1,
     imgCount = 0,
     activeSrc = jQuery('.active-post > img').attr('src');
 
-
+/*
 function getElemnetsSize() {
   var actvImg = jQuery('#active-post > img');
 
@@ -260,12 +260,12 @@ function getElemnetsSize() {
       });;
     }
 };
-
+*/
 function activeSrcFunc() {
   jQuery('#active-post > img').fadeOut(function(){
     jQuery(this).attr('src' , activeSrc);
   }).fadeIn().load(function(){
-    getElemnetsSize();
+    //getElemnetsSize();
   })
 };
 activeSrcFunc();
@@ -311,9 +311,6 @@ galleryPost.on('click' , function(){
 
 /**
  * 3. Gallery thumbs positioning
- */
-
-
 
 jQuery('.gallery-post').each(function (index) {
   var a = jQuery(this).prev().height(),
@@ -321,13 +318,15 @@ b = jQuery(this).prev().prev().height(),
 c = jQuery(this).prev().prev().prev().height(),
 result = Math.max(a,b,c);
 
-console.log(a);
-console.log(b);
 console.log(c);
 console.log(result);
+console.log(c - result);
 console.log('ehe');
-  jQuery(this).css('transform' , 'translateY('+ (c - result) +')');
+if (a !== null && b !== null && c !== null) {
+  jQuery(this).css('transform' , 'translateY('+ (result - c) +'px)');
+} 
 });
+*/
 
 
 // End of window.load
