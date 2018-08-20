@@ -154,7 +154,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26222222', e
 body.postid-212 {
     #active-post {
         position: fixed;
-        width: 70%;
+        width: 50%;
+        margin-left: 10%;
         height: 100%;
         overflow: hidden;
         img {
@@ -167,31 +168,27 @@ body.postid-212 {
             transform: translate(-50% , -50%);
         }
     }
-    .page-title {
-        position: relative;
-        height: 300px;
-        width: 30%;
-        left: 70%;
-        text-align: center;
-        span {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 70px;
-            color: #fff;
-            display: block;
-        }
-    }
-    #controls {
-        position: relative;
-        left: 70%;
-        width: 30%;
-    }
     
     #gallery-posts-outer {
         position: relative;
-        left: 70%;
-        width: 30%;
+        width: 40%;
+        left: 60%;
+        .page-title {
+            position: relative;
+            height: 300px;
+            text-align: center;
+            span {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 70px;
+                color: #fff;
+                display: block;
+            }
+        }
+        #controls {
+            position: relative;
+        }
         .gallery-post {
             position: relative;
             width: 32.8%;
