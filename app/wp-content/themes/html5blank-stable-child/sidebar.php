@@ -8,7 +8,7 @@
 			<?php endif; ?>
 			<div id="sb-pag-outer">
 
-				<?php //atominktheme_generate_rightnav_drops(); ?>
+				<?php atominktheme_generate_rightnav_drops(); ?>
 
 			</div>
 			<div class="buttons">

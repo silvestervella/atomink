@@ -41,6 +41,13 @@
 	<!-- Left sidebar -->
 	<section id="left-sidebar-outer" class="">
 		<div id="left-sidebar">
+			<!-- logo -->
+			<div class="logo">
+				<a href="<?php echo home_url(); ?>">
+					<img src="<?php atominktheme_get_logo_url() ?>" alt="logo" />
+				</a>
+			</div>
+			<!-- /logo -->
 			<button class="menu-button" type="button">
 				MENU
 			</button>
@@ -50,12 +57,5 @@
 	<!-- /Left sidebar -->
 			<!-- header -->
 			<header class="header clear" role="banner">
-			<!-- logo -->
-			<div class="logo">
-				<a href="<?php echo home_url(); ?>">
-					<img src="<?php atominktheme_get_logo_url() ?>" alt="logo" />
-				</a>
-			</div>
-			<!-- /logo -->
 			</header>
 			<!-- /header -->

@@ -262,8 +262,11 @@ function getElemnetsSize() {
 };
 */
 function activeSrcFunc() {
-  jQuery('#active-post > img').fadeOut(function(){
-    jQuery(this).attr('src' , activeSrc);
+  jQuery('#active-post').fadeOut(function(){
+    jQuery(this).children('img').attr('src' , activeSrc);
+    jQuery(this).children('#active-post-blur').css({
+      'background-image' : 'url('+ activeSrc +')'
+    })
   }).fadeIn().load(function(){
     //getElemnetsSize();
   })
@@ -310,23 +313,12 @@ galleryPost.on('click' , function(){
 
 
 /**
- * 3. Gallery thumbs positioning
-
-jQuery('.gallery-post').each(function (index) {
-  var a = jQuery(this).prev().height(),
-b = jQuery(this).prev().prev().height(),
-c = jQuery(this).prev().prev().prev().height(),
-result = Math.max(a,b,c);
-
-console.log(c);
-console.log(result);
-console.log(c - result);
-console.log('ehe');
-if (a !== null && b !== null && c !== null) {
-  jQuery(this).css('transform' , 'translateY('+ (result - c) +'px)');
-} 
-});
+ * 3. Gallery thumbs positioning using jquery masonary
 */
+jQuery('#gallery-posts-outer').masonry({
+  // options...
+  itemSelector: '.gallery-post'
+});
 
 
 // End of window.load
