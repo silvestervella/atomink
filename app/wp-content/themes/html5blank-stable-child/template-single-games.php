@@ -21,7 +21,14 @@ get_header();
       </div>
 
     <div id="gallery-posts-outer">
-      <?php atominktheme_generate_gallery_posts('images' , 'date' , 'ASC' , '' , '' , '' , 'gallery-images' ); ?>
+      <?php atominktheme_generate_gallery_posts(array(
+        'post_type' =>"images" , 
+        'post_order_by'=>"date",
+        'post_order'=>"ASC",
+        'post_meta_key'=>"",
+        'num_of_posts'=>"",
+        'post_metabox_value'=>"gallery-images"
+      )); ?>
     </div>
   </main>
 

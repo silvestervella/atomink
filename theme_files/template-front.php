@@ -112,7 +112,7 @@ function resizeMe() {
 
 	<main role="main" id="home">
 
-         <?php atominktheme_generate_posts('post' , 'meta_value' , 'ASC' , '_custom_post_order' , '' , 'category_name' , 'uncategorized' ); ?>
+         <?php atominktheme_generate_posts('post' , 'meta_value' , 'ASC' , '_custom_post_order' , '' , 'category_name' , 'front-page-post' ); ?>
     
 	</main>
     
