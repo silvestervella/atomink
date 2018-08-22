@@ -263,7 +263,7 @@ function getElemnetsSize() {
 */
 function activeSrcFunc() {
   jQuery('#active-post').fadeOut(function(){
-    jQuery(this).children('img').attr('src' , activeSrc);
+    jQuery(this).find('img').attr('src' , activeSrc);
     jQuery(this).children('#active-post-blur').css({
       'background-image' : 'url('+ activeSrc +')'
     })

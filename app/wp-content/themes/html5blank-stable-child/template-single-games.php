@@ -11,14 +11,16 @@ get_header();
   <main role="main" id="home">
     <div id="active-post">
       <div id="active-post-blur"></div>
-      <img src="" alt="tattoo image" />
+      <div id="img-outer">
+        <img src="" alt="tattoo image" />
+        <div id="controls">
+          <div id="prev-post">Prev</div>
+          <div id="next-post">Next</div>
+        </div>
+      </div>
     </div>
     
     <div class="page-title"><span><?php the_title(); ?></span></div>
-      <div id="controls">
-        <div id="prev-post">Prev</div>
-        <div id="next-post">Next</div>
-      </div>
 
     <div id="gallery-posts-outer">
       <?php atominktheme_generate_gallery_posts(array(
