@@ -18,6 +18,7 @@ jQuery(document).ready(function(){
    numOfPosts = postsOuter.length,
    menuLi = jQuery('#menu-main > li'),
    numOfLi = menuLi.length,
+   drops = jQuery(".drop"),
    currNum = 0;
 
   var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
@@ -48,22 +49,19 @@ jQuery(document).ready(function(){
   /*
   * 1. Home post pagination
   */
-   // Add class to first home post
+   // Add class to first home post and drop
    jQuery(postsOuter).first().addClass("visible-post");
+   jQuery(drops).first().addClass("active");
 
   // Next article function
   function nextPost() {
     if(currNum < (numOfPosts-1)) {
       jQuery(".visible-post").stop().fadeOut(function() {
 
-        //rmvClass(".sb-page-title", "opacTrans-anim");
-        //rmvClass(".article-excerpt", "opac-anim");
-
         jQuery(this).next(".post-outer").addClass("visible-post").fadeIn(function(){
 
-          //findAddClass(this , ".article-excerpt , .sb-page-title" , "opac-anim" );
-
         }).prev().removeClass("visible-post");
+        jQuery(".drop.active").next().addClass('active').prev().removeClass('active');
         currNum ++;
       });
     } else {
@@ -71,9 +69,8 @@ jQuery(document).ready(function(){
         rmvClass(this, "visible-post");
 
         jQuery(postsOuter).first().addClass("visible-post").fadeIn(function(){
-
-          //findAddClass(this , ".article-excerpt , .sb-page-title" , "opac-anim" );
-
+          jQuery(".drop.active").removeClass('active');
+          drops.first().addClass('active');
         });
         currNum = 0;
       });
@@ -85,13 +82,10 @@ jQuery(document).ready(function(){
 
       jQuery(".visible-post").stop().fadeOut(function() {
 
-        //rmvClass(".article-excerpt , .sb-page-title", "opac-anim");
-
         jQuery(this).prev(".post-outer").addClass("visible-post").fadeIn(function(){
 
-          //findAddClass(this , ".article-excerpt , .sb-page-title" , "opac-anim" );
-
         }).next().removeClass("visible-post");
+        jQuery(".drop.active").prev().addClass('active').next().removeClass('active');
         currNum --;
 
         
@@ -101,13 +95,11 @@ jQuery(document).ready(function(){
 
       jQuery(".visible-post").stop().fadeOut(function() {
 
-        //rmvClass(".article-excerpt , .sb-page-title", "opac-anim");
         rmvClass(this, "visible-post");
 
         jQuery(postsOuter).last().addClass("visible-post").fadeIn(function(){
-
-          //findAddClass(this , ".article-excerpt , .sb-page-title" , "opac-anim" );
-
+          jQuery(".drop.active").removeClass('active');
+          drops.last().addClass('active');
         });
         currNum = numOfPosts-1;
 
@@ -227,52 +219,18 @@ var galleryPost = jQuery('.gallery-post'),
     imgCount = 0,
     activeSrc = jQuery('.active-post > img').attr('src');
 
-/*
-function getElemnetsSize() {
-  var actvImg = jQuery('#active-post > img');
 
-    var atvImgH = actvImg.height(),
-    atvImgW = actvImg.width(),
-    atvDivH = actvImg.parent().height(),
-    atvDivW = actvImg.parent().width();
-
-    if (atvImgH > atvImgW) {
-      if (actvImg.is('.horizontal-anim')) {
-        actvImg.removeClass('horizontal-anim').css({
-          'top': '0',
-          'left': '0'
-        });
-      }
-      actvImg.addClass('vertical-anim').css({
-        'top': atvDivH - atvImgH
-      });;
-
-
-    } else {
-      if (actvImg.is('.vertical-anim')) {
-        actvImg.removeClass('vertical-anim').css({
-          'top': '0',
-          'left': '0'
-        });
-      }
-      actvImg.addClass('horizontal-anim').css({
-        'left': atvDivW - atvImgW
-      });;
-    }
-};
-*/
 function activeSrcFunc() {
   jQuery('#active-post').fadeOut(function(){
     jQuery(this).find('img').attr('src' , activeSrc);
     jQuery(this).children('#active-post-blur').css({
       'background-image' : 'url('+ activeSrc +')'
     })
-  }).fadeIn().load(function(){
-    //getElemnetsSize();
-  })
+  }).fadeIn();
 };
 activeSrcFunc();
 
+// Gallery prev/next
 jQuery('#prev-post').click(function(){
   var active = jQuery('.active-post');
   if (imgCount == 0) {
@@ -303,10 +261,12 @@ jQuery('#next-post').click(function(){
     activeSrcFunc();
   }
 });
+// Gallery thumbnail click
 galleryPost.on('click' , function(){
   jQuery('.active-post').removeClass('active-post');
   jQuery(this).addClass('active-post');
   activeSrc = jQuery('.active-post > img').attr('src');
+  imgCount = jQuery(this).index();
   activeSrcFunc();
 })
 
