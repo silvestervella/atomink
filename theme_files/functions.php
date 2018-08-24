@@ -11,7 +11,7 @@
  * 9. Add custom post type
  * 10. Add custom logo
  * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
- * 12. Create albums meta box
+ * 12. Create albums taxonomy
  * 13. Post generator
  * 14. Enable post thumbnail
  * 15. Right navigation drops generator
@@ -373,7 +373,7 @@ add_filter('widget_text', 'do_shortcode');
 
 
 /**
- * 12. Create albums meta box
+ * 12. Create albums taxonomy
  */
 function atominktheme_custom_taxonomy() {
     // create a new taxonomy
