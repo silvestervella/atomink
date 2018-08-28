@@ -500,7 +500,7 @@ function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_
          if ( $query1->have_posts() ) :
              while ($query1->have_posts() ) :
              $query1->the_post();  ?>
-                                
+
                 <div class="gallery-post"><?php the_post_thumbnail()  ?></div>
     
             <?php

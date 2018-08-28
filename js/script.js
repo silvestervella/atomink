@@ -11,6 +11,7 @@
  * 
  * 1. Top home images animaiton
  * 2. Gallery pagination
+ * 3. Gallery thumbs positioning using jquery masonary
  */
 
 jQuery(document).ready(function(){
@@ -76,6 +77,18 @@ jQuery(document).ready(function(){
       });
     }
 }
+
+// Clickable right side drops
+jQuery('.drop').click(function(){
+  var dropIndex = jQuery(this).index();
+  console.log(dropIndex);
+  jQuery(".visible-post").stop().fadeOut(function() {
+    jQuery(postsOuter).eq(dropIndex).addClass('visible-post');
+  }).removeClass('visible-post')
+})
+
+
+
   // Previous article function
   function prevPost() {
     if(currNum > 0) {
