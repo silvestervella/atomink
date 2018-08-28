@@ -84,7 +84,8 @@ jQuery('.drop').click(function(){
   console.log(dropIndex);
   jQuery(".visible-post").stop().fadeOut(function() {
     jQuery(postsOuter).eq(dropIndex).addClass('visible-post');
-  }).removeClass('visible-post')
+  }).removeClass('visible-post');
+  currNum = jQuery(this).index();
 })
 
 
