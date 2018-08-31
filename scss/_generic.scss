@@ -1,0 +1,74 @@
+/**
+* 1. Variables
+* 2. Generic
+* 3. Mixins
+*/
+
+/* 1. Variables */
+// Colours
+$grey: #333;
+$primary: #55A8C0;
+
+// Fonts 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Quicksand:400,700');
+$headingText: 'Open Sans Condensed', sans-serif;
+$mainText: 'Quicksand', sans-serif;
+
+
+
+/* 2. Generic */
+.opacTrans-anim {
+    opacity: 1 !important;
+    transform: translate(0px, 0px) !important;
+}
+.opacTrans-anim2 {
+    opacity: 1 !important;
+    transform: translate(0px, -50%) !important;
+}
+.opac-anim {
+    opacity: 1 !important;
+}
+.pageTitle-anim {
+    opacity: 1 !important;
+    transform: translate(50%, 50%) !important;
+}
+.visible-post {
+    display: block !important;
+}
+
+
+
+
+/* 3. Mixins */
+@mixin no-outline {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    box-shadow: none !important;
+}
+@mixin main-title {
+    font-size: 60px;
+    text-transform: uppercase;
+    color: lighten($grey, 20%);
+    background: lighten($grey, 75%);
+    padding: 50px;
+}
+@mixin side-title {
+    color: lighten($grey, 20%);
+    font-size: 18px;
+    padding: 30px 0 15px 15px;
+    display: block;
+}
+@mixin item-title {
+    text-transform: uppercase;
+}
+@mixin main-button {
+    padding: 10px 20px;
+    border-radius: 100px;
+    color: white;
+    display: inline-block;
+    background: $primary;
+    text-transform: uppercase;
+}
+
+
