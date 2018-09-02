@@ -232,11 +232,13 @@ var galleryPost = jQuery('.gallery-post'),
     imgPosts = galleryPost.length-1,
     imgCount = 0,
     activeSrc = jQuery('.active-post > img').attr('src');
+    activeShareVal = jQuery('.active-post > input').attr('value');
 
 
 function activeSrcFunc() {
   jQuery('#active-post').fadeOut(function(){
     jQuery(this).find('img').attr('src' , activeSrc);
+    jQuery(this).find('#share > a').attr('href' , 'https://www.facebook.com/sharer/sharer.php?u=' + activeShareVal + '&text=The Ink')
     jQuery(this).children('#active-post-blur').css({
       'background-image' : 'url('+ activeSrc +')'
     })
@@ -252,11 +254,13 @@ jQuery('#prev-post').click(function(){
     galleryPost.last().addClass('active-post');
     imgCount = imgPosts;
     activeSrc  = jQuery('.active-post > img').attr('src');
+    activeShareVal = jQuery('.active-post > input').attr('value');
     activeSrcFunc();
   } else {
     active.prev().addClass('active-post').next().removeClass('active-post');
     imgCount--;
     activeSrc = jQuery('.active-post > img').attr('src');
+    activeShareVal = jQuery('.active-post > input').attr('value');
     activeSrcFunc();
   }
 });
@@ -266,12 +270,14 @@ jQuery('#next-post').click(function(){
     active.next().addClass('active-post').prev().removeClass('active-post');
     imgCount++;
     activeSrc = jQuery('.active-post > img').attr('src');
+    activeShareVal = jQuery('.active-post > input').attr('value');
     activeSrcFunc();
   } else {
     active.removeClass('active-post');
     galleryPost.first().addClass('active-post');
     imgCount = 0;
     activeSrc = jQuery('.active-post > img').attr('src');
+    activeShareVal = jQuery('.active-post > input').attr('value');
     activeSrcFunc();
   }
 });
@@ -280,6 +286,7 @@ galleryPost.on('click' , function(){
   jQuery('.active-post').removeClass('active-post');
   jQuery(this).addClass('active-post');
   activeSrc = jQuery('.active-post > img').attr('src');
+  activeShareVal = jQuery('.active-post > input').attr('value');
   imgCount = jQuery(this).index();
   activeSrcFunc();
 })

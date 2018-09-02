@@ -17,6 +17,9 @@ get_header();
           <div id="prev-post">Prev</div>
           <div id="next-post">Next</div>
         </div>
+        <div id="share">
+          <a href="" target="_blank">Share</a>
+      </div>
       </div>
     </div>
     

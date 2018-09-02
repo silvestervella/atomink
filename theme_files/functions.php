@@ -17,6 +17,7 @@
  * 15. Right navigation drops generator
  * 16. Gallery posts generator
  * 17. Show featured image column in post list admin page
+ * 18. The Ink auto post title
  */
 
  
@@ -501,7 +502,10 @@ function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_
              while ($query1->have_posts() ) :
              $query1->the_post();  ?>
 
-                <div class="gallery-post"><?php the_post_thumbnail()  ?></div>
+                <div class="gallery-post">
+                    <?php the_post_thumbnail()  ?>
+                    <input type="hidden" value="<?php echo the_permalink(); ?>" />
+                </div>                
     
             <?php
                 endwhile; // End looping through custom sorted posts
@@ -537,5 +541,11 @@ function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_
 
 
         add_filter( 'the_excerpt', 'shortcode_unautop');
-add_filter( 'the_excerpt', 'do_shortcode');
+        add_filter( 'the_excerpt', 'do_shortcode');
+
+
+        /**
+         * 18. The Ink auto post title
+         */
+
         ?>

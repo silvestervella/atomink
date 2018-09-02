@@ -2,6 +2,7 @@
 * 1. Variables
 * 2. Generic
 * 3. Mixins
+* 4. General
 */
 
 /* 1. Variables */
@@ -72,3 +73,56 @@ $mainText: 'Quicksand', sans-serif;
 }
 
 
+/* 4. General */
+html {
+    min-height: 100%;
+    body {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+35,222222+100 */
+        background: rgb(0,0,0); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(34,34,34,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 35%,rgba(34,34,34,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 35%,rgba(34,34,34,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#222222',GradientType=0 ); /* IE6-9 */
+                color: $grey;
+                font-family: $mainText;
+                font-size: 16px;
+                min-height: 100%;
+    }
+}
+#wrapper {
+    padding: 0;
+    min-height: 100%;
+    position: relative;
+    main{
+        min-height: 100%;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+    }
+}
+.scroll {
+    display: none;
+}
+p {
+    font-family: $mainText;
+    text-align: justify;
+    margin: 0 0 20px 0;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: $headingText;
+    font-weight: 400;
+    margin: 0;
+}
+button {
+    background: $primary;
+    border: 0;
+    font-family: $headingText;
+    @include no-outline;
+}
+input , input:hover , input:active , input:focus , select , select:active , select:focus , textarea {
+    @include no-outline;
+}
+a, a:active,a:focus,a:hover {
+    text-decoration: none;
+    text-transform: uppercase;
+}
