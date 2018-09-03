@@ -1,40 +1,47 @@
 /**
 * 2. Home Page
 */
-body.home {
-    #wrapper {
-        main {
-            text-align: center;
+html {
+    min-height: 100%;
+    body.home {
+        height: 100%;
+        #wrapper {
+            height: 100%;
+            overflow: hidden;
+            main {
+                text-align: center;
+                min-height: 100%
+            }
+        }
+        .scroll {
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            animation-name: scroll-outer;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            svg {
+                width: 45px;
+                position: relative;
+                transform: translateX(-50%);
+                #mouse {
+                    opacity: 1;
+                    animation-name: scroll-opac;
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
+                }
+                #wheel {
+                    transform: translateY(0px);
+                    animation-name: scroll-wheel;
+                    animation-duration: 1s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: ease-in-out;
+                }
+            }
         }
     }
-    .scroll {
-        display: block;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        animation-name: scroll-outer;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        svg {
-            width: 45px;
-            position: relative;
-            transform: translateX(-50%);
-            #mouse {
-                opacity: 1;
-                animation-name: scroll-opac;
-                animation-duration: 2s;
-                animation-iteration-count: infinite;
-            }
-            #wheel {
-                transform: translateY(0px);
-                animation-name: scroll-wheel;
-                animation-duration: 1s;
-                animation-iteration-count: infinite;
-                animation-timing-function: ease-in-out;
-            }
-        }
-}
 }
 #canvas {
     position: absolute;
