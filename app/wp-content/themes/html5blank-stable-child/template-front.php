@@ -103,7 +103,7 @@ function resizeMe() {
 }
 </script>
 
- <div id="top-image">
+ <div id="back-image">
  <?php atominktheme_generate_posts('images' , '' , 'rand' , '' , '' , 'header-back-images' , 'header-top-images' ); ?>
  </div>
  <div class="image-overlay"></div>

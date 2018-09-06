@@ -86,12 +86,12 @@ html {
                 color: $grey;
                 font-family: $mainText;
                 font-size: 16px;
-                min-height: 100%;
+                min-height: 100vh;
     }
 }
 #wrapper {
     padding: 0;
-    min-height: 100%;
+    min-height: 100vh;
     position: relative;
     main{
         min-height: 100%;

@@ -17,7 +17,7 @@
  * 15. Right navigation drops generator
  * 16. Gallery posts generator
  * 17. Show featured image column in post list admin page
- * 18. The Ink auto post title
+ * 18. Home page ink post
  */
 
  
@@ -511,7 +511,6 @@ function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_
                 endwhile; // End looping through custom sorted posts
                 endif; // End loop 1
             }
-            add_shortcode('getgallery','atominktheme_generate_gallery_posts');
 
 
 
@@ -545,7 +544,33 @@ function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_
 
 
         /**
-         * 18. The Ink auto post title
+         * 18. Home page ink post
          */
+        function atominktheme_homeInkPost() {
+            ?>
+            <div id="active-post">
+            <div id="img-outer">
+              <img src="" alt="tattoo image" />
+              <div id="controls">
+                <div id="prev-post">Prev</div>
+                <div id="next-post">Next</div>
+              </div>
+              <div id="share">
+                <a href="" target="_blank">Share</a>
+            </div>
+            </div>
+          </div>
+          <?php
+            atominktheme_generate_gallery_posts(array(
+                'post_type' =>"images" , 
+                'post_order_by'=>"date",
+                'post_order'=>"ASC",
+                'post_meta_key'=>"",
+                'num_of_posts'=>"",
+                'post_metabox_value'=>"gallery-images"
+              ));
+        }
+        add_shortcode('getgallery','atominktheme_homeInkPost');
+
 
         ?>
