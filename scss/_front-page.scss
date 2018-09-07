@@ -40,36 +40,48 @@ html {
         }
 
         /* Ink post */
-        #active-post {
-            display: block;
-            transform: translateX(50%);
-            border-radius: 30px;
-            background: rgba(255,255,255,0.05);
-            border-right: 1px solid #fff;
-            border-bottom: 1px solid #fff;
-            #img-outer {
-                img {
-                    padding: 30px;
-                    max-width: 500px;
-                    max-height: 700px;
+        .post-outer {
+            width: 40%;
+            height: 80%;
+            .post-excerpt {
+                height: 100%;
+                #active-post {
+                    display: block;
+                    transform: translateX(50%);
+                    border-radius: 30px;
+                    background: rgba(255,255,255,0.05);
+                    border-right: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                    height: 100%;
+                    text-align: center;
+                    #img-outer {
+                        top: 50%;
+                        position: relative;
+                        transform: translateY(-50%);
+                        img {
+                            padding: 30px;
+                            max-width: 500px;
+                            max-height: 700px;
+                        }
+                    }
+                    #controls {
+                        width: 200px;
+                        background: rgba(255,255,255,.05);
+                        padding: 30px 0;
+                        transform: translate(-100%,-50%) rotate(15deg) skewX(15deg);
+                        position: absolute;
+                        top: 50%;
+                        text-align: center;
+                        div {
+                            display: inline-block;
+                            margin: 0 10px;
+                        }
+                    }
+                }
+                .gallery-post  {
+                    display: none;
                 }
             }
-            #controls {
-                width: 200px;
-                background: rgba(255,255,255,.05);
-                padding: 30px 0;
-                transform: translate(-100%,-50%) rotate(15deg) skewX(15deg);
-                position: absolute;
-                top: 50%;
-                text-align: center;
-                div {
-                    display: inline-block;
-                    margin: 0 10px;
-                }
-            }
-        }
-        .gallery-post  {
-            display: none;
         }
     }
 }
