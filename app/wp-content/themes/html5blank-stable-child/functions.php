@@ -395,17 +395,20 @@ add_action( 'init', 'atominktheme_custom_taxonomy' );
 /**
  * 13. Post generator
  */
-function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_key , $p_num_of_posts , $p_meta_box , $p_meta_box_val ) { 
+function atominktheme_generate_posts($atts) { 
+    
     $args = array(
-        'post_type' => $p_type,
-        'orderby'   => $p_order_by,
-        'order' => $p_order,
-        'meta_key' => $p_meta_key,
-        'posts_per_page' => $p_num_of_posts,
+        'post_type' => $atts['post_type'],
+        'orderby'   => $atts['post_order_by'],
+        'order' => $atts['post_order'],
+        'meta_key' => $atts['post_meta_key'],
+        'posts_per_page' => $atts['num_of_posts'],
 
         // $p_meta_box is the taxonomy we registered (instead of categories) for cpt
-        $p_meta_box => $p_meta_box_val
-     );
+        'header-back-images' => $atts['post_metabox_value'],
+        'category-name' => $atts['post_metabox_value2']
+    );
+    
      $query1 = new WP_query ( $args );
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
@@ -433,6 +436,7 @@ function atominktheme_generate_posts($p_type , $p_order_by , $p_order , $p_meta_
     endwhile; // End looping through custom sorted posts
     endif; // End loop 1
 }
+add_shortcode('getposts','atominktheme_generate_posts');
 
     /**
      * 14. Enable post thumbnail

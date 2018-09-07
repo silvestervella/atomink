@@ -104,7 +104,16 @@ function resizeMe() {
 </script>
 
  <div id="back-image">
- <?php atominktheme_generate_posts('images' , '' , 'rand' , '' , '' , 'header-back-images' , 'header-top-images' ); ?>
+ <?php atominktheme_generate_posts(
+        array(
+            'post_type'=>'images',
+            'post_order'=>'rand',
+            'post_metabox_value'=>'header-top-images',
+            'post_metabox_value2'=>'',
+            'post_order_by'=>'',
+            'post_meta_key'=>'',
+            'num_of_posts'=>''
+        )); ?>
  </div>
  <div class="image-overlay"></div>
  	<!-- wrapper -->
@@ -112,8 +121,16 @@ function resizeMe() {
 
 	<main role="main" id="home">
 
-         <?php atominktheme_generate_posts('post' , 'meta_value' , 'ASC' , '_custom_post_order' , '' , 'category_name' , 'front-page-post' ); ?>
-    
+     <?php atominktheme_generate_posts(
+        array(
+            'post_type'=>'post',
+            'post_order_by'=>'meta_value',
+            'post_order'=>'ASC',
+            'post_meta_key'=>'_custom_post_order',
+            'post_metabox_value'=>'',
+            'post_metabox_value2'=>'front-page-post',
+            'num_of_posts'=>''
+        )); ?>
 	</main>
     
 <?php get_sidebar(); ?>
