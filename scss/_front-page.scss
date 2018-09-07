@@ -39,6 +39,12 @@ html {
             }
         }
 
+        /* Home post */
+        #home-post-outer {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
         /* Ink post */
         .post-outer {
             width: 40%;
