@@ -436,7 +436,8 @@ function atominktheme_generate_posts($atts) {
     endwhile; // End looping through custom sorted posts
     endif; // End loop 1
 }
-add_shortcode('getposts','atominktheme_generate_posts');
+
+
 
     /**
      * 14. Enable post thumbnail
@@ -552,29 +553,42 @@ add_shortcode('getposts','atominktheme_generate_posts');
          */
         function atominktheme_homeInkPost() {
             ?>
+            <div id="back-imgs">
+                <div class="back-prev"></div>
+                <div class="back-next"></div>
+                <div id="back-imgs-overlay"></div>
+            </div>
+            <div id="gallery-link">
+                GO TO<br/>GALLERY
+            </div>
             <div id="active-post">
-            <div id="img-outer">
-              <img src="" alt="tattoo image" />
-              <div id="controls">
-                <div id="prev-post">Prev</div>
-                <div id="next-post">Next</div>
-              </div>
-              <div id="share">
-                <a href="" target="_blank">Share</a>
+                <div id="img-outer">
+                    <img src="" alt="tattoo image" />
+                </div>
             </div>
+            <div id="controls">
+                <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+                    <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+                </div>
+                <div id="share">
+                    <a href="" target="_blank">Share</a>
+                </div>
             </div>
-          </div>
-          <?php
-            atominktheme_generate_gallery_posts(array(
-                'post_type' =>"images" , 
-                'post_order_by'=>"date",
-                'post_order'=>"ASC",
-                'post_meta_key'=>"",
-                'num_of_posts'=>"",
-                'post_metabox_value'=>"gallery-images"
-              ));
-        }
-        add_shortcode('getgallery','atominktheme_homeInkPost');
+            <div id="home-gallery-outer">
+                <?php
+                    atominktheme_generate_gallery_posts(array(
+                        'post_type' =>"images" , 
+                        'post_order_by'=>"date",
+                        'post_order'=>"ASC",
+                        'post_meta_key'=>"",
+                        'num_of_posts'=>"",
+                        'post_metabox_value'=>"gallery-images"
+                    ));
+                }
+                add_shortcode('getgallery','atominktheme_homeInkPost');
+                ?>
+            </div>
 
+<?php
 
-        ?>
+?>

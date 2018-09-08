@@ -1,6 +1,6 @@
 <?php 
 /*
- * Template Name: Games Page - Single
+ * Template Name: Ink Page
  * Template Post Type: post
  */
 get_header(); 

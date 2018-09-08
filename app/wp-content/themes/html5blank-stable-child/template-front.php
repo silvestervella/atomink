@@ -4,9 +4,10 @@
  */
  get_header(); 
  ?>
-<!-- Smoke effect -->
-<canvas id="canvas"></canvas>
+<!-- Smoke effect 
+<canvas id="canvas"></canvas>-->
 <script>
+/*
 (function () {
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     window.requestAnimationFrame = requestAnimationFrame;
@@ -101,22 +102,9 @@ window.onload = resizeMe;
 function resizeMe() {
    canvas.height = document.body.offsetHeight;
 }
+*/
 </script>
 
- <div id="back-image">
- <?php atominktheme_generate_posts(
-        array(
-            'post_type'=>'images',
-            'post_order'=>'rand',
-            'post_metabox_value'=>'header-top-images',
-            'post_metabox_value2'=>'',
-            'post_order_by'=>'',
-            'post_meta_key'=>'',
-            'num_of_posts'=>''
-        )); ?>
- </div>
- <div class="image-overlay"></div>
- 	<!-- wrapper -->
 	<div id="wrapper" >
 
 	<main role="main" id="home">
@@ -132,7 +120,20 @@ function resizeMe() {
             'num_of_posts'=>''
         )); ?>
 	</main>
-    
+<!--
+<div id="back-image">
+ <?php /*atominktheme_generate_posts(
+        array(
+            'post_type'=>'images',
+            'post_order'=>'rand',
+            'post_metabox_value'=>'header-top-images',
+            'post_metabox_value2'=>'',
+            'post_order_by'=>'',
+            'post_meta_key'=>'',
+            'num_of_posts'=>''
+        )); */?>
+ </div>
+    -->
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

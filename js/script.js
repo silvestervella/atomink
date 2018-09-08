@@ -196,7 +196,7 @@ var imageOuter = jQuery('.image-outer');
 
 jQuery(imageOuter).first().addClass("current");
 
-function topImgFade() {
+function homeBackImgs() {
     var current = jQuery('.current');
     var currentIndex = imageOuter.index(current),
         nextIndex = currentIndex + 1;
@@ -213,11 +213,11 @@ function topImgFade() {
 
     current.stop().fadeOut(2000, function() {
         jQuery(this).removeClass('current');
-        setTimeout(topImgFade, 4000);
+        setTimeout(homeBackImgs, 4000);
     });
 }
 if (jQuery('body.home').length > 0) {
-  topImgFade();
+  homeBackImgs();
 }
 
 
@@ -231,17 +231,40 @@ jQuery('.gallery-post').first().addClass('active-post');
 var galleryPost = jQuery('.gallery-post'),
     imgPosts = galleryPost.length-1,
     imgCount = 0,
-    activeSrc = jQuery('.active-post > img').attr('src');
+    activeSrc = jQuery('.active-post > img').attr('src'),
     activeShareVal = jQuery('.active-post > input').attr('value');
 
 
 function activeSrcFunc() {
   jQuery('#active-post').fadeOut(function(){
     jQuery(this).find('img').attr('src' , activeSrc);
-    jQuery(this).find('#share > a').attr('href' , 'https://www.facebook.com/sharer/sharer.php?u=' + activeShareVal + '&text=The Ink')
+    jQuery(this).find('#share > a').attr('href' , 'https://www.facebook.com/sharer/sharer.php?u=' + activeShareVal + '&text=The Ink');
+    if (jQuery('body.post-template-template-ink-page').length > 0) {
     jQuery(this).children('#active-post-blur').css({
       'background-image' : 'url('+ activeSrc +')'
-    })
+    });
+  }
+
+  if (jQuery('body.home').length > 0) {
+    if (imgCount == 0) {
+      var activeSrcPrev = galleryPost.last().children('img').attr('src');
+    } else {
+      activeSrcPrev = jQuery('.active-post').prev().children('img').attr('src');
+    }
+    if (imgCount == imgPosts) {
+      var activeSrcNext = galleryPost.first().children('img').attr('src');
+    } else {
+      activeSrcNext = jQuery('.active-post').next().children('img').attr('src');
+    }
+    
+    jQuery(this).siblings('#back-imgs').fadeOut(function(){
+      jQuery(this).children('.back-prev').css({
+        'background-image' : 'url('+ activeSrcPrev +')'
+      }).siblings('.back-next').css({
+        'background-image' : 'url('+ activeSrcNext +')'
+      });
+    }).fadeIn()
+  }
   }).fadeIn();
 };
 activeSrcFunc();
