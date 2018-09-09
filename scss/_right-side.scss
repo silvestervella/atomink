@@ -13,7 +13,7 @@
         height: 100%;
         width: 100%;
         .primary-sidebar{
-            height: inherit;
+            height: auto;
             div {
                 height: inherit;
                 #menu-right-menu {
@@ -56,6 +56,20 @@
                     a,a:active,a:hover {
                         color: white;
                     }
+                }
+            }
+        }
+    }
+    #sidebar-social-icons {
+        position: relative;
+        top: 10%;
+        .svg-outer {
+            display: block;
+            padding: 10px;
+            a {
+                svg {
+                    width: 20px;
+                    height: auto;
                 }
             }
         }

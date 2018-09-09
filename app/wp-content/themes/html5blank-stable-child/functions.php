@@ -545,14 +545,24 @@ function atominktheme_generate_posts($atts) {
 
 
         add_filter( 'the_excerpt', 'shortcode_unautop');
-        add_filter( 'the_excerpt', 'do_shortcode');
+        add_filter( 'the_excerpt', 'do_shortcode'); 
+
 
 
         /**
          * 18. Home page ink post
          */
-        function atominktheme_homeInkPost() {
-            ?>
+        function atominktheme_homeInkPost() { ?>
+            <div id="home-gallery-outer">
+                    <?php atominktheme_generate_gallery_posts(array(
+                        'post_type' =>"images" , 
+                        'post_order_by'=>"date",
+                        'post_order'=>"ASC",
+                        'post_meta_key'=>"",
+                        'num_of_posts'=>"",
+                        'post_metabox_value'=>"gallery-images"
+                    )); ?>
+            </div>
             <div id="back-imgs">
                 <div class="back-prev"></div>
                 <div class="back-next"></div>
@@ -574,21 +584,5 @@ function atominktheme_generate_posts($atts) {
                     <a href="" target="_blank">Share</a>
                 </div>
             </div>
-            <div id="home-gallery-outer">
-                <?php
-                    atominktheme_generate_gallery_posts(array(
-                        'post_type' =>"images" , 
-                        'post_order_by'=>"date",
-                        'post_order'=>"ASC",
-                        'post_meta_key'=>"",
-                        'num_of_posts'=>"",
-                        'post_metabox_value'=>"gallery-images"
-                    ));
-                }
-                add_shortcode('getgallery','atominktheme_homeInkPost');
-                ?>
-            </div>
-
-<?php
-
-?>
+            <?php } 
+            add_shortcode('getgallery','atominktheme_homeInkPost');?>

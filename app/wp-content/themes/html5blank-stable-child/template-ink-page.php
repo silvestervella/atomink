@@ -8,7 +8,7 @@ get_header();
 <!-- wrapper -->
 <div id="wrapper" >
 
-  <main role="main" id="home">
+  <main role="main" id="ink-page">
     <div id="active-post">
       <div id="active-post-blur"></div>
       <div id="img-outer">

@@ -1,6 +1,6 @@
 <?php 
 /*
- * Template Name: Games Page - Single
+ * Template Name: About Page
  * Template Post Type: post
  */
 get_header(); 
@@ -8,7 +8,7 @@ get_header();
 <!-- wrapper -->
 <div id="wrapper" >
 
-  <main role="main" id="home">
+  <main role="main" id="about-page">
     <div id="active-post">
       <div id="active-post-blur"></div>
       <div id="img-outer">
