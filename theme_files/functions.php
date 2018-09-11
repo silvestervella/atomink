@@ -439,6 +439,7 @@ function atominktheme_generate_posts($atts) {
 
 
 
+
     /**
      * 14. Enable post thumbnail
      */
@@ -585,4 +586,37 @@ function atominktheme_generate_posts($atts) {
                 </div>
             </div>
             <?php } 
-            add_shortcode('getgallery','atominktheme_homeInkPost');?>
+            add_shortcode('getgallery','atominktheme_homeInkPost');
+
+
+
+            /**
+             * 19. Home page home post
+             */
+            function atominktheme_homeHomePost($atts){
+                $args = array(
+                    'post_type' => $atts['post_type'],
+                    'orderby'   => $atts['post_order_by'],
+                    'order' => $atts['post_order'],
+                    'meta_key' => $atts['post_meta_key'],
+                    'posts_per_page' => $atts['num_of_posts'],
+            
+                    // $p_meta_box is the taxonomy we registered (instead of categories) for cpt
+                    'header-back-images' => $atts['post_metabox_value']
+                 );?>
+                 <div id="back-img"></div>
+                 <?php $query1 = new WP_query ( $args );
+                 if ( $query1->have_posts() ) :
+                     while ($query1->have_posts() ) :
+                     $query1->the_post();  ?>
+        
+                        <div class="image-outer">
+                            <?php the_post_thumbnail()  ?>
+                        </div>                
+            
+                    <?php
+                        endwhile; // End looping through custom sorted posts
+                        endif; // End loop 1
+            }
+            add_shortcode('getHomeHomeImgs','atominktheme_homeHomePost');?>
+             

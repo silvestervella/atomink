@@ -198,23 +198,7 @@ jQuery(imageOuter).first().addClass("current");
 
 function homeBackImgs() {
     var current = jQuery('.current');
-    var currentIndex = imageOuter.index(current),
-        nextIndex = currentIndex + 1;
 
-    if (nextIndex >= imageOuter.length) {
-        nextIndex = 0;
-    }
-
-    var next = imageOuter.eq(nextIndex);
-
-    next.stop().fadeIn(2000, function() {
-        jQuery(this).addClass('current');
-    });
-
-    current.stop().fadeOut(2000, function() {
-        jQuery(this).removeClass('current');
-        setTimeout(homeBackImgs, 4000);
-    });
 }
 if (jQuery('body.home').length > 0) {
   homeBackImgs();
