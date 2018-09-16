@@ -80,9 +80,41 @@
         left: 50%;
         transform: translate(-50%,-50%);
         .drop {
-            svg {
-                height: 100px;
-            }
+            .drop-outline {
+                fill: none;
+                stroke: #fff;
+                stroke-width: 2;
+                stroke-miterlimit: 5;
+              }
+            .drop-outer {
+                width: 60px;
+                height: 130px;
+                overflow: hidden;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                z-index: -1;
+              }
+              .waveShape {
+                  fill: none;
+              }
+              &.active {
+                .fill {
+                    animation-name: fillAction;
+                    animation-iteration-count: 1;
+                    animation-timing-function: cubic-bezier(.2, .6, .8, .4);
+                    animation-duration: 1s;
+                    animation-fill-mode: forwards;
+                  }
+                  .waveShape {
+                    animation-name: waveAction;
+                    animation-iteration-count: 10;
+                    animation-timing-function: linear;
+                    animation-duration: 0.5s;
+                    width: 300px;
+                    height: 150px;
+                    fill: #fff;
+                  }
+              }
         }
 }
 .buttons {
@@ -97,3 +129,12 @@
     }
 }
 }
+
+
+
+
+
+
+
+
+

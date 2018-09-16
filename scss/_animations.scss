@@ -31,3 +31,21 @@
     0%   {transform: translateY(-50%);}
     100% {transform: translateY(0%)}
 }
+
+/* Sidebar drops */
+@keyframes fillAction {
+    0% {
+      transform: translate(0, 150px);
+    }
+    100% {
+      transform: translate(0, 0px);
+    }
+  }
+  @keyframes waveAction {
+    0% {
+      transform: translate(-100px, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }

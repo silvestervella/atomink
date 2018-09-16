@@ -9,7 +9,7 @@
  * 
  * Window.load
  * 
- * 1. Top home images animaiton
+ * 1. Top back images animaiton
  * 2. Gallery pagination
  * 3. Gallery thumbs positioning using jquery masonary
  */
@@ -190,15 +190,36 @@ jQuery(window).load(function(){
 
 
 /**
- * 1. Top home images animaiton
+ * 1. Top back images animaiton
  */
 var imageOuter = jQuery('.image-outer');
 
 jQuery(imageOuter).first().addClass("current");
 
 function homeBackImgs() {
-    var current = jQuery('.current');
-
+    var bkImgCurrent = jQuery('.current'),
+    bkImgOuter = jQuery('.image-outer'),
+    bkImgCOunt = 0,
+    bkImgOuterLen = bkImgOuter.length-1;
+console.log(bkImgOuterLen);
+      setInterval(function(){
+          if (bkImgCOunt == bkImgOuterLen) {
+            bkImgOuter.last().fadeOut(800,function(){
+              jQuery(this).removeClass('current');
+              bkImgOuter.first().fadeIn(800,function(){
+                jQuery(this).addClass('current');
+              });
+            });
+            bkImgCOunt = 0;
+          } else {
+            bkImgCurrent.fadeOut(800,function(){
+              jQuery(this).removeClass('current').next('.image-outer').fadeIn(800,function(){
+                jQuery(this).addClass('current');
+              });
+              bkImgCOunt++;
+            })
+          }
+      }, 6000);
 }
 if (jQuery('body.home').length > 0) {
   homeBackImgs();
@@ -241,7 +262,7 @@ function activeSrcFunc() {
       activeSrcNext = jQuery('.active-post').next().children('img').attr('src');
     }
     
-    jQuery(this).siblings('#back-imgs').fadeOut(function(){
+    jQuery(this).siblings('#ink-back-imgs').fadeOut(function(){
       jQuery(this).children('.back-prev').css({
         'background-image' : 'url('+ activeSrcPrev +')'
       }).siblings('.back-next').css({

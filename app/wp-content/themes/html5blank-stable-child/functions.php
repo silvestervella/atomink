@@ -466,16 +466,29 @@ function atominktheme_generate_posts($atts) {
             ?>
           
 				<div class="drop">
-
-                <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 109.5 204.8" style="enable-background:new 0 0 109.5 204.8;" xml:space="preserve">
-                <style type="text/css">
-                    .st0{fill:#55A8C1;}
-                </style>
-                <path class="st0" d="M102.7,134.1c0,33.9-21.5,61.4-47.9,61.4S6.9,168,6.9,134.1S54.8,9.3,54.8,9.3S102.7,100.2,102.7,134.1z"/>
-                </svg>
-
+                    <div class="drop-outer">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                width="205px" height="107.825px" viewBox="-562.5 -228 205 107.825" enable-background="new -562.5 -228 205 107.825"
+                                xml:space="preserve">
+                                <defs>
+                                    <clipPath id="drop">
+                                        <path class="drop-inner" fill="#FFFFFF"  d="M-508.469-158.395c0,16.781-11.374,30.395-25.341,30.395c-13.966,0-25.34-13.613-25.34-30.395
+	c0-16.782,25.34-61.78,25.34-61.78S-508.469-175.176-508.469-158.395z">
+                                    </clipPath>
+                                </defs>
+                                <g clip-path="url(#drop)">
+                                    <g class="fill">
+                                        <path class="waveShape" fill="#FFFFFF" d="M-357.5-120.175h-205v-107.007c32.542,8.698,38.273-1.739,53.783,1.12
+                                        c35.466,6.539,57.518-4.999,108.736-1.12c18.707,1.417,42.481,0,42.481,0V-120.175z"/>
+                                    </g>
+                                </g>
+                                <g id="outline">
+	<path class="drop-outline" fill="none" stroke="#FFFFFF" d="M-508.469-158.395
+		c0,16.781-11.374,30.395-25.341,30.395c-13.966,0-25.34-13.613-25.34-30.395c0-16.782,25.34-61.78,25.34-61.78
+		S-508.469-175.176-508.469-158.395z"/>
+</g>
+                            </svg>
+                    </div>
                 </div>
     
                     <?php
@@ -564,7 +577,7 @@ function atominktheme_generate_posts($atts) {
                         'post_metabox_value'=>"gallery-images"
                     )); ?>
             </div>
-            <div id="back-imgs">
+            <div id="ink-back-imgs" class="back-imgs">
                 <div class="back-prev"></div>
                 <div class="back-next"></div>
                 <div id="back-imgs-overlay"></div>
@@ -603,20 +616,22 @@ function atominktheme_generate_posts($atts) {
             
                     // $p_meta_box is the taxonomy we registered (instead of categories) for cpt
                     'header-back-images' => $atts['post_metabox_value']
-                 );
-                 $query1 = new WP_query ( $args );
+                 );?>
+                <div id="home-back-imgs" class="back-imgs">
+                 <?php $query1 = new WP_query ( $args );
                  if ( $query1->have_posts() ) :
                      while ($query1->have_posts() ) :
                      $query1->the_post();  ?>
         
                         <div class="image-outer">
                             <?php the_post_thumbnail()  ?>
-                            <input type="hidden" value="<?php echo the_permalink(); ?>" />
                         </div>                
             
                     <?php
                         endwhile; // End looping through custom sorted posts
                         endif; // End loop 1
-            }
+                        ?>
+                    <div id="back-imgs-overlay"></div>    
+                </div>
+            <?php }
             add_shortcode('getHomeHomeImgs','atominktheme_homeHomePost');?>
-             
