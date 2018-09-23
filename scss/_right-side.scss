@@ -95,7 +95,8 @@
                 z-index: -1;
               }
               .waveShape {
-                  fill: none;
+                fill: rgba(255,255,255,0.01);
+                transition: all 2s;
               }
               &.active {
                 .fill {

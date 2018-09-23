@@ -107,7 +107,7 @@ function resizeMe() {
 
 	<div id="wrapper" >
 
-	<main role="main" id="home">
+	<main id="home">
 
      <?php atominktheme_generate_posts(
         array(
@@ -115,25 +115,12 @@ function resizeMe() {
             'post_order_by'=>'meta_value',
             'post_order'=>'ASC',
             'post_meta_key'=>'_custom_post_order',
-            'post_metabox_value'=>'',
             'post_metabox_value2'=>'front-page-post',
-            'num_of_posts'=>''
+            'num_of_posts'=>'-1',
+            'nopaging' => true
         )); ?>
 	</main>
-<!--
-<div id="back-image">
- <?php /*atominktheme_generate_posts(
-        array(
-            'post_type'=>'images',
-            'post_order'=>'rand',
-            'post_metabox_value'=>'header-top-images',
-            'post_metabox_value2'=>'',
-            'post_order_by'=>'',
-            'post_meta_key'=>'',
-            'num_of_posts'=>''
-        )); */?>
- </div>
-    -->
+
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

@@ -18,6 +18,9 @@
  * 16. Gallery posts generator
  * 17. Show featured image column in post list admin page
  * 18. Home page ink post
+ * 19. Home page home post
+ * 20. Team members post generator
+ * 21. Show post page ID in admin
  */
 
  
@@ -114,6 +117,13 @@ function atominktheme_custom_post_sort( $post ){
         'post' ,
         'side'
         );
+        add_meta_box( 
+            'custom_post_sort_box', 
+            'Position in List of Posts', 
+            'atominktheme_custom_post_order', 
+            'team' ,
+            'side'
+            );
     }
     add_action( 'add_meta_boxes', 'atominktheme_custom_post_sort' );
   
@@ -164,6 +174,7 @@ function atominktheme_custom_post_sort( $post ){
    * 5. Add posts excerpt
    */
   add_post_type_support( 'page', 'excerpt' );
+  add_post_type_support( 'team', 'excerpt' );
 
 
   /**
@@ -343,6 +354,16 @@ function atominktheme_post_types() {
       'has_archive' => true,
     )
   );
+  register_post_type( 'team',
+  array(
+    'labels' => array(
+      'name' => __( 'The Team' ),
+      'singular_name' => __( 'Members' )
+    ),
+    'public' => true,
+    'has_archive' => true,
+  )
+);
   }
   add_action( 'init', 'atominktheme_post_types' );
 
@@ -397,45 +418,32 @@ add_action( 'init', 'atominktheme_custom_taxonomy' );
  */
 function atominktheme_generate_posts($atts) { 
     
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
     $args = array(
         'post_type' => $atts['post_type'],
         'orderby'   => $atts['post_order_by'],
         'order' => $atts['post_order'],
         'meta_key' => $atts['post_meta_key'],
         'posts_per_page' => $atts['num_of_posts'],
-
-        // $p_meta_box is the taxonomy we registered (instead of categories) for cpt
-        'header-back-images' => $atts['post_metabox_value'],
-        'category-name' => $atts['post_metabox_value2']
+        'category-name' => $atts['post_metabox_value2'],
+        'nopaging' => $atts['nopaging'],
     );
     
      $query1 = new WP_query ( $args );
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
-         $query1->the_post(); 
-
-         // check if $p_meta_key "_custom_post_order" exists
-         if (in_array("_custom_post_order", $args)) { ?>
+         $query1->the_post();  ?>
         <section class="post-outer">
             <div class="post-excerpt">
             <?php the_excerpt(); ?>
             </div>
-
-                <?php };
-
-                if (in_array("header-top-images", $args)) {
-            ?>
-
-            <div class="image-outer"><?php the_post_thumbnail()  ?></div>
-                
-                <?php }; ?>
-                            
         </section>
-
-                <?php
+    <?php 
     endwhile; // End looping through custom sorted posts
+    wp_reset_postdata();
     endif; // End loop 1
-}
+};
+
 
 
 
@@ -445,6 +453,7 @@ function atominktheme_generate_posts($atts) {
      */
     add_theme_support('post-thumbnails');
     add_post_type_support( 'images', 'thumbnail' );  
+    add_post_type_support( 'team', 'thumbnail' );  
 
 
 
@@ -590,14 +599,14 @@ function atominktheme_generate_posts($atts) {
                     <img src="" alt="tattoo image" />
                 </div>
             </div>
-            <div id="controls">
-                <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+                <div id="controls">
+                    <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
                     <div id="next-post"><i class="fa fa-chevron-right"></i></div>
                 </div>
-                <div id="share">
-                    <a href="" target="_blank">Share</a>
-                </div>
-            </div>
+                    <div id="share">
+                        <a href="" target="_blank">Share</a>
+                    </div>
+          
             <?php } 
             add_shortcode('getgallery','atominktheme_homeInkPost');
 
@@ -634,4 +643,94 @@ function atominktheme_generate_posts($atts) {
                     <div id="back-imgs-overlay"></div>    
                 </div>
             <?php }
-            add_shortcode('getHomeHomeImgs','atominktheme_homeHomePost');?>
+            add_shortcode('getHomeHomeImgs','atominktheme_homeHomePost');
+            
+            
+            
+        /**
+         * 20. Team members post generator 
+         */
+        function atominktheme_TeamPost($atts) {
+            $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+            $args = array(
+                'post_type' => $atts['post_type'],
+                'orderby'   => $atts['post_order_by'],
+                'order' => $atts['post_order'],
+                'meta_key' => $atts['post_meta_key'],
+                'posts_per_page' => $atts['num_of_posts']
+             );
+             $query1 = new WP_query ( $args );
+             if ( $query1->have_posts() ) :
+                 while ($query1->have_posts() ) :
+                 $query1->the_post();  ?>
+    
+                    <div class="team-post">
+                        <div class="info-outer">
+                            <div class="info">
+                                <div class="name">
+                                    <?php the_title(); ?>
+                                </div>
+                                <div class="about-text">
+                                    <?php the_excerpt(); ?>
+                                    <div class="read-more">
+                                        <a href="<?php echo esc_url( get_permalink( get_post(242) ) ); ?>">Read More..</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-pic">
+                            <div class="profile-pic-outer">
+                                <?php the_post_thumbnail()  ?>
+                            </div>
+                        </div>
+                    </div>
+        
+                <?php
+                    endwhile; // End looping through custom sorted posts
+                    endif; // End loop 1
+} 
+            add_shortcode('getteam','atominktheme_TeamPost');
+
+
+
+
+            /**
+             * 21. Show post page ID in admin
+             */
+            add_filter( 'manage_posts_columns', 'atominktheme_revealid_add_id_column', 5 );
+            add_action( 'manage_posts_custom_column', 'atominktheme_revealid_id_column_content', 5, 2 );
+
+
+            function atominktheme_revealid_add_id_column( $columns ) {
+            $columns['revealid_id'] = 'ID';
+            return $columns;
+            }
+
+            function atominktheme_revealid_id_column_content( $column, $id ) {
+            if( 'revealid_id' == $column ) {
+                echo $id;
+            }
+            }
+
+
+
+            /**
+             * 22. Contact home post
+             */
+            function atominktheme_homeContactPost() {
+
+                echo '<div id="contact-home-outer" style="background-image: url('. esc_url(get_the_post_thumbnail_url( get_post_thumbnail_id(260),'full') ) .')">';
+                echo '<div id="contact-left">';
+                echo '<div>Booking a <br />Consultation?';
+                echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here.</a>';
+                echo '</div>';
+                echo '</div>';
+
+                echo '<div id="contact-right">';
+                echo do_shortcode( '[atominktheme_contact_form]' );
+                echo '</div>';
+                echo '</div>';
+
+            }
+            add_shortcode( 'atominktheme_homeContact', 'atominktheme_homeContactPost' );
+            ?>
