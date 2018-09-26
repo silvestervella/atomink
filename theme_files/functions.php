@@ -721,12 +721,13 @@ function atominktheme_generate_posts($atts) {
 
                 echo '<div id="contact-home-outer" style="background-image: url('. esc_url(get_the_post_thumbnail_url( get_post_thumbnail_id(260),'full') ) .')">';
                 echo '<div id="contact-left">';
-                echo '<div>Booking a <br />Consultation?';
+                echo '<div>Booking a<br />Consultation?';
                 echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here.</a>';
                 echo '</div>';
                 echo '</div>';
 
                 echo '<div id="contact-right">';
+                echo '<div>Or just<br />drop me a line..</div>';
                 echo do_shortcode( '[atominktheme_contact_form]' );
                 echo '</div>';
                 echo '</div>';
