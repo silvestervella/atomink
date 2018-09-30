@@ -7,7 +7,7 @@
  * 5. Add posts excerpt
  * 6. Allow html in post excerpt
  * 7. Add custom css to admin area
- * 8. Add custom metaboxes to posts
+
  * 9. Add custom post type
  * 10. Add custom logo
  * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
@@ -21,6 +21,8 @@
  * 19. Home page home post
  * 20. Team members post generator
  * 21. Show post page ID in admin
+ * 22. Contact home post
+ * 23. Get post thumbnail outside loop
  */
 
  
@@ -256,79 +258,6 @@ function atominktheme_custom_admin_css() {
 	wp_enqueue_style( 'custom_wp_admin_css', get_stylesheet_directory_uri() . '/css/admin-style.css', false, '1.0.0' );
 }
 
-
-/**
- * 
- * 8. Add custom metaboxes to posts
- */
-/**
- * Adds a meta box to the post editing screen
- */
-function atominktheme_custom_meta() {
-    add_meta_box( 'atominktheme_meta', __( 'Post Tagline', 'atominktheme-textdomain' ), 'atominktheme_meta_callback', 'post' );
-    add_meta_box( 'atominktheme_meta_two', __( 'Post Link', 'atominktheme-linktext' ), 'atominktheme_metatwo_callback', 'post' );
-}
-add_action( 'add_meta_boxes', 'atominktheme_custom_meta' );
-
-/**
- * Outputs the content of the meta box
- */
-function atominktheme_meta_callback( $post ) {
-    wp_nonce_field( basename( __FILE__ ), 'atominktheme_nonce' );
-    $atominktheme_stored_meta = get_post_meta( $post->ID );
-    ?>
- 
-    <p>
-        <label for="top-text" class="atominktheme-row-title"><?php _e( 'Top Text', 'atominktheme-textdomain' )?></label>
-        <input type="text" name="top-text" id="top-text" value="<?php if ( isset ( $atominktheme_stored_meta['top-text'] ) ) echo $atominktheme_stored_meta['top-text'][0]; ?>" /><br>
-        <label for="bottom-tex" class="atominktheme-row-title"><?php _e( 'Bottom Text', 'atominktheme-textdomain' )?></label>
-        <input type="text" name="bottom-text" id="bottom-text" value="<?php if ( isset ( $atominktheme_stored_meta['bottom-text'] ) ) echo $atominktheme_stored_meta['bottom-text'][0]; ?>" />
-
-    </p>
- 
-    <?php
-}
-function atominktheme_metatwo_callback( $post ) {
-    wp_nonce_field( basename( __FILE__ ), 'atominktheme_nonce' );
-    $atominktheme_stored_meta = get_post_meta( $post->ID );
-    ?>
- 
-    <p>
-        <label for="link-text" class="atominktheme-row-title"><?php _e( 'LInk Text', 'atominktheme-linktext' )?></label>
-        <input type="text" name="link-text" id="link-text" value="<?php if ( isset ( $atominktheme_stored_meta['link-text'] ) ) echo $atominktheme_stored_meta['link-text'][0]; ?>" /><br>
-    </p>
- 
-    <?php
-}
-
-/**
- * Saves the custom meta input
- */
-function atominktheme_meta_save( $post_id ) {
- 
-    // Checks save status
-    $is_autosave = wp_is_post_autosave( $post_id );
-    $is_revision = wp_is_post_revision( $post_id );
-    $is_valid_nonce = ( isset( $_POST[ 'atominktheme_nonce' ] ) && wp_verify_nonce( $_POST[ 'atominktheme_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
- 
-    // Exits script depending on save status
-    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
-        return;
-    }
- 
-    // Checks for input and sanitizes/saves if needed
-    if( isset( $_POST[ 'top-text' ] ) ) {
-        update_post_meta( $post_id, 'top-text', sanitize_text_field( $_POST[ 'top-text' ] ) );
-    }
-    if( isset( $_POST[ 'bottom-text' ] ) ) {
-        update_post_meta( $post_id, 'bottom-text', sanitize_text_field( $_POST[ 'bottom-text' ] ) );
-    }
-    if( isset( $_POST[ 'link-text' ] ) ) {
-        update_post_meta( $post_id, 'link-text', sanitize_text_field( $_POST[ 'link-text' ] ) );
-    }
- 
-}
-add_action( 'save_post', 'atominktheme_meta_save' );
 
 /**
  * 9. Add custom post type
@@ -596,6 +525,7 @@ function atominktheme_generate_posts($atts) {
             </div>
             <div id="active-post">
                 <div id="img-outer">
+                    <div class="color-back"   style="background-image: url(<?php echo esc_url( get_post_meta( get_the_ID(), 'home-color-img', true ) ); ?>)"></div>
                     <img src="" alt="tattoo image" />
                 </div>
             </div>
@@ -734,4 +664,19 @@ function atominktheme_generate_posts($atts) {
 
             }
             add_shortcode( 'atominktheme_homeContact', 'atominktheme_homeContactPost' );
+
+
+
+
+            /**
+             * 23. Get post thumbnail outside loop
+             */
+            function armanage_get_post_page_thumb_url($id) {
+
+                $post = get_post($id);
+                $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); 
+
+                return $featured_img_url;
+            }
+
             ?>

@@ -17,12 +17,12 @@
 }
 @keyframes scroll-fill {
     0% {fill: lighten($grey, 50%); }
-    50% {fill: white;}
+    50% {fill: $secondary;}
     100% {fill: lighten($grey, 50%); }
 }
 @keyframes scroll-stroke {
     0% {stroke: lighten($grey, 50%); }
-    50% {stroke: white;}
+    50% {stroke: $secondary;}
     100% {stroke: lighten($grey, 50%); }
 }
 

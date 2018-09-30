@@ -34,7 +34,7 @@
                             &:before {
                                 content: '';
                                 width: 100%;
-                                border-bottom: 3px solid #fff;
+                                border-bottom: 3px solid $secondary;
                                 display: inline-block;
                                 transform: translate(0,-150%);
                                 position: relative;
@@ -46,7 +46,7 @@
                             &:before {
                                 content: '';
                                 width: 50px;
-                                border-bottom: 3px solid #fff;
+                                border-bottom: 3px solid $secondary;
                                 display: inline-block;
                                 transform: translate(0,-150%);
                                 position: relative;
@@ -54,7 +54,7 @@
                         }
                     }
                     a,a:active,a:hover {
-                        color: white;
+                        color: $secondary;
                     }
                 }
             }
@@ -82,7 +82,7 @@
         .drop {
             .drop-outline {
                 fill: none;
-                stroke: #fff;
+                stroke: $secondary;
                 stroke-width: 2;
                 stroke-miterlimit: 5;
               }
@@ -113,7 +113,7 @@
                     animation-duration: 0.5s;
                     width: 300px;
                     height: 150px;
-                    fill: #fff;
+                    fill: $secondary;
                   }
               }
         }
@@ -124,7 +124,7 @@
     transform: translateY(-50%);
     button {
         display: block;
-        color: #fff;
+        color: $secondary;
         margin: 40px 0;
         font-size: 40px;
     }

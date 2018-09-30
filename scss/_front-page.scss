@@ -108,7 +108,6 @@ html {
                         max-width: 700px;
                         left: 50%;
                         background: rgba(255,255,255,0.1);
-                        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.05+0,0.05+9,0.15+45,0.1+52,0.05+56,0.05+100 */
                         background: -moz-linear-gradient(-45deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.05) 9%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.1) 52%, rgba(255,255,255,0.05) 56%, rgba(255,255,255,0.05) 100%); /* FF3.6-15 */
                         background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.05) 9%,rgba(255,255,255,0.15) 45%,rgba(255,255,255,0.1) 52%,rgba(255,255,255,0.05) 56%,rgba(255,255,255,0.05) 100%); /* Chrome10-25,Safari5.1-6 */
                         background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.05) 9%,rgba(255,255,255,0.15) 45%,rgba(255,255,255,0.1) 52%,rgba(255,255,255,0.05) 56%,rgba(255,255,255,0.05) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -116,6 +115,13 @@ html {
                         border-radius: 30px;
                         border-right: 2px solid #333;
                         border-bottom: 2px solid #333;
+                        svg {
+                            left: 50%;
+                            position: relative;
+                            transform: translate(-50% , -50%);
+                            top: 50%;
+                            width: 150%;
+                        }
                         img {
                             padding: 30px;
                             max-width: 90%;
@@ -301,7 +307,7 @@ html {
     //top: 50%;
     //left: 50%;
     //transform: translate(-50% , -50%);
-    color: #fff;
+    color: $secondary;
     text-align: left;
     .post-excerpt {
         #ink-back-imgs {

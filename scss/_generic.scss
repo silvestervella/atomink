@@ -8,7 +8,8 @@
 /* 1. Variables */
 // Colours
 $grey: #333;
-$primary: #55A8C0;
+$primary: #E75A4A;
+$secondary: #D9D6CC;
 
 // Fonts 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Quicksand:400,700');
@@ -66,7 +67,7 @@ $mainText: 'Quicksand', sans-serif;
 @mixin main-button {
     padding: 10px 20px;
     border-radius: 100px;
-    color: white;
+    color: $secondary;
     display: inline-block;
     background: $primary;
     text-transform: uppercase;

@@ -3,9 +3,9 @@
 Plugin Name: Atomink Theme Contact Form Plugin
 Description: Simple Contact Form
 Version: 1.0
-*/
 
-// Output the html
+
+
 function html_form_code() {
     echo '<div id="contact-form">';
     echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
@@ -74,4 +74,6 @@ function cf_shortcode() {
     return ob_get_clean();
 }
 add_shortcode( 'atominktheme_contact_form', 'cf_shortcode' );
+
+*/
 ?>
