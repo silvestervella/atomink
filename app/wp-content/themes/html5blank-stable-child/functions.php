@@ -19,7 +19,7 @@
  * 17. Show featured image column in post list admin page
  * 18. Home page ink post
  * 19. Home page home post
- * 20. Team members post generator
+ * 20. Team members home+page post generator 
  * 21. Show post page ID in admin
  * 22. Contact home post
  * 23. Get post thumbnail outside loop
@@ -578,7 +578,7 @@ function atominktheme_generate_posts($atts) {
             
             
         /**
-         * 20. Team members post generator 
+         * 20. Team members home+page post generator 
          */
         function atominktheme_TeamPost($atts) {
             $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -671,12 +671,11 @@ function atominktheme_generate_posts($atts) {
             /**
              * 23. Get post thumbnail outside loop
              */
-            function armanage_get_post_page_thumb_url($id) {
+            function atominktheme_get_post_page_thumb_url($id) {
 
                 $post = get_post($id);
                 $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); 
 
                 return $featured_img_url;
             }
-
             ?>
