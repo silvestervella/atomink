@@ -362,10 +362,12 @@ function atominktheme_generate_posts($atts) {
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
          $query1->the_post();  ?>
+         
         <section class="post-outer">
             <div class="post-excerpt">
             <?php the_excerpt(); ?>
             </div>
+            <div class="color-back"  style="background-image: url(<?php echo esc_url(get_post_meta(get_the_ID(), 'home-color-img', true )) ?>)"></div>
         </section>
     <?php 
     endwhile; // End looping through custom sorted posts
@@ -525,7 +527,6 @@ function atominktheme_generate_posts($atts) {
             </div>
             <div id="active-post">
                 <div id="img-outer">
-                    <div class="color-back"   style="background-image: url(<?php echo esc_url( get_post_meta( get_the_ID(), 'home-color-img', true ) ); ?>)"></div>
                     <img src="" alt="tattoo image" />
                 </div>
             </div>
