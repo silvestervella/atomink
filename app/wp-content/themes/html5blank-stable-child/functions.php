@@ -361,13 +361,15 @@ function atominktheme_generate_posts($atts) {
      $query1 = new WP_query ( $args );
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
-         $query1->the_post();  ?>
-         
+         $query1->the_post();  
+         $haqlostja = get_post_meta(get_the_ID(), "home-color-img", true );?>
         <section class="post-outer">
             <div class="post-excerpt">
-            <?php the_excerpt(); ?>
+            <?php 
+            echo '<div class="color-back"  style="background-image: url('.esc_url($haqlostja).')"></div>'; 
+            the_excerpt();
+            ?>
             </div>
-            <div class="color-back"  style="background-image: url(<?php echo esc_url(get_post_meta(get_the_ID(), 'home-color-img', true )) ?>)"></div>
         </section>
     <?php 
     endwhile; // End looping through custom sorted posts
@@ -433,6 +435,7 @@ function atominktheme_generate_posts($atts) {
     
                     <?php
         endwhile; // End looping through custom sorted posts
+        wp_reset_postdata();
         endif; // End loop 1
     }
 
@@ -468,6 +471,7 @@ function atominktheme_generate_posts($atts) {
     
             <?php
                 endwhile; // End looping through custom sorted posts
+                wp_reset_postdata();
                 endif; // End loop 1
             }
 
@@ -569,6 +573,7 @@ function atominktheme_generate_posts($atts) {
             
                     <?php
                         endwhile; // End looping through custom sorted posts
+                        wp_reset_postdata();
                         endif; // End loop 1
                         ?>
                     <div id="back-imgs-overlay"></div>    
@@ -618,6 +623,7 @@ function atominktheme_generate_posts($atts) {
         
                 <?php
                     endwhile; // End looping through custom sorted posts
+                    wp_reset_postdata();
                     endif; // End loop 1
 } 
             add_shortcode('getteam','atominktheme_TeamPost');

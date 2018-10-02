@@ -95,6 +95,10 @@ html {
             height: 100%;
             .post-excerpt {
                 height: 100%;
+                .color-back {
+                    background-position: center;
+                    background-size: 60%;
+                }
                 #active-post {
                     display: block;
                     background: rgba(255,255,255,0.05);
@@ -310,6 +314,12 @@ html {
     color: $secondary;
     text-align: left;
     .post-excerpt {
+        .color-back {
+            height: 100%;
+            width: 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
         #ink-back-imgs {
             height: 100%;
             width: 100%;
