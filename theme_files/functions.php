@@ -363,7 +363,7 @@ function atominktheme_generate_posts($atts) {
          while ($query1->have_posts() ) :
          $query1->the_post();  
          $haqlostja = get_post_meta(get_the_ID(), "home-color-img", true );?>
-        <section class="post-outer">
+        <section class="post-outer <?php echo 'post'.get_the_ID(); ?>">
             <div class="post-excerpt">
             <?php 
             echo '<div class="color-back"  style="background-image: url('.esc_url($haqlostja).')"></div>'; 
