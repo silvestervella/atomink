@@ -664,8 +664,10 @@ function atominktheme_generate_posts($atts) {
                 echo '</div>';
 
                 echo '<div id="contact-right">';
-                echo '<div>Or just<br />drop me a line..</div>';
-                echo do_shortcode( '[atominktheme_contact_form]' );
+                echo '<div id="home-contact-inner">';
+                echo '<div id="text">Or just<br />drop me a line..</div>';
+                echo do_shortcode( '[contact-form-7 id="287" title="Contact form 1"]' );
+                echo '</div>';
                 echo '</div>';
                 echo '</div>';
 
