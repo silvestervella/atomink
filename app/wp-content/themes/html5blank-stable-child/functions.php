@@ -7,7 +7,7 @@
  * 5. Add posts excerpt
  * 6. Allow html in post excerpt
  * 7. Add custom css to admin area
-
+ * 8. Get svg logo
  * 9. Add custom post type
  * 10. Add custom logo
  * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
@@ -126,6 +126,13 @@ function atominktheme_custom_post_sort( $post ){
             'team' ,
             'side'
             );
+            add_meta_box( 
+                'custom_post_sort_box', 
+                'Position in List of Posts', 
+                'atominktheme_custom_post_order', 
+                'product' ,
+                'side'
+                );
     }
     add_action( 'add_meta_boxes', 'atominktheme_custom_post_sort' );
   
@@ -259,6 +266,15 @@ function atominktheme_custom_admin_css() {
 }
 
 
+
+/**
+ * 8. Get svg logo
+ */
+function atomink_get_svg_logo() {
+    readfile(get_stylesheet_directory_uri() ."/includes/svg-logo.html");
+}
+
+
 /**
  * 9. Add custom post type
  */
@@ -292,6 +308,16 @@ function atominktheme_post_types() {
     'public' => true,
     'has_archive' => true,
   )
+);
+register_post_type( 'product',
+array(
+  'labels' => array(
+    'name' => __( 'Products' ),
+    'singular_name' => __( 'Product' )
+  ),
+  'public' => true,
+  'has_archive' => true,
+)
 );
   }
   add_action( 'init', 'atominktheme_post_types' );
@@ -366,7 +392,6 @@ function atominktheme_generate_posts($atts) {
         <section class="post-outer <?php echo 'post'.get_the_ID(); ?>">
             <div class="post-excerpt">
             <?php 
-            echo '<div class="color-back"  style="background-image: url('.esc_url($haqlostja).')"></div>'; 
             the_excerpt();
             ?>
             </div>
@@ -386,7 +411,8 @@ function atominktheme_generate_posts($atts) {
      */
     add_theme_support('post-thumbnails');
     add_post_type_support( 'images', 'thumbnail' );  
-    add_post_type_support( 'team', 'thumbnail' );  
+    add_post_type_support( 'team', 'thumbnail' ); 
+    add_post_type_support( 'product', 'thumbnail' );  
 
 
 
@@ -409,6 +435,7 @@ function atominktheme_generate_posts($atts) {
           
 				<div class="drop">
                     <div class="drop-outer">
+                        <span><?php the_title(); ?></span>
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="205px" height="107.825px" viewBox="-562.5 -228 205 107.825" enable-background="new -562.5 -228 205 107.825"
                                 xml:space="preserve">
@@ -524,10 +551,9 @@ function atominktheme_generate_posts($atts) {
             <div id="ink-back-imgs" class="back-imgs">
                 <div class="back-prev"></div>
                 <div class="back-next"></div>
-                <div id="back-imgs-overlay"></div>
             </div>
             <div id="gallery-link">
-                GO TO<br/>GALLERY
+            <a href="<?php echo esc_url( get_permalink( get_post(212) ) ); ?>">GO TO<br/>GALLERY</a>
             </div>
             <div id="active-post">
                 <div id="img-outer">
@@ -576,7 +602,6 @@ function atominktheme_generate_posts($atts) {
                         wp_reset_postdata();
                         endif; // End loop 1
                         ?>
-                    <div id="back-imgs-overlay"></div>    
                 </div>
             <?php }
             add_shortcode('getHomeHomeImgs','atominktheme_homeHomePost');
@@ -603,18 +628,19 @@ function atominktheme_generate_posts($atts) {
                     <div class="team-post">
                         <div class="info-outer">
                             <div class="info">
+                            <?php echo wp_get_attachment_image( '292'); ?>
                                 <div class="name">
                                     <?php the_title(); ?>
                                 </div>
                                 <div class="about-text">
-                                    <?php the_excerpt(); ?>
-                                    <div class="read-more">
-                                        <a href="<?php echo esc_url( get_permalink( get_post(242) ) ); ?>">Read More..</a>
-                                    </div>
+                                    <?php the_content(); ?>
+                                    <!-- <div class="read-more">
+                                        <a href="<?php // echo esc_url( get_permalink( get_post(242) ) ); ?>">Read More..</a>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
-                        <div class="profile-pic">
+                        <div class="profile-pic" style="background-image: url(<?php echo wp_get_attachment_url('206'); ?>)">
                             <div class="profile-pic-outer">
                                 <?php the_post_thumbnail()  ?>
                             </div>
@@ -657,7 +683,7 @@ function atominktheme_generate_posts($atts) {
             function atominktheme_homeContactPost() {
 
                 echo '<div id="contact-home-outer" style="background-image: url('. esc_url(get_the_post_thumbnail_url( get_post_thumbnail_id(260),'full') ) .')">';
-                echo '<div id="contact-left">';
+                echo '<div id="contact-left" style="background-image: url('.wp_get_attachment_url("206").')">';
                 echo '<div>Booking a<br />Consultation?';
                 echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here.</a>';
                 echo '</div>';
@@ -673,7 +699,7 @@ function atominktheme_generate_posts($atts) {
 
             }
             add_shortcode( 'atominktheme_homeContact', 'atominktheme_homeContactPost' );
-
+            
 
 
 
@@ -686,5 +712,48 @@ function atominktheme_generate_posts($atts) {
                 $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); 
 
                 return $featured_img_url;
+            }
+
+
+
+
+            /**
+             * 24. Products generator
+             */
+            function atominktheme_products_post_gen($atts) {
+                $args = array(
+                    'post_type' => $atts['post_type'],
+                    'orderby'   => $atts['orderby'],
+                    'order' => $atts['order'],
+                    'meta_key' => $atts['meta_key'],
+                 );
+                 $query1 = new WP_query ( $args );
+                 if ( $query1->have_posts() ) :
+                     while ($query1->have_posts() ) :
+                     $query1->the_post();  ?>
+
+                    <div class="prod-post">
+                        <div class="info-outer">
+                            <div class="info">
+                                <div class="name">
+                                    <?php the_title(); ?>
+                                </div>
+                                <div class="about-text">
+                                    <?php the_content(); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prod-pic">
+                            <div class="profile-pic-outer">
+                                <?php the_post_thumbnail()  ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <?php 
+                    endwhile; // End looping through custom sorted posts
+                    wp_reset_postdata();
+                    endif; // End loop 1
             }
             ?>

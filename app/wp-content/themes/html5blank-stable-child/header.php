@@ -44,7 +44,7 @@
 			<!-- logo -->
 			<div class="logo">
 				<a href="<?php echo home_url(); ?>">
-					<img src="<?php atominktheme_get_logo_url() ?>" alt="logo" />
+					<?php atomink_get_svg_logo(); ?>
 				</a>
 			</div>
 			<!-- /logo -->
