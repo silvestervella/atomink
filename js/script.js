@@ -123,7 +123,7 @@ jQuery('.drop').click(function(){
 
 }
    // Scrolling function call
-   if(jQuery('body.home').length) {
+   if((jQuery('body.home').length) || (jQuery('body.postid-293').length))  {
     scrollinFunc(prevPost , nextPost);
    }
    // Next/Prev Buttons function call

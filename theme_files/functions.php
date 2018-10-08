@@ -13,7 +13,7 @@
  * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
  * 12. Create albums taxonomy
  * 13. Post generator
- * 14. Enable post thumbnail
+
  * 15. Right navigation drops generator
  * 16. Gallery posts generator
  * 17. Show featured image column in post list admin page
@@ -183,7 +183,7 @@ function atominktheme_custom_post_sort( $post ){
    * 5. Add posts excerpt
    */
   add_post_type_support( 'page', 'excerpt' );
-  add_post_type_support( 'team', 'excerpt' );
+
 
 
   /**
@@ -287,6 +287,7 @@ function atominktheme_post_types() {
         ),
         'public' => true,
         'has_archive' => true,
+        'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
       )
     );
     register_post_type( 'images',
@@ -297,6 +298,7 @@ function atominktheme_post_types() {
       ),
       'public' => true,
       'has_archive' => true,
+      'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
     )
   );
   register_post_type( 'team',
@@ -307,6 +309,7 @@ function atominktheme_post_types() {
     ),
     'public' => true,
     'has_archive' => true,
+    'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
   )
 );
 register_post_type( 'product',
@@ -317,6 +320,7 @@ array(
   ),
   'public' => true,
   'has_archive' => true,
+  'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
 )
 );
   }
@@ -386,8 +390,7 @@ function atominktheme_generate_posts($atts) {
      $query1 = new WP_query ( $args );
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
-         $query1->the_post();  
-         $haqlostja = get_post_meta(get_the_ID(), "home-color-img", true );?>
+         $query1->the_post();  ?>
         <section class="post-outer <?php echo 'post'.get_the_ID(); ?>">
             <div class="post-excerpt">
             <?php 
@@ -402,16 +405,6 @@ function atominktheme_generate_posts($atts) {
 };
 
 
-
-
-
-    /**
-     * 14. Enable post thumbnail
-     */
-    add_theme_support('post-thumbnails');
-    add_post_type_support( 'images', 'thumbnail' );  
-    add_post_type_support( 'team', 'thumbnail' ); 
-    add_post_type_support( 'product', 'thumbnail' );  
 
 
 
@@ -729,9 +722,11 @@ function atominktheme_generate_posts($atts) {
                  $query1 = new WP_query ( $args );
                  if ( $query1->have_posts() ) :
                      while ($query1->have_posts() ) :
-                     $query1->the_post();  ?>
+                     $query1->the_post();  
+                     $prodBackImg = esc_url(get_post_meta(get_the_ID(), "product-back-img", true ));
+                     ?>
 
-                    <div class="prod-post">
+                    <div class="post-outer">
                         <div class="info-outer">
                             <div class="info">
                                 <div class="name">
@@ -743,7 +738,8 @@ function atominktheme_generate_posts($atts) {
                             </div>
                         </div>
                         <div class="prod-pic">
-                            <div class="profile-pic-outer">
+                            <div class="prod-back"   style="background-image: url(<?php echo $prodBackImg; ?>)"></div>
+                            <div class="prod-pic-outer">
                                 <?php the_post_thumbnail()  ?>
                             </div>
                         </div>

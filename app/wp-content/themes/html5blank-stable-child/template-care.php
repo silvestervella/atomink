@@ -19,6 +19,11 @@ get_header();
                           'order' => 'ASC'
                     )); ?>
 
+                    <div class="buttons">
+					<button class="prev-article"><i class="fa fa-chevron-up"></i></button>
+					<button class="next-article"><i class="fa fa-chevron-down"></i></button>
+			</div>
+
   </main>
 
 
