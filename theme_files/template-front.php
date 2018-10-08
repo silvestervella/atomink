@@ -116,8 +116,7 @@ function resizeMe() {
             'post_order'=>'ASC',
             'post_meta_key'=>'_custom_post_order',
             'post_metabox_value2'=>'front-page-post',
-            'num_of_posts'=>'-1',
-            'nopaging' => true
+            'num_of_posts'=>'4'
         )); ?>
 	</main>
 

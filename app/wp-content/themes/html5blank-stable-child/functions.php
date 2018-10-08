@@ -381,7 +381,6 @@ function atominktheme_generate_posts($atts) {
         'meta_key' => $atts['post_meta_key'],
         'posts_per_page' => $atts['num_of_posts'],
         'category-name' => $atts['post_metabox_value2'],
-        'nopaging' => $atts['nopaging'],
     );
     
      $query1 = new WP_query ( $args );

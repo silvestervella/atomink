@@ -8,7 +8,9 @@ get_header();
 <!-- wrapper -->
 <div id="wrapper" >
 
-  <main role="main" id="care-page">
+  <main role="main" id="care-page" style="background-image: url(<?php  echo get_the_post_thumbnail_url(); ?>)">
+
+    <div id="care-back-overlay"></div>
 
                     <?php atominktheme_products_post_gen(array(
                           'post_type' => 'product',
