@@ -23,6 +23,7 @@
  * 21. Show post page ID in admin
  * 22. Contact home post
  * 23. Get post thumbnail outside loop
+ * 24. Products generator
  */
 
  
@@ -547,7 +548,7 @@ function atominktheme_generate_posts($atts) {
                 <div class="back-next"></div>
             </div>
             <div id="gallery-link">
-            <a href="<?php echo esc_url( get_permalink( get_post(212) ) ); ?>">GO TO<br/>GALLERY</a>
+            <a href="<?php echo esc_url( get_permalink( get_post(212) ) ); ?>">VIEW<br/>ALL</a>
             </div>
             <div id="active-post">
                 <div id="img-outer">
@@ -678,7 +679,7 @@ function atominktheme_generate_posts($atts) {
 
                 echo '<div id="contact-home-outer" style="background-image: url('. esc_url(get_the_post_thumbnail_url( get_post_thumbnail_id(260),'full') ) .')">';
                 echo '<div id="contact-left" style="background-image: url('.wp_get_attachment_url("206").')">';
-                echo '<div>Booking a<br />Consultation?';
+                echo '<div>BOOKING A<br />CONSULTATION?';
                 echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here.</a>';
                 echo '</div>';
                 echo '</div>';

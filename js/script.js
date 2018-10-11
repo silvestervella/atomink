@@ -80,10 +80,12 @@ jQuery(document).ready(function(){
 
 // Clickable right side drops
 jQuery('.drop').click(function(){
+  jQuery('.drop.active').removeClass('active');
+  jQuery(this).addClass('active');
   var dropIndex = jQuery(this).index();
   console.log(dropIndex);
   jQuery(".visible-post").stop().fadeOut(function() {
-    jQuery(postsOuter).eq(dropIndex).addClass('visible-post');
+    jQuery(postsOuter).eq(dropIndex).addClass('visible-post').fadeIn();
   }).removeClass('visible-post');
   currNum = jQuery(this).index();
 })
@@ -194,15 +196,15 @@ jQuery(window).load(function(){
  */
 var imageOuter = jQuery('.image-outer');
 
-jQuery(imageOuter).first().addClass("current");
+jQuery(imageOuter).first().addClass("current").fadeIn();
 
 function homeBackImgs() {
     var bkImgCurrent = jQuery('.current'),
     bkImgOuter = jQuery('.image-outer'),
     bkImgCOunt = 0,
     bkImgOuterLen = bkImgOuter.length-1;
-console.log(bkImgOuterLen);
-setInterval(function(){
+
+    setInterval(function(){
           if (bkImgCOunt == bkImgOuterLen) {
             bkImgOuter.last().fadeOut(800,function(){
               jQuery(this).removeClass('current');
