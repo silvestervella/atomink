@@ -51,7 +51,7 @@ jQuery(document).ready(function(){
   * 1. Home post pagination
   */
    // Add class to first home post and drop
-   jQuery(postsOuter).first().addClass("visible-post");
+   jQuery(postsOuter).first().addClass("visible-post").fadeIn();
    jQuery(drops).first().addClass("active");
 
   // Next article function
@@ -202,7 +202,7 @@ function homeBackImgs() {
     bkImgCOunt = 0,
     bkImgOuterLen = bkImgOuter.length-1;
 console.log(bkImgOuterLen);
-      setInterval(function(){
+setInterval(function(){
           if (bkImgCOunt == bkImgOuterLen) {
             bkImgOuter.last().fadeOut(800,function(){
               jQuery(this).removeClass('current');
@@ -220,7 +220,7 @@ console.log(bkImgOuterLen);
             })
           }
       }, 6000);
-}
+};
 if (jQuery('body.home').length > 0) {
   homeBackImgs();
 }
@@ -327,6 +327,19 @@ galleryPost.on('click' , function(){
 jQuery('#gallery-posts-outer').masonry({
   // options...
   itemSelector: '.gallery-post'
+});
+
+
+
+/**
+ * 4. Scrollbart for ink page
+*/
+jQuery(function(){
+	jQuery('#gallery-posts-outer').slimScroll({
+    height: '600px',
+    railColor: '#DAD6CC',
+    railOpacity: '0.8'
+	}).css('opacity' , '1');
 });
 
 

@@ -90,8 +90,10 @@ body.postid-212 {
     
     #gallery-posts-outer {
         position: relative;
-        width: 40%;
+        width: 40% !important;
         left: 60%;
+        opacity: 0;
+        transition: opacity 0.5s;
         .gallery-post {
             position: relative;
             width: 32.8%;

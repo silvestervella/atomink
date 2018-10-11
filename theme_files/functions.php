@@ -55,10 +55,12 @@
     //Register Child Scripts
     wp_register_script( 'theme-script', get_stylesheet_directory_uri() . '/js/script.js', array( 'jquery' ) );
     wp_register_script( 'masonry-script', get_stylesheet_directory_uri() . '/js/jquery.masonry.min.js', array( 'jquery' ) );
-    
+    wp_register_script( 'slimscroll-script', get_stylesheet_directory_uri() . '/js/jquery.slimscroll.min.js', array( 'jquery' ) );
+
     // Enqueue Child Scripts
     wp_enqueue_script( 'theme-script' );
-    wp_enqueue_script( 'masonry-script' );   
+    wp_enqueue_script( 'masonry-script' );  
+    wp_enqueue_script( 'slimscroll-script' );   
 
 }
     add_action('wp_enqueue_scripts', 'atominktheme_styles_child', 20); // Add Theme Child Stylesheet
