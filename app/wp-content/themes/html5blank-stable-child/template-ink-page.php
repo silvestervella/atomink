@@ -13,13 +13,15 @@ get_header();
       <div id="active-post-blur"></div>
       <div id="img-outer">
         <img src="" alt="tattoo image" />
+      </div>
+      <div id="control-share">
         <div id="controls">
-          <div id="prev-post">Prev</div>
-          <div id="next-post">Next</div>
+            <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+            <div id="next-post"><i class="fa fa-chevron-right"></i></div>
         </div>
         <div id="share">
           <a href="" target="_blank">Share</a>
-      </div>
+        </div>
       </div>
     </div>
     

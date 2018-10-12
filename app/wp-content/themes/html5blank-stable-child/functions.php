@@ -555,13 +555,15 @@ function atominktheme_generate_posts($atts) {
                     <img src="" alt="tattoo image" />
                 </div>
             </div>
+            <div id="control-share">
                 <div id="controls">
                     <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
                     <div id="next-post"><i class="fa fa-chevron-right"></i></div>
                 </div>
-                    <div id="share">
-                        <a href="" target="_blank">Share</a>
-                    </div>
+                <div id="share">
+                <a href="" target="_blank">Share</a>
+                </div>
+            </div>
           
             <?php } 
             add_shortcode('getgallery','atominktheme_homeInkPost');

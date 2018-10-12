@@ -9,6 +9,7 @@
     overflow: hidden;
     min-height: 100%;
     color: $secondary;
+    font-family: $headingText;
     #menu-close {
         width: 10%;
         position: absolute;
@@ -44,7 +45,7 @@
                 }
                 &:after {
                     content: '';
-                    border-bottom: 2px solid red;
+                    border-bottom: 2px solid $primary;
                     width: 30px;
                     position: absolute;
                     bottom: 0;

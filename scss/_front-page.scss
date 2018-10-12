@@ -141,8 +141,6 @@ html {
                         background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.05) 9%,rgba(255,255,255,0.15) 45%,rgba(255,255,255,0.1) 52%,rgba(255,255,255,0.05) 56%,rgba(255,255,255,0.05) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0dffffff', endColorstr='#0dffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
                         border-radius: 30px;
-                        border-right: 2px solid #333;
-                        border-bottom: 2px solid #333;
                         svg {
                             left: 50%;
                             position: relative;
@@ -199,8 +197,6 @@ html {
                     .profile-pic-outer {    
                         background: linear-gradient(135deg,rgba(255,255,255,.05) 0,rgba(255,255,255,.05) 9%,rgba(255,255,255,.15) 45%,rgba(255,255,255,.1) 52%,rgba(255,255,255,.05) 56%,rgba(255,255,255,.05) 100%);
                         border-radius: 30px;
-                        border-right: 2px solid #333;
-                        border-bottom: 2px solid #333;
                         position: relative;
                         top: 50%;
                         left: 50%;
@@ -245,6 +241,7 @@ html {
                         font-size: 30px;
                         margin-bottom: 10px;
                         text-transform: uppercase;
+                        font-family: $headingText;
                     }
                 }
             }
@@ -266,6 +263,7 @@ html {
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: center;
+                    font-family: $mainText;
                     div {
                         top: 50%;
                         position: absolute;
@@ -320,38 +318,6 @@ html {
                             }
                         }
                     }
-                }
-            }
-        }
-
-
-
-
-        #controls {
-            position: absolute;
-            bottom: 10%;
-            left: 15%;
-            text-align: center;
-            border: 1px solid $secondary;
-            border-radius: 30px;
-            height: 80px;
-            overflow: hidden;
-            div {
-                position: relative;
-                display: inline-block;
-                height: 100%;
-                transition: all 0.2s;
-                cursor: pointer;
-                &:hover {
-                    background: rgba(255,255,255,.2);
-                }
-                i {
-                    font-size: 40px;
-                    margin: 0 20px;
-                    display: block;
-                    top: 50%;
-                    position: relative;
-                    transform: translateY(-50%);
                 }
             }
         }

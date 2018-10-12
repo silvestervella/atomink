@@ -13,8 +13,9 @@ $secondary: #D9D6CC;
 
 // Fonts 
 @import url('https://fonts.googleapis.com/css?family=Text+Me+One');
+@import url('https://fonts.googleapis.com/css?family=K2D:400,700');
 $headingText: 'Text Me One', sans-serif;
-$mainText: 'Text Me One', sans-serif;
+$mainText: 'K2D', sans-serif;
 
 
 /* 2. Generic */
@@ -94,6 +95,38 @@ html {
         position: relative;
         display: block;
         margin: 0 auto;
+    }
+}
+#control-share {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 30px 30px;
+    #controls {
+        text-align: center;
+        border: 1px solid $secondary;
+        border-radius: 30px;
+        height: 80px;
+        overflow: hidden;
+        color: $secondary;
+        div {
+            position: relative;
+            display: inline-block;
+            height: 100%;
+            transition: all 0.2s;
+            cursor: pointer;
+            &:hover {
+                background: rgba(255,255,255,.2);
+            }
+            i {
+                font-size: 40px;
+                margin: 0 20px;
+                display: block;
+                top: 50%;
+                position: relative;
+                transform: translateY(-50%);
+            }
+        }
     }
 }
 .scroll {
