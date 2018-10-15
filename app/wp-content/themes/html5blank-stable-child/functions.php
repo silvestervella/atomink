@@ -394,7 +394,7 @@ function atominktheme_generate_posts($atts) {
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
          $query1->the_post();  ?>
-        <section class="post-outer <?php echo 'post'.get_the_ID(); ?>">
+        <section class="post-outer item-post <?php echo 'post'.get_the_ID(); ?>">
             <div class="post-excerpt">
             <?php 
             the_excerpt();
@@ -486,7 +486,7 @@ function atominktheme_generate_posts($atts) {
              while ($query1->have_posts() ) :
              $query1->the_post();  ?>
 
-                <div class="gallery-post">
+                <div class="gallery-post item-post">
                     <?php the_post_thumbnail()  ?>
                     <input type="hidden" value="<?php echo the_permalink(); ?>" />
                 </div>                
@@ -554,14 +554,14 @@ function atominktheme_generate_posts($atts) {
                 <div id="img-outer">
                     <img src="" alt="tattoo image" />
                 </div>
-            </div>
-            <div id="control-share">
-                <div id="controls">
-                    <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
-                    <div id="next-post"><i class="fa fa-chevron-right"></i></div>
-                </div>
-                <div id="share">
-                <a href="" target="_blank">Share</a>
+                <div id="control-share">
+                    <div id="controls">
+                        <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+                        <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+                    </div>
+                    <div id="share">
+                    <a href="" target="_blank">Share</a>
+                    </div>
                 </div>
             </div>
           
@@ -640,6 +640,15 @@ function atominktheme_generate_posts($atts) {
                         <div class="profile-pic" style="background-image: url(<?php echo wp_get_attachment_url('206'); ?>)">
                             <div class="profile-pic-outer">
                                 <?php the_post_thumbnail()  ?>
+                            </div>
+                        </div>
+                        <div id="control-share">
+                            <div id="controls">
+                                <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+                                <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+                            </div>
+                            <div id="share">
+                            <a href="" target="_blank">Share</a>
                             </div>
                         </div>
                     </div>
@@ -731,7 +740,7 @@ function atominktheme_generate_posts($atts) {
                      $prodBackImg = esc_url(get_post_meta(get_the_ID(), "product-back-img", true ));
                      ?>
 
-                    <div class="post-outer">
+                    <div class="post-outer item-post">
                         <div class="info-outer">
                             <div class="info">
                                 <div class="name">

@@ -125,9 +125,11 @@ html {
                 }
                 #active-post {
                     display: block;
-                    background: rgba(255,255,255,0.05);
+                    width: 80%;
+                    margin-left: 10%;
                     height: 100%;
                     text-align: center;
+                    position: relative;
                     #img-outer {
                         top: 50%;
                         position: relative;

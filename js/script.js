@@ -15,8 +15,8 @@
  */
 
 jQuery(document).ready(function(){
-  var postsOuter = jQuery('.post-outer'),
-   numOfPosts = postsOuter.length,
+  var itemPost = jQuery('.item-post'),
+   numOfPosts = itemPost.length,
    menuLi = jQuery('#menu-main > li'),
    numOfLi = menuLi.length,
    drops = jQuery(".drop"),
@@ -51,7 +51,7 @@ jQuery(document).ready(function(){
   * 1. Home post pagination
   */
    // Add class to first home post and drop
-   jQuery(postsOuter).first().addClass("visible-post").fadeIn();
+   jQuery(itemPost).first().addClass("visible-post").fadeIn();
    jQuery(drops).first().addClass("active");
 
   // Next article function
@@ -59,7 +59,7 @@ jQuery(document).ready(function(){
     if(currNum < (numOfPosts-1)) {
       jQuery(".visible-post").stop().fadeOut(function() {
 
-        jQuery(this).next(".post-outer").addClass("visible-post").fadeIn(function(){
+        jQuery(this).next(".item-post").addClass("visible-post").fadeIn(function(){
 
         }).prev().removeClass("visible-post");
         jQuery(".drop.active").next().addClass('active').prev().removeClass('active');
@@ -69,7 +69,7 @@ jQuery(document).ready(function(){
       jQuery(".visible-post").stop().fadeOut(function() {
         rmvClass(this, "visible-post");
 
-        jQuery(postsOuter).first().addClass("visible-post").fadeIn(function(){
+        jQuery(itemPost).first().addClass("visible-post").fadeIn(function(){
           jQuery(".drop.active").removeClass('active');
           drops.first().addClass('active');
         });
@@ -85,7 +85,7 @@ jQuery('.drop').click(function(){
   var dropIndex = jQuery(this).index();
   console.log(dropIndex);
   jQuery(".visible-post").stop().fadeOut(function() {
-    jQuery(postsOuter).eq(dropIndex).addClass('visible-post').fadeIn();
+    jQuery(itemPost).eq(dropIndex).addClass('visible-post').fadeIn();
   }).removeClass('visible-post');
   currNum = jQuery(this).index();
 })
@@ -98,7 +98,7 @@ jQuery('.drop').click(function(){
 
       jQuery(".visible-post").stop().fadeOut(function() {
 
-        jQuery(this).prev(".post-outer").addClass("visible-post").fadeIn(function(){
+        jQuery(this).prev(".item-post").addClass("visible-post").fadeIn(function(){
 
         }).next().removeClass("visible-post");
         jQuery(".drop.active").prev().addClass('active').next().removeClass('active');
@@ -113,7 +113,7 @@ jQuery('.drop').click(function(){
 
         rmvClass(this, "visible-post");
 
-        jQuery(postsOuter).last().addClass("visible-post").fadeIn(function(){
+        jQuery(itemPost).last().addClass("visible-post").fadeIn(function(){
           jQuery(".drop.active").removeClass('active');
           drops.last().addClass('active');
         });
@@ -235,7 +235,7 @@ if (jQuery('body.home').length > 0) {
  * 2. Gallery pagination
 */
 jQuery('.gallery-post').first().addClass('active-post');
-var galleryPost = jQuery('.gallery-post'),
+var galleryPost = jQuery('.item-post'),
     imgPosts = galleryPost.length-1,
     imgCount = 0,
     activeSrc = jQuery('.active-post > img').attr('src'),

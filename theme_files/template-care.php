@@ -11,6 +11,7 @@ get_header();
   <main role="main" id="care-page" style="background-image: url(<?php  echo get_the_post_thumbnail_url(); ?>)">
 
     <div id="care-back-overlay"></div>
+    <div id="post-wrapper">
 
                     <?php atominktheme_products_post_gen(array(
                           'post_type' => 'product',
@@ -19,11 +20,16 @@ get_header();
                           'order' => 'ASC'
                     )); ?>
 
-                    <div class="buttons">
-					<button class="prev-article"><i class="fa fa-chevron-up"></i></button>
-					<button class="next-article"><i class="fa fa-chevron-down"></i></button>
-			</div>
-
+                <div id="control-share">
+                    <div id="controls">
+                        <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+                        <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+                    </div>
+                    <div id="share">
+                    <a href="" target="_blank">Share</a>
+                    </div>
+                </div>
+    </div>
   </main>
 
 
