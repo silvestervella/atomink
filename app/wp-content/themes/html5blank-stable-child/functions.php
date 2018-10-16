@@ -554,8 +554,7 @@ function atominktheme_generate_posts($atts) {
                 <div id="img-outer">
                     <img src="" alt="tattoo image" />
                 </div>
-            </div>
-            <div id="control-share">
+                <div id="control-share">
                 <div id="controls">
                     <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
                     <div id="next-post"><i class="fa fa-chevron-right"></i></div>
@@ -563,6 +562,7 @@ function atominktheme_generate_posts($atts) {
                 <div id="share">
                 <a href="" target="_blank">Share</a>
                 </div>
+            </div>
             </div>
           
             <?php } 
@@ -622,24 +622,35 @@ function atominktheme_generate_posts($atts) {
                  while ($query1->have_posts() ) :
                  $query1->the_post();  ?>
     
-                    <div class="team-post">
-                        <div class="info-outer">
-                            <div class="info">
-                            <?php echo wp_get_attachment_image( '292'); ?>
-                                <div class="name">
-                                    <?php the_title(); ?>
-                                </div>
-                                <div class="about-text">
-                                    <?php the_content(); ?>
-                                    <!-- <div class="read-more">
-                                        <a href="<?php // echo esc_url( get_permalink( get_post(242) ) ); ?>">Read More..</a>
-                                    </div> -->
+                    <div class="team-post-outer">
+                        <div class="team-post">
+                            <div class="info-outer">
+                                <div class="info">
+                                <?php echo wp_get_attachment_image( '292'); ?>
+                                    <div class="name">
+                                        <?php the_title(); ?>
+                                    </div>
+                                    <div class="about-text">
+                                        <?php the_content(); ?>
+                                        <!-- <div class="read-more">
+                                            <a href="<?php // echo esc_url( get_permalink( get_post(242) ) ); ?>">Read More..</a>
+                                        </div> -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="profile-pic" style="background-image: url(<?php echo wp_get_attachment_url('206'); ?>)">
-                            <div class="profile-pic-outer">
-                                <?php the_post_thumbnail()  ?>
+                            <div class="profile-pic" style="background-image: url(<?php echo wp_get_attachment_url('206'); ?>)">
+                                <div class="profile-pic-outer">
+                                    <?php the_post_thumbnail()  ?>
+                                </div>
+                            </div>
+                            <div id="control-share">
+                                <div id="controls">
+                                    <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
+                                    <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+                                </div>
+                                <div id="share">
+                                <a href="" target="_blank">Share</a>
+                                </div>
                             </div>
                         </div>
                     </div>

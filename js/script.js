@@ -54,6 +54,7 @@ jQuery(document).ready(function(){
    jQuery(postsOuter).first().addClass("visible-post").fadeIn();
    jQuery(drops).first().addClass("active");
 
+
   // Next article function
   function nextPost() {
     if(currNum < (numOfPosts-1)) {
@@ -179,7 +180,6 @@ var p = jQuery( ".buttons" );
 var position = p.position();
 jQuery( ".sb-page-title" ).css([ "left: " + position.left ]);
  */
-
 
 
 
