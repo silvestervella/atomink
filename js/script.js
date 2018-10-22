@@ -84,7 +84,6 @@ jQuery('.drop').click(function(){
   jQuery('.drop.active').removeClass('active');
   jQuery(this).addClass('active');
   var dropIndex = jQuery(this).index();
-  console.log(dropIndex);
   jQuery(".visible-post").stop().fadeOut(function() {
     jQuery(postsOuter).eq(dropIndex).addClass('visible-post').fadeIn();
   }).removeClass('visible-post');
@@ -183,6 +182,50 @@ jQuery( ".sb-page-title" ).css([ "left: " + position.left ]);
 
 
 
+ /**
+  * 5. Team / Product pagination
+  */
+
+
+ // Prev item
+ function prevTeamProd(selector, selectorAndActive ) {
+  if(!jQuery(selectorAndActive).is(selector).first()) {
+    jQuery(selectorAndActive).stop().fadeOut(function(selector) {
+      jQuery(this).prev(selector).addClass("active").fadeIn().next(selector).removeClass("active");
+    });
+  } else {
+    jQuery(selectorAndActive).stop().fadeOut(function(selector , selectorAndActive) {
+      rmvClass(selectorAndActive, "active");
+      jQuery(selector).last().addClass("active").fadeIn();
+    }); 
+  }
+}
+// Next item
+function nextTeamProd(selector, selectorAndActive ) {
+  if(!jQuery(selectorAndActive).is(selector).last()) {
+    jQuery(selectorAndActive).stop().fadeOut(function(selector) {
+      jQuery(this).next(selector).addClass("active").fadeIn().prev(selector).removeClass("active");
+    });
+  } else {
+    jQuery(selectorAndActive).stop().fadeOut(function(selector, selectorAndActive) {
+      rmvClass(selectorAndActive, "active");
+      jQuery(selector).first().addClass("active").fadeIn();
+    });
+  }
+}
+
+if (jQuery('body.home').length > 0) {
+  jQuery('.team-post').first().addClass('active').fadeIn();
+  jQuery('.prod-post').first().addClass('active').fadeIn();
+  jQuery('#prev-team').click(function(){
+    prevTeamProd('.team-post' , '.team-post.active' );
+  });
+  jQuery('#next-team').click(function(){
+    nextTeamProd('.team-post' , '.team-post.active' );
+  });
+}
+
+
 // End of document.ready
 });
 
@@ -277,7 +320,7 @@ function activeSrcFunc() {
 activeSrcFunc();
 
 // Gallery prev/next
-jQuery('#prev-post').click(function(){
+jQuery('#home-prev-img').click(function(){
   var active = jQuery('.active-post');
   if (imgCount == 0) {
     active.removeClass('active-post');
@@ -294,7 +337,7 @@ jQuery('#prev-post').click(function(){
     activeSrcFunc();
   }
 });
-jQuery('#next-post').click(function(){
+jQuery('#home-next-img').click(function(){
   var active = jQuery('.active-post');
   if (imgCount < imgPosts) {
     active.next().addClass('active-post').prev().removeClass('active-post');

@@ -556,8 +556,8 @@ function atominktheme_generate_posts($atts) {
                 </div>
                 <div id="control-share">
                 <div id="controls">
-                    <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
-                    <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+                    <div id="home-prev-img"><i class="fa fa-chevron-left"></i></div>
+                    <div id="home-next-img"><i class="fa fa-chevron-right"></i></div>
                 </div>
                 <div id="share">
                 <a href="" target="_blank">Share</a>
@@ -616,13 +616,15 @@ function atominktheme_generate_posts($atts) {
                 'order' => $atts['post_order'],
                 'meta_key' => $atts['post_meta_key'],
                 'posts_per_page' => $atts['num_of_posts']
-             );
-             $query1 = new WP_query ( $args );
+             ); ?>
+            
+            <div class="team-post-outer">
+            
+            <?php $query1 = new WP_query ( $args );
              if ( $query1->have_posts() ) :
                  while ($query1->have_posts() ) :
                  $query1->the_post();  ?>
     
-                    <div class="team-post-outer">
                         <div class="team-post">
                             <div class="info-outer">
                                 <div class="info">
@@ -643,22 +645,22 @@ function atominktheme_generate_posts($atts) {
                                     <?php the_post_thumbnail()  ?>
                                 </div>
                             </div>
-                            <div id="control-share">
-                                <div id="controls">
-                                    <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
-                                    <div id="next-post"><i class="fa fa-chevron-right"></i></div>
-                                </div>
-                                <div id="share">
-                                <a href="" target="_blank">Share</a>
-                                </div>
-                            </div>
                         </div>
-                    </div>
         
                 <?php
                     endwhile; // End looping through custom sorted posts
                     wp_reset_postdata();
-                    endif; // End loop 1
+                    endif; // End loop 1 ?>
+                    <div id="control-share">
+                        <div id="controls">
+                            <div id="prev-team"><i class="fa fa-chevron-left"></i></div>
+                            <div id="next-team"><i class="fa fa-chevron-right"></i></div>
+                        </div>
+                        <div id="share">
+                            <a href="" target="_blank">Share</a>
+                        </div>
+                    </div> 
+                </div> <?php
 } 
             add_shortcode('getteam','atominktheme_TeamPost');
 
