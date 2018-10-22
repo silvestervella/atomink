@@ -185,30 +185,35 @@ jQuery( ".sb-page-title" ).css([ "left: " + position.left ]);
  /**
   * 5. Team / Product pagination
   */
-
+function foxalla(mela){
+  jQuery(mela).parent().children();
+  return jQuery(mela).index();
+}
 
  // Prev item
  function prevTeamProd(selector, selectorAndActive ) {
-  if(!jQuery(selectorAndActive).is(selector).first()) {
-    jQuery(selectorAndActive).stop().fadeOut(function(selector) {
-      jQuery(this).prev(selector).addClass("active").fadeIn().next(selector).removeClass("active");
+  if(jQuery(selectorAndActive).index() !== 0) {
+    jQuery(selectorAndActive).stop().fadeOut(function() {
+      jQuery(this).prev().addClass("active").fadeIn().next().removeClass("active");
     });
   } else {
-    jQuery(selectorAndActive).stop().fadeOut(function(selector , selectorAndActive) {
-      rmvClass(selectorAndActive, "active");
+    jQuery(selectorAndActive).stop().fadeOut(function() {
+      jQuery(this).removeClass("active");
       jQuery(selector).last().addClass("active").fadeIn();
     }); 
   }
 }
 // Next item
 function nextTeamProd(selector, selectorAndActive ) {
-  if(!jQuery(selectorAndActive).is(selector).last()) {
-    jQuery(selectorAndActive).stop().fadeOut(function(selector) {
-      jQuery(this).next(selector).addClass("active").fadeIn().prev(selector).removeClass("active");
+  var selectLen = jQuery(selector).length-1;
+  var selectIndx = jQuery(selectorAndActive).index();
+  if( selectIndx !== selectLen) {
+    jQuery(selectorAndActive).stop().fadeOut(function() {
+      jQuery(this).next().addClass("active").fadeIn().prev().removeClass("active");
     });
   } else {
-    jQuery(selectorAndActive).stop().fadeOut(function(selector, selectorAndActive) {
-      rmvClass(selectorAndActive, "active");
+    jQuery(selectorAndActive).stop().fadeOut(function() {
+      jQuery(this).removeClass("active");
       jQuery(selector).first().addClass("active").fadeIn();
     });
   }
@@ -216,13 +221,22 @@ function nextTeamProd(selector, selectorAndActive ) {
 
 if (jQuery('body.home').length > 0) {
   jQuery('.team-post').first().addClass('active').fadeIn();
-  jQuery('.prod-post').first().addClass('active').fadeIn();
   jQuery('#prev-team').click(function(){
-    prevTeamProd('.team-post' , '.team-post.active' );
+    prevTeamProd(".team-post" , ".team-post.active" );
   });
   jQuery('#next-team').click(function(){
-    nextTeamProd('.team-post' , '.team-post.active' );
+    nextTeamProd(".team-post" , ".team-post.active" );
   });
+}
+
+if (jQuery('body.postid-293').length > 0) {
+jQuery('.prod-post').first().addClass('active').fadeIn();
+jQuery('#prev-prod').click(function(){
+  prevTeamProd(".prod-post" , ".prod-post.active" );
+});
+jQuery('#next-prod').click(function(){
+  nextTeamProd(".prod-post" , ".prod-post.active" );
+});
 }
 
 

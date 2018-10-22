@@ -619,6 +619,7 @@ function atominktheme_generate_posts($atts) {
              ); ?>
             
             <div class="team-post-outer">
+                <div>
             
             <?php $query1 = new WP_query ( $args );
              if ( $query1->have_posts() ) :
@@ -651,6 +652,7 @@ function atominktheme_generate_posts($atts) {
                     endwhile; // End looping through custom sorted posts
                     wp_reset_postdata();
                     endif; // End loop 1 ?>
+                    </div>
                     <div id="control-share">
                         <div id="controls">
                             <div id="prev-team"><i class="fa fa-chevron-left"></i></div>
@@ -736,7 +738,8 @@ function atominktheme_generate_posts($atts) {
                     'orderby'   => $atts['orderby'],
                     'order' => $atts['order'],
                     'meta_key' => $atts['meta_key'],
-                 );
+                 ); 
+
                  $query1 = new WP_query ( $args );
                  if ( $query1->have_posts() ) :
                      while ($query1->have_posts() ) :
@@ -744,7 +747,7 @@ function atominktheme_generate_posts($atts) {
                      $prodBackImg = esc_url(get_post_meta(get_the_ID(), "product-back-img", true ));
                      ?>
 
-                    <div class="post-outer">
+                    <div class="prod-post">
                         <div class="info-outer">
                             <div class="info">
                                 <div class="name">
@@ -767,6 +770,6 @@ function atominktheme_generate_posts($atts) {
                     <?php 
                     endwhile; // End looping through custom sorted posts
                     wp_reset_postdata();
-                    endif; // End loop 1
+                    endif; // End loop 1 
             }
             ?>
