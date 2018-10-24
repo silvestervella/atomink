@@ -1,7 +1,7 @@
 <?php 
 /*
  * Template Name: Care Page
- * Template Post Type: post
+ * Template Post Type: post , page
  */
 get_header(); 
 ?>

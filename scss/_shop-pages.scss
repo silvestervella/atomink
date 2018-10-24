@@ -1,0 +1,23 @@
+/* 0. General */
+
+.shop-pages {
+    padding-left: 10%;
+    min-height: 100vh;
+    #shop-page-outer {
+        height: 100%;
+        padding: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        .woocommerce {
+            background: rgba(0,0,0,0.95);
+            padding: 100px;
+            * {
+                color: $secondary;
+            }
+        }
+    }
+}
+
+
+/* 1. Checkout page */

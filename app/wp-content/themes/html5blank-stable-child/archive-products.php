@@ -1,7 +1,6 @@
 <?php 
 /*
- * Template Name: Care Page
- * Template Post Type: post , page
+ * Template Name: Merch Page
  */
 get_header(); 
 ?>

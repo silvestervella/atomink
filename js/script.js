@@ -396,9 +396,21 @@ jQuery('#gallery-posts-outer').masonry({
 jQuery(function(){
 	jQuery('#gallery-posts-outer').slimScroll({
     height: '600px',
-    railColor: '#DAD6CC',
-    railOpacity: '0.8'
-	}).css('opacity' , '1');
+    railColor: '#000',
+    color: '#D9D6CC',
+    railOpacity: '0.8',
+    railVisible: true,
+		alwaysVisible: true
+  }).css('opacity' , '1');
+  
+  jQuery('#shop-page-outer').slimScroll({
+    height: '100vh',
+    railColor: '#000',
+    railOpacity: '0.8',
+    color: '#D9D6CC',
+    railVisible: true,
+		alwaysVisible: true
+	});
 });
 
 

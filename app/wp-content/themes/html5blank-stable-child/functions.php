@@ -24,6 +24,7 @@
  * 22. Contact home post
  * 23. Get post thumbnail outside loop
  * 24. Products generator
+ * 25. WooCommerce
  */
 
  
@@ -757,6 +758,7 @@ function atominktheme_generate_posts($atts) {
                                     <?php the_content(); ?>
                                 </div>
                             </div>
+                            <?php echo do_shortcode( '[add_to_cart id="'.get_the_ID().'"]' ); ?>
                         </div>
                         <div class="prod-pic">
                             <div class="prod-back"   style="background-image: url(<?php echo $prodBackImg; ?>)"></div>
@@ -772,4 +774,39 @@ function atominktheme_generate_posts($atts) {
                     wp_reset_postdata();
                     endif; // End loop 1 
             }
+            
+            
+            
+            
+            /**
+             * 25. WooCommerce
+             */
+            add_filter( 'woocommerce_billing_fields', 'atominktheme_woo_filter_state_billing', 10, 1 );
+            add_filter( 'woocommerce_shipping_fields', 'atominktheme_woo_filter_state_shipping', 10, 1 );
+            add_filter( 'woocommerce_default_address_fields', 'atominktheme_remove_state_field' );
+
+             // remove required from billing
+            function atominktheme_woo_filter_state_billing( $address_fields ) {
+             
+                            $address_fields['billing_state']['required'] = false;
+                            unset( $address_fields['state'] );
+             
+                            return $address_fields;
+             
+            }
+             // remove required from shipping
+            function atominktheme_woo_filter_state_shipping( $address_fields ) {
+             
+                            $address_fields['shipping_state']['required'] = false;
+                            unset( $address_fields['state'] );
+             
+                            return $address_fields;
+             
+            }
+            // remove state field
+            function atominktheme_remove_state_field( $fields ) {
+                unset( $fields['state'] );
+                return $fields;
+            }
+            
             ?>
