@@ -395,7 +395,9 @@ jQuery('#gallery-posts-outer').masonry({
 */
 jQuery(function(){
 	jQuery('#gallery-posts-outer').slimScroll({
-    height: '600px',
+    height: '100vh',
+    size: '10px',
+    distance: '1px',
     railColor: '#000',
     color: '#D9D6CC',
     railOpacity: '0.8',
@@ -403,11 +405,13 @@ jQuery(function(){
 		alwaysVisible: true
   }).css('opacity' , '1');
   
-  jQuery('#shop-page-outer').slimScroll({
+  jQuery('#checkout-page').slimScroll({
     height: '100vh',
+    size: '10px',
+    distance: '1px',
     railColor: '#000',
-    railOpacity: '0.8',
     color: '#D9D6CC',
+    railOpacity: '0.8',
     railVisible: true,
 		alwaysVisible: true
 	});

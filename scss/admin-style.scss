@@ -2,3 +2,24 @@
 #excerpt {
     height: 300px;
 }
+
+
+/* Custom Options Page */
+.custom-options-wrap {
+    .form-table {
+        td {
+            display: block;
+            padding: 15px 0 0 0;
+            margin-bottom: 10px; 
+            span {
+                min-width: 90px;
+                display: inline-block;
+            }
+        }
+        .address , .email , .phone {
+            input {
+                min-width: 300px;
+            }
+        }
+    }
+}

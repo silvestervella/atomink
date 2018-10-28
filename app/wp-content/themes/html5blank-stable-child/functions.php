@@ -395,7 +395,8 @@ function atominktheme_generate_posts($atts) {
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
          $query1->the_post();  ?>
-        <section class="post-outer <?php echo 'post'.get_the_ID(); ?>">
+        <section class="post-outer <?php echo 'post'.get_the_ID(); ?>" id="<?php echo 'post'.get_the_ID(); ?>">
+            <div class="page-title"><h1><?php the_title(); ?></h1></div>
             <div class="post-excerpt">
             <?php 
             the_excerpt();
@@ -695,16 +696,39 @@ function atominktheme_generate_posts($atts) {
              */
             function atominktheme_homeContactPost() {
 
-                echo '<div id="contact-home-outer" style="background-image: url('. esc_url(get_the_post_thumbnail_url( get_post_thumbnail_id(260),'full') ) .')">';
-                echo '<div id="contact-left" style="background-image: url('.wp_get_attachment_url("206").')">';
-                echo '<div>BOOKING A<br />CONSULTATION?';
-                echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here.</a>';
+                echo '<div id="contact-back"  style="background-image: url('. esc_url(get_the_post_thumbnail_url(get_the_ID())) .')"></div>';
+                echo '<div id="contact-home-outer">';
+                echo '<div id="contact-left">';
+                echo '<div id="contact-left-wrap"><h2>BOOKING A<br />CONSULTATION?</h2>';
+                echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here</a>';
+                echo '<div id="addr-hrs">';
+
+                echo '<h3 class="the_addr"> Address:</h3>';
+                echo '<div>' .esc_attr( get_option('atominktheme_the_address') ) .' </div>';
+
+                echo '<h3 class="the_phone"> Phone:</h3>';
+                echo '<div>' .esc_attr( get_option('atominktheme_the_phone') ) .' </div>';
+
+                //echo '<h3 class="the_email"> Email:' .get_option('atominktheme_the_email'). '</h3>';
+
+                echo '<h3 class="the_hrs">Opening Hours: </h3>';
+                echo '<div><span>Monday:</span> ' . esc_attr( get_option('atominktheme_opening_monday') ) .' - '.esc_attr( get_option('atominktheme_opening_monday_closing') ) .' </div>';
+                echo '<div><span>Tuesday:</span> ' .esc_attr( get_option('atominktheme_opening_tuesday') ) .' - '.esc_attr( get_option('atominktheme_opening_tuesday_closing') ) .'</div>';
+                echo '<div><span>Wednesday:</span> ' .esc_attr( get_option('atominktheme_opening_wednesday') ) .' - '.esc_attr( get_option('atominktheme_opening_wednesday_closing') ) .'</div>';
+                echo '<div><span>Thursday:</span> ' .esc_attr( get_option('atominktheme_opening_thursday') ) .' - '.esc_attr( get_option('atominktheme_opening_thursday_closing') ) .'</div>';
+                echo '<div><span>Friday:</span> ' .esc_attr( get_option('atominktheme_opening_friday') ) .' - '.esc_attr( get_option('atominktheme_opening_friday_closing') ) .'</div>';
+                echo '<div><span>Saturday:</span> ' .esc_attr( get_option('atominktheme_opening_saturday') ) .' - '.esc_attr( get_option('atominktheme_opening_saturday_closing') ).'</div>';
+                echo '<div><span>Sunday:</span> ' .esc_attr( get_option('atominktheme_opening_sunday') ) .' - '.esc_attr( get_option('atominktheme_opening_sunday_closing') ) .'</div>';
+                echo '</div>';
+
+                
+
                 echo '</div>';
                 echo '</div>';
 
                 echo '<div id="contact-right">';
                 echo '<div id="home-contact-inner">';
-                echo '<div id="text">Or just<br />drop me a line..</div>';
+                echo '<div id="text"><h3>Or just<br />drop us a line..</h3></div>';
                 echo do_shortcode( '[contact-form-7 id="287" title="Contact form 1"]' );
                 echo '</div>';
                 echo '</div>';
@@ -783,6 +807,7 @@ function atominktheme_generate_posts($atts) {
              */
             add_filter( 'woocommerce_billing_fields', 'atominktheme_woo_filter_state_billing', 10, 1 );
             add_filter( 'woocommerce_shipping_fields', 'atominktheme_woo_filter_state_shipping', 10, 1 );
+            add_filter( 'woocommerce_checkout_fields', 'atominktheme_remove_woofields' );
             add_filter( 'woocommerce_default_address_fields', 'atominktheme_remove_state_field' );
 
              // remove required from billing
@@ -803,10 +828,27 @@ function atominktheme_generate_posts($atts) {
                             return $address_fields;
              
             }
-            // remove state field
-            function atominktheme_remove_state_field( $fields ) {
-                unset( $fields['state'] );
+            // remove company field
+            function atominktheme_remove_woofields( $fields ) {
+                unset($fields['billing']['billing_company']);
+                unset($fields['billing']['billing_state']);
                 return $fields;
             }
-            
+            // remove state field
+            function atominktheme_remove_state_field($fields ) {
+                unset( $fields['state']);
+                return $fields;
+            }
+
+
+
+
+            /**
+             * 26. Shop info menu item
+             */
+            add_action('admin_menu', 'atominktheme_shop_info_page');
+            function atominktheme_shop_info_page() {
+                add_theme_page('Theme Customization', 'Theme Customization', 'manage_options', 'theme-options', 'atominktheme_theme_option_page', null , 99);
+                include get_stylesheet_directory() . '/includes/custom_theme_options.php';
+            }
             ?>

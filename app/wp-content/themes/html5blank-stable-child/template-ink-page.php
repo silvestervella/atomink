@@ -16,8 +16,8 @@ get_header();
       </div>
       <div id="control-share">
         <div id="controls">
-            <div id="prev-post"><i class="fa fa-chevron-left"></i></div>
-            <div id="next-post"><i class="fa fa-chevron-right"></i></div>
+            <div id="home-prev-img"><i class="fa fa-chevron-left"></i></div>
+            <div id="home-next-img"><i class="fa fa-chevron-right"></i></div>
         </div>
         <div id="share">
           <a href="" target="_blank">Share</a>
@@ -25,7 +25,7 @@ get_header();
       </div>
     </div>
     
-    <div class="page-title"><span><?php the_title(); ?></span></div>
+    <div class="page-title"><h1><?php the_title(); ?></h1></div>
 
     <div id="gallery-posts-outer">
       <?php atominktheme_generate_gallery_posts(array(

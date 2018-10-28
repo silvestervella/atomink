@@ -57,6 +57,6 @@
 	<!-- /Left sidebar -->
 			<!-- header -->
 			<header class="header clear" role="banner">
-
+			<?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
 			</header>
 			<!-- /header -->

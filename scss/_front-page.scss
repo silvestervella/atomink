@@ -259,35 +259,64 @@ html {
 
         /* Contact post */
         .post-outer.post260 {
-            #contact-home-outer {
+            #contact-back {
+                position: absolute;
                 height: 100%;
                 width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                opacity: 0.05;
+            }
+            #contact-home-outer {
+                height: 100%;
+                width: 80%;
+                margin-left: 10%;
                 #contact-left {
                     height: 100%;
-                    width: 40%;
-                    margin-left: 10%;
+                    width: 50%;
                     float: left;
                     position: relative;
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: center;
                     font-family: $mainText;
-                    div {
+                    #contact-left-wrap {
                         top: 50%;
                         position: absolute;
                         left: 50%;
                         transform: translate(-50% , -50%);
-                        font-size: 70px;
+                        font-size: 40px;
                         font-weight: 900;
                         a {
                             font-size: 20px;
                             display: block;
+                            color: $secondary;
+                            &:hover {
+                                color: $primary;
+                            }
+                        }
+                        #addr-hrs {
+                            margin-top: 50px;
+                            font-weight: 900;
+                            h3 {
+                                font-weight: normal;
+                                font-size: 15px;
+                                margin: 15px 0 5px 0;
+                            }
+                            div {
+                                font-size: 15px;
+                                span {
+                                    display: inline-block;
+                                    min-width: 100px;
+                                }
+                            }                        
                         }
                     }
                 }
                 #contact-right {
                     height: 100%;
-                    width: 40%;
+                    width: 50%;
                     float: left;
                     position: relative;
                     position: relative;

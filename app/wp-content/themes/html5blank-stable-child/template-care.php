@@ -8,11 +8,11 @@ get_header();
 <!-- wrapper -->
 <div id="wrapper" >
 
+    <div class="page-title"><h1><?php the_title(); ?></h1></div>
+
   <main role="main" id="care-page" style="background-image: url(<?php  echo get_the_post_thumbnail_url(); ?>)">
 
     <div id="care-back-overlay"></div>
-
-
 
 <div class="prod-post-outer">
 <div> 

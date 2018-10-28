@@ -1,7 +1,11 @@
 /**
+* 0. General
 * 1. The Ink Page
 * 2. About page
 */
+
+
+/* 0. General */
 
 /* 1. The Ink Page */
 body.postid-212 {
@@ -12,6 +16,7 @@ body.postid-212 {
         margin-left: 10%;
         height: 100vh;
         overflow: hidden;
+        z-index: 99;
         #img-outer {
             width: 80%;
             height: 80%;
@@ -58,21 +63,6 @@ body.postid-212 {
             opacity: 0.5;
         }
     }
-    .page-title {
-        position: relative;
-        height: 300px;
-        text-align: center;
-        width: 40%;
-        left: 60%;
-        span {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 70px;
-            color: $secondary;
-            display: block;
-        }
-    }
     
     #gallery-posts-outer {
         position: relative;
@@ -80,10 +70,11 @@ body.postid-212 {
         left: 60%;
         opacity: 0;
         transition: opacity 0.5s;
+        margin-top: 10px;
         .gallery-post {
             position: relative;
             width: 32.8%;
-            padding: 10px;
+            padding: 0 10px 10px 10px;
             cursor: pointer;
             display: inline-block;
             &.active-post {
@@ -147,6 +138,23 @@ main#care-page {
                     }
                     .about-text {
                         padding: 0 50px 0 50px;
+                    }
+                }
+                .product {
+                    border: 0 !important;
+                    padding: 0 0px 0 50px !important;
+                    position: absolute;
+                    bottom: 0;
+                    .woocommerce-Price-amount {
+                        color: $primary;
+                    }
+                    a {
+                        background: unset;
+                        color: $secondary;
+                        &:hover {
+                            background: unset;
+                            color: $primary;
+                        }
                     }
                 }
             }

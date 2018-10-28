@@ -4,16 +4,114 @@
     padding-left: 10%;
     min-height: 100vh;
     #shop-page-outer {
-        height: 100%;
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        filter: saturate(10%) , opacity(20%);
         padding: 30px;
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
-        .woocommerce {
-            background: rgba(0,0,0,0.95);
-            padding: 100px;
-            * {
+    }
+    .woocommerce {
+        background: rgba(0,0,0,0.95);
+        padding: 100px 100px 30px 100px;
+        position: relative;
+        min-height: 100vh;
+        * {
+            color: $secondary;
+        }
+        .woocommerce-cart-form__cart-item {
+            .product-remove {
+                a {
+                    color: $primary !important;
+                    &:hover {
+                        color: $secondary !important;
+                        background: $primary;
+                    }
+                }
+            }
+            button.button {
+                background: $secondary;
+                color: $grey;
+            }
+        }
+        a.button.alt {
+            background: $primary;
+        }
+        .woocommerce-error, .woocommerce-info, .woocommerce-message {
+            border-radius: 30px;
+            border: 0;
+        }
+        .woocommerce-error {
+            background: $primary;
+            &:before {
                 color: $secondary;
+            }
+        }
+        form {
+            .woocommerce-billing-fields {
+                border-radius: 30px;
+                padding: 30px;
+                background: rgba(255,255,255,0.05);
+            }
+            .form-row  {
+                padding: 10px 0;
+                .input-text , textarea {
+                    border-bottom: 1px solid rgba(255,255,255,0.2);
+                    padding: 10px;
+                    color: lighten($grey, 25%);
+                    font-size: 15px;
+                }
+                .required {
+                    color: $primary;
+                }
+            }
+            .woocommerce-invalid * {
+                border-color: $primary !important;
+                color: $primary !important;
+            }
+        }
+        #order_review_heading {
+            padding: 15px;
+            margin-top: 50px;
+            font-size: 24px;
+        }
+        #order_review {
+            border-radius: 30px;
+            padding: 0 15px;
+            #payment {
+                background: unset;
+                .payment_methods {
+                    padding: 0;
+                    .payment_box {
+                        background: unset;
+                        padding: 0 0 0 15px;
+                        margin: 0px 0 15px 0;
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+                button {
+                    margin-top: 30px;
+                    background: $primary;
+                }
+                .form-row {
+                    padding: 0;
+                }
+            }
+            .woocommerce-checkout-review-order-table {
+                thead {
+                    th {
+                        text-decoration: underline;
+                        color: $primary;
+                    }
+                }
+                tbody {
+                    line-height: 80px;
+                }
             }
         }
     }
