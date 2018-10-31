@@ -14,7 +14,7 @@ get_header();
 
   <main role="main" id="checkout-page" class="shop-pages">
     <div id="shop-page-outer" style="background-image: url(<?php  echo get_the_post_thumbnail_url(); ?>)"></div>
-
+    <div id="shop-booking-wrap">
         <?php the_content(); ?>
 
         <?php endwhile; ?>
@@ -30,6 +30,7 @@ get_header();
         <!-- /article -->
 
         <?php endif; ?>
+        </div>
   </main>
 
 <?php get_footer(); ?>
