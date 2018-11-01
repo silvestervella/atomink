@@ -631,7 +631,7 @@ function atominktheme_generate_posts($atts) {
                         <div class="team-post">
                             <div class="info-outer">
                                 <div class="info">
-                                <?php echo wp_get_attachment_image( '292'); ?>
+                                <?php echo wp_get_attachment_image( '372'); ?>
                                     <div class="name">
                                         <?php the_title(); ?>
                                     </div>
@@ -643,7 +643,7 @@ function atominktheme_generate_posts($atts) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="profile-pic" style="background-image: url(<?php echo wp_get_attachment_url('206'); ?>)">
+                            <div class="profile-pic" >
                                 <div class="profile-pic-outer">
                                     <?php the_post_thumbnail()  ?>
                                 </div>
@@ -659,9 +659,6 @@ function atominktheme_generate_posts($atts) {
                         <div id="controls">
                             <div id="prev-team"><i class="fa fa-chevron-left"></i></div>
                             <div id="next-team"><i class="fa fa-chevron-right"></i></div>
-                        </div>
-                        <div id="share">
-                            <a href="" target="_blank">Share</a>
                         </div>
                     </div> 
                 </div> <?php
