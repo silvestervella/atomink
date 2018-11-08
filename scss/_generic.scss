@@ -71,6 +71,14 @@ $mainText: 'K2D', sans-serif;
 
 
 /* 4. General */
+* {
+    &::before , &::after {
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+}
 html {
     min-height: 100%;
     body {

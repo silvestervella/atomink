@@ -848,4 +848,17 @@ function atominktheme_generate_posts($atts) {
                 add_theme_page('Theme Customization', 'Theme Customization', 'manage_options', 'theme-options', 'atominktheme_theme_option_page', null , 99);
                 include get_stylesheet_directory() . '/includes/custom_theme_options.php';
             }
+
+
+
+
+
+
+            function atominktheme_default_title( $post_title, $post ) {
+                if( 'images' == $post->post_type ) {
+                    return $post->ID;
+                }
+                return $post_title;
+            }
+            add_filter( 'default_title', 'atominktheme_default_title', 20, 2 );
             ?>

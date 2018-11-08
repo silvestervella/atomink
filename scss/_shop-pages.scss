@@ -26,7 +26,6 @@
     .appointments-wrapper , .appointments-legend {
         border-radius: 30px;
         padding: 30px;
-        background: rgba(255,255,255,0.05);
         td.free, div.free {
             background: $secondary !important;
             color: $grey;
@@ -41,6 +40,18 @@
             }
         }
     }
+    .appointments-wrapper {
+        background: rgba(255,255,255,0.05);
+        .appointments-login_show_login {
+            margin-left: 10px;
+            &:hover , &:active , &:focus {
+                color: $primary;
+            }
+        }
+    }
+    .app_services {
+        display: none;
+    }
     .appointments-pagination {
         a {
             background: unset;
@@ -51,6 +62,11 @@
             &:hover {
                 color: $primary;
             }
+        }
+        .next {
+            &::after {
+                font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f054";
+              }
         }
     }
     .appointments-confirmation-wrapper {
