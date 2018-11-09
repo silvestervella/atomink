@@ -1,7 +1,7 @@
 /**
 * 0. General
 * 1. The Ink Page
-* 2. About page
+* 2. Care page
 */
 
 
@@ -192,6 +192,44 @@ main#care-page {
                     }
                 }
             }
+        }
+    }
+}
+
+
+
+
+/**
+* 3. Ink single posts
+*/
+body.images-template-template-ink-single {
+    .ink-single-pages {
+        img {
+            max-height: 100vh;
+            max-width: 100%;
+            display: block;
+            margin: auto;
+        }
+    }
+    .logo {
+        opacity: 0.25;
+    }
+    #left-sidebar-outer {
+        .menu-button {
+            display: none;
+        }
+        #copyright {
+            display: none;
+        }
+    }
+    #link-to-gallery {
+        width: 10%;
+        position: absolute;
+        bottom: 0px;
+        svg {
+            display: block;
+            max-width: 60px;
+            margin: 0 auto;
         }
     }
 }
