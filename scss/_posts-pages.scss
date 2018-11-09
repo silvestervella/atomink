@@ -209,27 +209,52 @@ body.images-template-template-ink-single {
             max-width: 100%;
             display: block;
             margin: auto;
+            padding: 30px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
         }
     }
     .logo {
         opacity: 0.25;
     }
     #left-sidebar-outer {
-        .menu-button {
-            display: none;
-        }
-        #copyright {
-            display: none;
+        #left-sidebar {
+            height: auto;
+            .menu-button {
+                display: none;
+            }
+            #copyright {
+                display: none;
+            }
         }
     }
     #link-to-gallery {
+        text-align: center;
+        color: white;
+        padding: 15px;
         width: 10%;
         position: absolute;
         bottom: 0px;
+        transition: all 0.5s;
         svg {
+            padding-bottom: 15px;
             display: block;
             max-width: 60px;
             margin: 0 auto;
+            opacity: 0.25;
+            .st0 {
+                transition: all 0.5s;
+            }
+        }
+        &:hover {
+            svg {
+                opacity: 1;
+                .st0{
+                    fill: $primary;
+                }
+            }
         }
     }
 }
