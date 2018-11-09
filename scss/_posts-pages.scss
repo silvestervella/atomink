@@ -6,6 +6,37 @@
 
 
 /* 0. General */
+#gallery-link {
+    text-align: center;
+    padding: 15px;
+    width: 10%;
+    position: absolute;
+    bottom: 0px;
+    a{
+        color: $secondary;
+        opacity: 0.2;
+        display: block;
+        transition: all 0.5s;
+        svg {
+            padding-bottom: 15px;
+            display: block;
+            max-width: 60px;
+            margin: 0 auto;
+            .st0 {
+                transition: all 0.5s;
+            }
+        }
+        &:hover {
+            opacity: 1;
+            color: $primary;
+            svg {
+                .st0{
+                    fill: $primary;
+                }
+            }
+        }
+    }
+}
 
 /* 1. The Ink Page */
 body.postid-212 {
@@ -81,12 +112,15 @@ body.postid-212 {
                 img {
                     padding: 5px;
                     border: 1px solid $primary;
-                    filter: saturate(100%)
+                    filter: saturate(100%);
+                    opacity: 1;
                 }
             }
             img {
                 transition: border 0.5s;
-                filter: saturate(30%)
+                filter: saturate(30%);
+                opacity: 0.2;
+                border: 1px solid transparent;
             }
         }
     }
@@ -227,33 +261,6 @@ body.images-template-template-ink-single {
             }
             #copyright {
                 display: none;
-            }
-        }
-    }
-    #link-to-gallery {
-        text-align: center;
-        color: white;
-        padding: 15px;
-        width: 10%;
-        position: absolute;
-        bottom: 0px;
-        transition: all 0.5s;
-        svg {
-            padding-bottom: 15px;
-            display: block;
-            max-width: 60px;
-            margin: 0 auto;
-            opacity: 0.25;
-            .st0 {
-                transition: all 0.5s;
-            }
-        }
-        &:hover {
-            svg {
-                opacity: 1;
-                .st0{
-                    fill: $primary;
-                }
             }
         }
     }

@@ -33,7 +33,7 @@ get_header();
         'post_order_by'=>"date",
         'post_order'=>"ASC",
         'post_meta_key'=>"",
-        'num_of_posts'=>"",
+        'num_of_posts'=>"-1",
         'post_metabox_value'=>"gallery-images"
       )); ?>
     </div>

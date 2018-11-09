@@ -486,7 +486,7 @@ function atominktheme_generate_posts($atts) {
             'header-back-images' => $atts['post_metabox_value']
          );
          $query1 = new WP_query ( $args );
-         if ( $query1->have_posts() ) :
+         if ( $query1->have_posts() ) : 
              while ($query1->have_posts() ) :
              $query1->the_post();  ?>
 
@@ -552,33 +552,34 @@ function atominktheme_generate_posts($atts) {
                 <div class="back-next"></div>
             </div>
             <div id="gallery-link">
-            <a href="<?php echo esc_url( get_permalink( get_post(212) ) ); ?>">
-            
+
+          <a href="<?php echo esc_url( get_permalink( get_post(212) ) ); ?>">
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 140.3 136.3" style="enable-background:new 0 0 140.3 136.3;" xml:space="preserve">
+              viewBox="0 0 140.3 136.3" style="enable-background:new 0 0 140.3 136.3;" xml:space="preserve">
             <style type="text/css">
-                .st0{fill:#DAD7CD;}
+              .st0{fill:#DAD7CD;}
             </style>
             <g>
-                <g>
-                    <rect class="st0" width="41.7" height="41.7"/>
-                    <rect x="49.3" class="st0" width="41.7" height="41.7"/>
-                    <rect x="98.7" class="st0" width="41.7" height="41.7"/>
-                </g>
-                <g>
-                    <rect y="47.3" class="st0" width="41.7" height="41.7"/>
-                    <rect x="49.3" y="47.3" class="st0" width="41.7" height="41.7"/>
-                    <rect x="98.7" y="47.3" class="st0" width="41.7" height="41.7"/>
-                </g>
-                <g>
-                    <rect y="94.7" class="st0" width="41.7" height="41.7"/>
-                    <rect x="49.3" y="94.7" class="st0" width="41.7" height="41.7"/>
-                    <rect x="98.7" y="94.7" class="st0" width="41.7" height="41.7"/>
-                </g>
+              <g>
+                <rect class="st0" width="41.7" height="41.7"/>
+                <rect x="49.3" class="st0" width="41.7" height="41.7"/>
+                <rect x="98.7" class="st0" width="41.7" height="41.7"/>
+              </g>
+              <g>
+                <rect y="47.3" class="st0" width="41.7" height="41.7"/>
+                <rect x="49.3" y="47.3" class="st0" width="41.7" height="41.7"/>
+                <rect x="98.7" y="47.3" class="st0" width="41.7" height="41.7"/>
+              </g>
+              <g>
+                <rect y="94.7" class="st0" width="41.7" height="41.7"/>
+                <rect x="49.3" y="94.7" class="st0" width="41.7" height="41.7"/>
+                <rect x="98.7" y="94.7" class="st0" width="41.7" height="41.7"/>
+              </g>
             </g>
             </svg>
+            VIEW<br/>ALL
+          </a>
 
-            VIEW<br/>ALL</a>
             </div>
             <div id="active-post">
                 <div id="img-outer">
@@ -725,7 +726,7 @@ function atominktheme_generate_posts($atts) {
                 echo '<div id="contact-home-outer">';
                 echo '<div id="contact-left">';
                 echo '<div id="contact-left-wrap"><h2>BOOKING A<br />CONSULTATION?</h2>';
-                echo '<a href=" '. esc_url( get_permalink( get_post(260) ) ) . ' ">Click here</a>';
+                echo '<a href=" '. esc_url( get_permalink( get_post(365) ) ) . ' ">Click here</a>';
                 echo '<div id="addr-hrs">';
 
                 echo '<h3 class="the_addr"> Address:</h3>';
