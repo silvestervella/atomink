@@ -2,30 +2,17 @@
 /**
  * 1. Register and enqueue script and styles
  * 2. Register our sidebars and widgetized areas.
- * 3. Set post featured image as background.
- * 4. Set post position order
  * 5. Add posts excerpt
  * 6. Allow html in post excerpt
  * 7. Add custom css to admin area
- * 8. Get svg logo
- * 9. Add custom post type
+ * 8. Get file
  * 10. Add custom logo
  * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
  * 12. Create albums taxonomy
  * 13. Post generator
-
- * 15. Right navigation drops generator
  * 16. Gallery posts generator
- * 17. Show featured image column in post list admin page
- * 18. Home page ink post
- * 19. Home page home post
- * 20. Team members home+page post generator 
  * 21. Show post page ID in admin
- * 22. Contact home post
  * 23. Get post thumbnail outside loop
- * 24. Products generator
- * 25. WooCommerce
- * 26. Shop info menu item
  * 27. Set Ink CPT title to post Id
  */
 
@@ -68,8 +55,6 @@
 
 }
     add_action('wp_enqueue_scripts', 'atominktheme_styles_child', 20); // Add Theme Child Stylesheet
-    
-
 /**
  * 2. Register our sidebars and widgetized areas.
  *
@@ -103,95 +88,10 @@ function atominktheme_widgets_init() {
 
 }
 add_action( 'widgets_init', 'atominktheme_widgets_init' );
-
-
-/**
- * 3. Set post featured image as background.
- */
-$thumb = get_the_post_thumbnail_url();
-
-
-
-
-/**
-* 4. Set post position order
-*/
-/* Create custom meta data box to the post edit screen */
-function atominktheme_custom_post_sort( $post ){
-    add_meta_box( 
-        'custom_post_sort_box', 
-        'Position in List of Posts', 
-        'atominktheme_custom_post_order', 
-        'post' ,
-        'side'
-        );
-        add_meta_box( 
-            'custom_post_sort_box', 
-            'Position in List of Posts', 
-            'atominktheme_custom_post_order', 
-            'team' ,
-            'side'
-            );
-            add_meta_box( 
-                'custom_post_sort_box', 
-                'Position in List of Posts', 
-                'atominktheme_custom_post_order', 
-                'product' ,
-                'side'
-                );
-    }
-    add_action( 'add_meta_boxes', 'atominktheme_custom_post_sort' );
-  
-    /* Add a field to the metabox */
-  function atominktheme_custom_post_order( $post ) {
-      wp_nonce_field( basename( __FILE__ ), 'atominktheme_custom_post_order_nonce' );
-      $current_pos = get_post_meta( $post->ID, '_custom_post_order', true); ?>
-      <p>Enter the position at which you would like the post to appear. For exampe, post "1" will appear first, post "2" second, and so forth.</p>
-      <p><input type="number" name="pos" value="<?php echo $current_pos; ?>" /></p>
-      <?php
-    }
-  
-    /* Save the input to post_meta_data */
-  function atominktheme_save_custom_post_order( $post_id ){
-      if ( !isset( $_POST['atominktheme_custom_post_order_nonce'] ) || !wp_verify_nonce( $_POST['atominktheme_custom_post_order_nonce'], basename( __FILE__ ) ) ){
-        return;
-      } 
-      if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
-        return;
-      }
-      if ( ! current_user_can( 'edit_post', $post_id ) ){
-        return;
-      }
-      if ( isset( $_REQUEST['pos'] ) ) {
-        update_post_meta( $post_id, '_custom_post_order', sanitize_text_field( $_POST['pos'] ) );
-      }
-    }
-    add_action( 'save_post', 'atominktheme_save_custom_post_order' );
-  
-    /* Add custom post order column to post list */
-  function atominktheme_add_custom_post_order_column( $columns ){
-      return array_merge ( $columns,
-        array( 'pos' => 'Position', ));
-    }
-    add_filter('manage_posts_columns' , 'atominktheme_add_custom_post_order_column');
-  
-    /* Display custom post order in the post list */
-  function atominktheme_custom_post_order_value( $column, $post_id ){
-      if ($column == 'pos' ){
-        echo '<p>' . get_post_meta( $post_id, '_custom_post_order', true) . '</p>';
-      }
-  }
-  add_action( 'manage_posts_custom_column' , 'atominktheme_custom_post_order_value' , 10 , 2 );
-
-
-
   /**
    * 5. Add posts excerpt
    */
   add_post_type_support( 'page', 'excerpt' );
-
-
-
   /**
    * 6. Allow html in post excerpt
    */
@@ -199,7 +99,6 @@ function atominktheme_custom_post_sort( $post ){
     // Add custom tags to this string
         return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>,<img>,<video>,<audio>';
     }
-
 if ( ! function_exists( 'atominktheme_custom_wp_trim_excerpt' ) ) : 
 
     function atominktheme_custom_wp_trim_excerpt($atominktheme_excerpt) {
@@ -256,13 +155,9 @@ if ( ! function_exists( 'atominktheme_custom_wp_trim_excerpt' ) ) :
         }
         return apply_filters('atominktheme_custom_wp_trim_excerpt', $atominktheme_excerpt, $raw_excerpt);
     }
-
 endif; 
-
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'atominktheme_custom_wp_trim_excerpt');
-
-
 /**
  * 7. Add custom css to admin area
  */
@@ -270,79 +165,21 @@ add_action( 'admin_enqueue_scripts', 'atominktheme_custom_admin_css' );
 function atominktheme_custom_admin_css() {
 	wp_enqueue_style( 'custom_wp_admin_css', get_stylesheet_directory_uri() . '/css/admin-style.css', false, '1.0.0' );
 }
-
-
-
 /**
- * 8. Get svg logo
+ * 8. Get file
  */
-function atomink_get_svg_logo() {
-    readfile(get_stylesheet_directory_uri() ."/includes/svg-logo.html");
+function atominktheme_get_file($file_path) {
+    readfile(get_stylesheet_directory_uri() . $file_path);
 }
-
-
-/**
- * 9. Add custom post type
- */
-function atominktheme_post_types() {
-    register_post_type( 'blog_post',
-      array(
-        'labels' => array(
-          'name' => __( 'Blog' ),
-          'singular_name' => __( 'Blog' )
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-      )
-    );
-    register_post_type( 'images',
-    array(
-      'labels' => array(
-        'name' => __( 'The Ink' ),
-        'singular_name' => __( 'The Ink' )
-      ),
-      'public' => true,
-      'has_archive' => true,
-      'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-    )
-  );
-  register_post_type( 'team',
-  array(
-    'labels' => array(
-      'name' => __( 'The Team' ),
-      'singular_name' => __( 'Members' )
-    ),
-    'public' => true,
-    'has_archive' => true,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-  )
-);
-register_post_type( 'product',
-array(
-  'labels' => array(
-    'name' => __( 'Products' ),
-    'singular_name' => __( 'Product' )
-  ),
-  'public' => true,
-  'has_archive' => true,
-  'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
-)
-);
-  }
-  add_action( 'init', 'atominktheme_post_types' );
-
   /**
    * 10. Add custom logo
    */
   function atominktheme_setup() {
-	
 	add_theme_support( 'custom-logo', array(
 		'height'      => 100,
 		'width'       => 400,
 		'flex-width' => true,
 	) );
-
 }
 function atominktheme_get_logo_url() {
     $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -350,15 +187,12 @@ function atominktheme_get_logo_url() {
     echo $image[0];
 }
 add_action( 'after_setup_theme', 'atominktheme_setup' );
-
-
-  /**
-   * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
-   */
+/**
+ * 11. Enable Shortcodes in WordPress Excerpts and Text Widgets
+ */
 add_filter('the_excerpt', 'do_shortcode');
 add_filter('widget_text', 'do_shortcode');
-
-
+add_filter( 'the_excerpt', 'shortcode_unautop');
 /**
  * 12. Create albums taxonomy
  */
@@ -375,14 +209,10 @@ function atominktheme_custom_taxonomy() {
     );
 }
 add_action( 'init', 'atominktheme_custom_taxonomy' );
-
-
-
 /**
  * 13. Post generator
  */
 function atominktheme_generate_posts($atts) { 
-    
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
     $args = array(
         'post_type' => $atts['post_type'],
@@ -392,7 +222,6 @@ function atominktheme_generate_posts($atts) {
         'posts_per_page' => $atts['num_of_posts'],
         'category-name' => $atts['post_metabox_value2'],
     );
-    
      $query1 = new WP_query ( $args );
      if ( $query1->have_posts() ) :
          while ($query1->have_posts() ) :
@@ -410,70 +239,10 @@ function atominktheme_generate_posts($atts) {
     wp_reset_postdata();
     endif; // End loop 1
 };
-
-
-
-
-
-    /**
-     * 15. Right navigation drops generator
-     */
-    function atominktheme_generate_rightnav_drops() { 
-        $args = array(
-			'post_type' => '',
-			'meta_key' => '_custom_post_order',
-			'orderby' => 'meta_value',
-            'order' => 'ASC',
-            'category_name' => 'front-page-post'
-         );
-         $query1 = new WP_query ( $args );
-         if ( $query1->have_posts() ) :
-             while ($query1->have_posts() ) :
-             $query1->the_post(); 
-            ?>
-          
-				<div class="drop">
-                    <div class="drop-outer">
-                        <span><?php the_title(); ?></span>
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                width="205px" height="107.825px" viewBox="-562.5 -228 205 107.825" enable-background="new -562.5 -228 205 107.825"
-                                xml:space="preserve">
-                                <defs>
-                                    <clipPath id="drop">
-                                        <path class="drop-inner" fill="#FFFFFF"  d="M-508.469-158.395c0,16.781-11.374,30.395-25.341,30.395c-13.966,0-25.34-13.613-25.34-30.395
-	c0-16.782,25.34-61.78,25.34-61.78S-508.469-175.176-508.469-158.395z">
-                                    </clipPath>
-                                </defs>
-                                <g clip-path="url(#drop)">
-                                    <g class="fill">
-                                        <path class="waveShape" fill="#FFFFFF" d="M-357.5-120.175h-205v-107.007c32.542,8.698,38.273-1.739,53.783,1.12
-                                        c35.466,6.539,57.518-4.999,108.736-1.12c18.707,1.417,42.481,0,42.481,0V-120.175z"/>
-                                    </g>
-                                </g>
-                                <g id="outline">
-	<path class="drop-outline" fill="none" stroke="#FFFFFF" d="M-508.469-158.395
-		c0,16.781-11.374,30.395-25.341,30.395c-13.966,0-25.34-13.613-25.34-30.395c0-16.782,25.34-61.78,25.34-61.78
-		S-508.469-175.176-508.469-158.395z"/>
-</g>
-                            </svg>
-                    </div>
-                </div>
-    
-                    <?php
-        endwhile; // End looping through custom sorted posts
-        wp_reset_postdata();
-        endif; // End loop 1
-    }
-
-
-
-
     /**
      * 16. Gallery posts generator
      */
     function atominktheme_generate_gallery_posts($atts) { 
-
-
         $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
         $args = array(
             'post_type' => $atts['post_type'],
@@ -489,7 +258,6 @@ function atominktheme_generate_posts($atts) {
          if ( $query1->have_posts() ) : 
              while ($query1->have_posts() ) :
              $query1->the_post();  ?>
-
                 <div class="gallery-post">
                     <?php the_post_thumbnail()  ?>
                     <input type="hidden" value="<?php echo the_permalink(); ?>" />
@@ -500,388 +268,28 @@ function atominktheme_generate_posts($atts) {
                 wp_reset_postdata();
                 endif; // End loop 1
             }
-
-
-
-    /**
-     * 17. Show featured image column in post list admin page
-     */
-    add_filter('manage_images_posts_columns', 'atominktheme_add_thumbnail_column', 5);
- 
-        function atominktheme_add_thumbnail_column($columns){
-        $columns['new_post_thumb'] = __('Featured Image');
-        return $columns;
-        }
-        
-        add_action('manage_posts_custom_column', 'display_thumbnail_column', 5, 2);
-        
-        function display_thumbnail_column($column_name, $post_id){
-        switch($column_name){
-            case 'new_post_thumb':
-            $post_thumbnail_id = get_post_thumbnail_id($post_id);
-            if ($post_thumbnail_id) {
-                $post_thumbnail_img = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
-                echo '<img width="180" src="' . $post_thumbnail_img[0] . '" />';
-            }
-            break;
-        }
-        }
-
-
-        add_filter( 'the_excerpt', 'shortcode_unautop');
-        add_filter( 'the_excerpt', 'do_shortcode'); 
-
-
-
-        /**
-         * 18. Home page ink post
-         */
-        function atominktheme_homeInkPost() { ?>
-            <div id="home-gallery-outer">
-                    <?php atominktheme_generate_gallery_posts(array(
-                        'post_type' =>"images" , 
-                        'post_order_by'=>"date",
-                        'post_order'=>"ASC",
-                        'post_meta_key'=>"",
-                        'num_of_posts'=>"",
-                        'post_metabox_value'=>"gallery-images"
-                    )); ?>
-            </div>
-            <div id="ink-back-imgs" class="back-imgs">
-                <div class="back-prev"></div>
-                <div class="back-next"></div>
-            </div>
-            <div id="gallery-link">
-
-          <a href="<?php echo esc_url( get_permalink( get_post(212) ) ); ?>">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-              viewBox="0 0 140.3 136.3" style="enable-background:new 0 0 140.3 136.3;" xml:space="preserve">
-            <style type="text/css">
-              .st0{fill:#DAD7CD;}
-            </style>
-            <g>
-              <g>
-                <rect class="st0" width="41.7" height="41.7"/>
-                <rect x="49.3" class="st0" width="41.7" height="41.7"/>
-                <rect x="98.7" class="st0" width="41.7" height="41.7"/>
-              </g>
-              <g>
-                <rect y="47.3" class="st0" width="41.7" height="41.7"/>
-                <rect x="49.3" y="47.3" class="st0" width="41.7" height="41.7"/>
-                <rect x="98.7" y="47.3" class="st0" width="41.7" height="41.7"/>
-              </g>
-              <g>
-                <rect y="94.7" class="st0" width="41.7" height="41.7"/>
-                <rect x="49.3" y="94.7" class="st0" width="41.7" height="41.7"/>
-                <rect x="98.7" y="94.7" class="st0" width="41.7" height="41.7"/>
-              </g>
-            </g>
-            </svg>
-            VIEW<br/>ALL
-          </a>
-
-            </div>
-            <div id="active-post">
-                <div id="img-outer">
-                    <img src="" alt="tattoo image" />
-                </div>
-                <div id="control-share">
-                <div id="controls">
-                    <div id="home-prev-img"><i class="fa fa-chevron-left"></i></div>
-                    <div id="home-next-img"><i class="fa fa-chevron-right"></i></div>
-                </div>
-                <div id="share">
-                <a href="" target="_blank">Share</a>
-                </div>
-            </div>
-            </div>
-          
-            <?php } 
-            add_shortcode('getgallery','atominktheme_homeInkPost');
-
-
-
-            /**
-             * 19. Home page home post
-             */
-            function atominktheme_homeHomePost($atts){
-                $args = array(
-                    'post_type' => $atts['post_type'],
-                    'orderby'   => $atts['post_order_by'],
-                    'order' => $atts['post_order'],
-                    'meta_key' => $atts['post_meta_key'],
-                    'posts_per_page' => $atts['num_of_posts'],
-            
-                    // $p_meta_box is the taxonomy we registered (instead of categories) for cpt
-                    'header-back-images' => $atts['post_metabox_value']
-                 );?>
-                <div id="home-back-imgs" class="back-imgs">
-                 <?php $query1 = new WP_query ( $args );
-                 if ( $query1->have_posts() ) :
-                     while ($query1->have_posts() ) :
-                     $query1->the_post();  ?>
-        
-                        <div class="image-outer">
-                            <?php the_post_thumbnail()  ?>
-                        </div>                
-            
-                    <?php
-                        endwhile; // End looping through custom sorted posts
-                        wp_reset_postdata();
-                        endif; // End loop 1
-                        ?>
-                </div>
-            <?php }
-            add_shortcode('getHomeHomeImgs','atominktheme_homeHomePost');
-            
-            
-            
-        /**
-         * 20. Team members home+page post generator 
-         */
-        function atominktheme_TeamPost($atts) {
-            $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-            $args = array(
-                'post_type' => $atts['post_type'],
-                'orderby'   => $atts['post_order_by'],
-                'order' => $atts['post_order'],
-                'meta_key' => $atts['post_meta_key'],
-                'posts_per_page' => $atts['num_of_posts']
-             ); ?>
-            
-            <div class="team-post-outer">
-                <div>
-            
-            <?php $query1 = new WP_query ( $args );
-             if ( $query1->have_posts() ) :
-                 while ($query1->have_posts() ) :
-                 $query1->the_post();  ?>
-    
-                        <div class="team-post">
-                            <div class="info-outer">
-                                <div class="info">
-                                <?php echo wp_get_attachment_image( '372'); ?>
-                                    <div class="name">
-                                        <?php the_title(); ?>
-                                    </div>
-                                    <div class="about-text">
-                                        <?php the_content(); ?>
-                                        <!-- <div class="read-more">
-                                            <a href="<?php // echo esc_url( get_permalink( get_post(242) ) ); ?>">Read More..</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile-pic" >
-                                <div class="profile-pic-outer">
-                                    <?php the_post_thumbnail()  ?>
-                                </div>
-                            </div>
-                        </div>
-        
-                <?php
-                    endwhile; // End looping through custom sorted posts
-                    wp_reset_postdata();
-                    endif; // End loop 1 ?>
-                    </div>
-                    <div id="control-share">
-                        <div id="controls">
-                            <div id="prev-team"><i class="fa fa-chevron-left"></i></div>
-                            <div id="next-team"><i class="fa fa-chevron-right"></i></div>
-                        </div>
-                    </div> 
-                </div> <?php
-} 
-            add_shortcode('getteam','atominktheme_TeamPost');
-
-
-
-
             /**
              * 21. Show post page ID in admin
              */
             add_filter( 'manage_posts_columns', 'atominktheme_revealid_add_id_column', 5 );
             add_action( 'manage_posts_custom_column', 'atominktheme_revealid_id_column_content', 5, 2 );
-
-
             function atominktheme_revealid_add_id_column( $columns ) {
             $columns['revealid_id'] = 'ID';
             return $columns;
             }
-
             function atominktheme_revealid_id_column_content( $column, $id ) {
             if( 'revealid_id' == $column ) {
                 echo $id;
             }
             }
-
-
-
-            /**
-             * 22. Contact home post
-             */
-            function atominktheme_homeContactPost() {
-
-                echo '<div id="contact-back"  style="background-image: url('. esc_url(get_the_post_thumbnail_url(get_the_ID())) .')"></div>';
-                echo '<div id="contact-home-outer">';
-                echo '<div id="contact-left">';
-                echo '<div id="contact-left-wrap"><h2>BOOKING A<br />CONSULTATION?</h2>';
-                echo '<a href=" '. esc_url( get_permalink( get_post(365) ) ) . ' ">Click here</a>';
-                echo '<div id="addr-hrs">';
-
-                echo '<h3 class="the_addr"> Address:</h3>';
-                echo '<div>' .esc_attr( get_option('atominktheme_the_address') ) .' </div>';
-
-                echo '<h3 class="the_phone"> Phone:</h3>';
-                echo '<div>' .esc_attr( get_option('atominktheme_the_phone') ) .' </div>';
-
-                //echo '<h3 class="the_email"> Email:' .get_option('atominktheme_the_email'). '</h3>';
-
-                echo '<h3 class="the_hrs">Opening Hours: </h3>';
-                echo '<div><span>Monday:</span> ' . esc_attr( get_option('atominktheme_opening_monday') ) .' - '.esc_attr( get_option('atominktheme_opening_monday_closing') ) .' </div>';
-                echo '<div><span>Tuesday:</span> ' .esc_attr( get_option('atominktheme_opening_tuesday') ) .' - '.esc_attr( get_option('atominktheme_opening_tuesday_closing') ) .'</div>';
-                echo '<div><span>Wednesday:</span> ' .esc_attr( get_option('atominktheme_opening_wednesday') ) .' - '.esc_attr( get_option('atominktheme_opening_wednesday_closing') ) .'</div>';
-                echo '<div><span>Thursday:</span> ' .esc_attr( get_option('atominktheme_opening_thursday') ) .' - '.esc_attr( get_option('atominktheme_opening_thursday_closing') ) .'</div>';
-                echo '<div><span>Friday:</span> ' .esc_attr( get_option('atominktheme_opening_friday') ) .' - '.esc_attr( get_option('atominktheme_opening_friday_closing') ) .'</div>';
-                echo '<div><span>Saturday:</span> ' .esc_attr( get_option('atominktheme_opening_saturday') ) .' - '.esc_attr( get_option('atominktheme_opening_saturday_closing') ).'</div>';
-                echo '<div><span>Sunday:</span> ' .esc_attr( get_option('atominktheme_opening_sunday') ) .' - '.esc_attr( get_option('atominktheme_opening_sunday_closing') ) .'</div>';
-                echo '</div>';
-
-                
-
-                echo '</div>';
-                echo '</div>';
-
-                echo '<div id="contact-right">';
-                echo '<div id="home-contact-inner">';
-                echo '<div id="text"><h3>Or just<br />drop us a line..</h3></div>';
-                echo do_shortcode( '[contact-form-7 id="287" title="Contact form 1"]' );
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-
-            }
-            add_shortcode( 'atominktheme_homeContact', 'atominktheme_homeContactPost' );
-            
-
-
-
             /**
              * 23. Get post thumbnail outside loop
              */
             function atominktheme_get_post_page_thumb_url($id) {
-
                 $post = get_post($id);
                 $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); 
-
                 return $featured_img_url;
             }
-
-
-
-
-            /**
-             * 24. Products generator
-             */
-            function atominktheme_products_post_gen($atts) {
-                $args = array(
-                    'post_type' => $atts['post_type'],
-                    'orderby'   => $atts['orderby'],
-                    'order' => $atts['order'],
-                    'meta_key' => $atts['meta_key'],
-                 ); 
-
-                 $query1 = new WP_query ( $args );
-                 if ( $query1->have_posts() ) :
-                     while ($query1->have_posts() ) :
-                     $query1->the_post();  
-                     $prodBackImg = esc_url(get_post_meta(get_the_ID(), "product-back-img", true ));
-                     ?>
-
-                    <div class="prod-post">
-                        <div class="info-outer">
-                            <div class="info">
-                                <div class="name">
-                                    <?php the_title(); ?>
-                                </div>
-                                <div class="about-text">
-                                    <?php the_content(); ?>
-                                </div>
-                            </div>
-                            <?php echo do_shortcode( '[add_to_cart id="'.get_the_ID().'"]' ); ?>
-                        </div>
-                        <div class="prod-pic">
-                            <div class="prod-back"   style="background-image: url(<?php echo $prodBackImg; ?>)"></div>
-                            <div class="prod-pic-outer">
-                                <?php the_post_thumbnail()  ?>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <?php 
-                    endwhile; // End looping through custom sorted posts
-                    wp_reset_postdata();
-                    endif; // End loop 1 
-            }
-            
-            
-            
-            
-            /**
-             * 25. WooCommerce
-             */
-            add_filter( 'woocommerce_billing_fields', 'atominktheme_woo_filter_state_billing', 10, 1 );
-            add_filter( 'woocommerce_shipping_fields', 'atominktheme_woo_filter_state_shipping', 10, 1 );
-            add_filter( 'woocommerce_checkout_fields', 'atominktheme_remove_woofields' );
-            add_filter( 'woocommerce_default_address_fields', 'atominktheme_remove_state_field' );
-
-             // remove required from billing
-            function atominktheme_woo_filter_state_billing( $address_fields ) {
-             
-                            $address_fields['billing_state']['required'] = false;
-                            unset( $address_fields['state'] );
-             
-                            return $address_fields;
-             
-            }
-             // remove required from shipping
-            function atominktheme_woo_filter_state_shipping( $address_fields ) {
-             
-                            $address_fields['shipping_state']['required'] = false;
-                            unset( $address_fields['state'] );
-             
-                            return $address_fields;
-             
-            }
-            // remove company field
-            function atominktheme_remove_woofields( $fields ) {
-                unset($fields['billing']['billing_company']);
-                unset($fields['billing']['billing_state']);
-                return $fields;
-            }
-            // remove state field
-            function atominktheme_remove_state_field($fields ) {
-                unset( $fields['state']);
-                return $fields;
-            }
-
-
-
-
-            /**
-             * 26. Shop info menu item
-             */
-            add_action('admin_menu', 'atominktheme_shop_info_page');
-            function atominktheme_shop_info_page() {
-                add_theme_page('Theme Customization', 'Theme Customization', 'manage_options', 'theme-options', 'atominktheme_theme_option_page', null , 99);
-                include get_stylesheet_directory() . '/includes/custom_theme_options.php';
-            }
-
-
-
-
-
             /**
              * 27. Set Ink CPT title to post Id
              */
@@ -891,5 +299,4 @@ function atominktheme_generate_posts($atts) {
                 }
                 return $post_title;
             }
-            add_filter( 'default_title', 'atominktheme_default_title', 20, 2 );
-            ?>
+            add_filter( 'default_title', 'atominktheme_default_title', 20, 2 ); ?>

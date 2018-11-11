@@ -34,7 +34,9 @@
 				</div>
 			<div>
 				<div id="sb-pag-outer">
-					<?php atominktheme_generate_rightnav_drops(); ?>
+					<?php if(function_exists('atominktheme_generate_rightnav_drops')){
+						atominktheme_generate_rightnav_drops();
+					}; ?>
 				</div>
 				<div class="buttons">
 					<button class="prev-article"><i class="fa fa-chevron-up"></i></button>

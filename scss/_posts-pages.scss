@@ -24,6 +24,8 @@
             margin: 0 auto;
             .st0 {
                 transition: all 0.5s;
+                fill: $secondary;
+                stroke: none;
             }
         }
         &:hover {
