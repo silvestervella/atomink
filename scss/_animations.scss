@@ -26,10 +26,25 @@
     100% {stroke: lighten($grey, 50%); }
 }
 
-/* Home header img animation */
-@keyframes headerImg {
-    0%   {transform: translateY(-50%);}
-    100% {transform: translateY(0%)}
+/* Team profile pic anim */
+@keyframes profilePicSides {
+    0%   {background-position-x: 45%; opacity: .09;}
+    9%   {background-position-x: 45%;}
+    10%   {background-position-x: 42%; opacity: .09}
+    11%   {background-position-x: 43%; opacity: .03}
+    13%   {background-position-x: 49%; opacity: .09}
+    39%   {background-position-x: 50%;opacity: .09}
+    40%   {background-position-x: 49%; opacity: .02}
+    41%   {background-position-x: 48%; opacity: .09}
+    60%   {background-position-x: 48%; opacity: .09}
+    61%   {background-position-x: 47%; opacity: .02}
+    62%   {background-position-x: 45%; opacity: .09}
+    100%   {background-position-x: 45%; opacity: .09}
+}
+@keyframes profilePic {
+    0%   {background-position-x: 40%;}
+    50%   {background-position-x: 35%;}
+    100%   {background-position-x: 40%;}
 }
 
 /* Sidebar drops */

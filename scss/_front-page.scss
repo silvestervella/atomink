@@ -226,6 +226,25 @@ html {
                                         height: 100%;
                                         background-size: cover;
                                         background-repeat: no-repeat;
+                                        background-position-x: 40%;
+                                    }
+                                    .top-text {
+                                        position: absolute;
+                                        top: 10%;
+                                        text-align: center;
+                                        width: 100%;
+                                        font-size: 20px;
+                                        letter-spacing: 12px;
+                                        padding-left: 12px;
+                                    }
+                                    .bottom-text {
+                                        position: absolute;
+                                        bottom: 10%;
+                                        text-align: center;
+                                        width: 100%;
+                                        font-size: 20px;
+                                        letter-spacing: 12px;
+                                        padding-left: 12px;
                                     }
                                     &.pp-left {
                                         .pp-img {
@@ -238,7 +257,6 @@ html {
                                         top: 50px;
                                         .pp-img {
                                             opacity: .5;
-                                            background-position-x: -200px;
                                             filter: brightness(.8) saturate(50%);
                                         }
                                     }
@@ -285,6 +303,36 @@ html {
                 }
                 #control-share {
                     top: unset;
+                }
+            }
+            &.visible-post {
+                .pp-inner {
+                    .pp-img {
+                        animation-iteration-count: infinite;
+                        animation-timing-function: ease-in-out;
+                    }
+                    &.pp-center {
+                        .pp-img {
+                            animation-duration: 15s;
+                            animation-name: profilePic;
+                        }
+                    }
+                    &.pp-left {
+                        .pp-img {
+                            animation-duration: 5s;
+                            animation-name: profilePicSides;
+                            animation-delay: 1.5s;
+                            animation-direction: alternate;
+                        }
+                    }
+                    &.pp-right {
+                        .pp-img {
+                            animation-duration: 5s;
+                            animation-name: profilePicSides;
+                            animation-delay: 4s;
+                            animation-direction: alternate;
+                        }
+                    }
                 }
             }
         }

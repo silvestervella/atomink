@@ -56,14 +56,16 @@
                     color: $secondary;
                     padding: 2% 0;
                     margin: 5px 0;
-                    -webkit-transition: all .8s;
-                    transition: all .8s;
+                    transition: all .2s;
                     position: absolute;
                     display: inline-block;
                     top: 50%;
                     transform: translate(-50%, -50%);
                     &:last-child a:after {
                         border: 0;
+                    }
+                    &:hover , &:focus , &:active {
+                        color: $primary;
                     }
                 }
             }

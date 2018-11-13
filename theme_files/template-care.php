@@ -15,7 +15,7 @@ get_header();
     <div id="care-back-overlay"></div>
 
 <div class="prod-post-outer">
-<div> 
+<div class="prod-post-wrap"> 
 
                     <?php atominktheme_products_post_gen(array(
                           'post_type' => 'product',
