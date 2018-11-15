@@ -2,7 +2,7 @@
 #main-nav-outer {
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 30%;
     background: darken($grey, 75%);
     z-index: 9;
     display: none;
@@ -10,6 +10,8 @@
     min-height: 100%;
     color: $secondary;
     font-family: $headingText;
+    transform: translateX(-100%);
+    transition: all 1s;
     #menu-close {
         width: 10%;
         position: absolute;
@@ -21,7 +23,6 @@
     }
     nav {
         position: relative;
-        display: none;
         margin: 0 auto;
         height: 100%;
         div {

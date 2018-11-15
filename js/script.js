@@ -143,16 +143,14 @@ jQuery('.drop').click(function(){
   /*
   * 2. Menu animations
   */
- jQuery('.menu-button').click(function() {
+ jQuery('.menu-button').on('click' , function() {
   jQuery('#main-nav-outer').fadeIn(400,function(){
-    jQuery('#main-nav-outer > nav').fadeIn(200, function(){
-          jQuery('#wrapper').hide();
-        });
-  });
+    jQuery('#wrapper').css({"opacity":"0.2", "pointer-events": "none"});​
+  }).css({"-webkit-transform":"translateX(0%)"});​
 });
 jQuery('#menu-close').click(function(){
-  jQuery('#main-nav-outer').fadeOut(400, function(){
-    jQuery('#wrapper').show();
+  jQuery('#main-nav-outer').css({"-webkit-transform":"translateX(-100%)"}).fadeOut(400, function(){
+    jQuery('#wrapper').css({"opacity":"1", "pointer-events": "auto"});​
   });
 });
 
@@ -185,10 +183,6 @@ jQuery( ".sb-page-title" ).css([ "left: " + position.left ]);
  /**
   * 5. Team / Product pagination
   */
-function foxalla(mela){
-  jQuery(mela).parent().children();
-  return jQuery(mela).index();
-}
 
  // Prev item
  function prevTeamProd(selector, selectorAndActive ) {
