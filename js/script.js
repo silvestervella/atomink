@@ -36,15 +36,17 @@ jQuery(document).ready(function(){
     jQuery(selector).find(find).addClass(classToAdd);
   }
   // Scrolling
+
   function scrollinFunc(prevDiv , nextDiv) {
-    jQuery(window).on(mousewheelevt, function(event) {
-      if (event.originalEvent.wheelDelta >= 0) {
-        prevDiv();
-        } else {
-          nextDiv();
-        }
-    });
+      jQuery(window).on(mousewheelevt, function(event) {
+        if (event.originalEvent.wheelDelta >= 0) {
+          prevDiv();
+          } else {
+            nextDiv();
+          }
+      });
   }
+
 
 
   /*
@@ -125,7 +127,7 @@ jQuery('.drop').click(function(){
 
 }
    // Scrolling function call
-   if((jQuery('body.home').length) || (jQuery('body.postid-293').length))  {
+   if (((jQuery('body.home').length) || (jQuery('body.postid-293').length)) &&  (jQuery(window).innerWidth() >= 991))  {
     scrollinFunc(prevPost , nextPost);
    }
    // Next/Prev Buttons function call

@@ -14,8 +14,8 @@ get_header();
       <div id="img-outer">
         <img src="" alt="tattoo image" />
       </div>
-      <div id="control-share">
-        <div id="controls">
+      <div class="control-share">
+        <div class="controls">
             <div id="home-prev-img"><i class="fa fa-chevron-left"></i></div>
             <div id="home-next-img"><i class="fa fa-chevron-right"></i></div>
         </div>

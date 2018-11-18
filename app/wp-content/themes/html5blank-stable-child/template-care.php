@@ -26,8 +26,8 @@ get_header();
                     </div> 
                 
 
-                <div id="control-share">
-                    <div id="controls">
+                <div class="control-share">
+                    <div class="controls">
                         <div id="prev-prod"><i class="fa fa-chevron-left"></i></div>
                         <div id="next-prod"><i class="fa fa-chevron-right"></i></div>
                     </div>

@@ -1,329 +1,150 @@
-/* media query min 991 */ 
-@media (min-width: 992px ) {
-    /**
-    * Main
-    */
-    .home-articles {
-        .home-title {
-            padding-top: 200px;
-        }
-    }
-    #main-nav-outer {
-        #search {
-            position: absolute;
-            right: 30px;
-            bottom: 30px;
-            width: 35%;
-            height: 200px;
-            .widget-area {
-                form {
-                    width: 60%;
-                    margin: 0 auto;
-                    position: absolute;
-                    bottom: 30px;
-                    transform: translate(-50%,-50%);
-                    left: 50%;
-                    
-                }
-            } 
-        }
-    }
-    h1 {
-        background: url(http://eternagaames.com/wp-content/uploads/2018/05/background-tile-1.png);
-    }
-    /**
-    * Games page
-    */
-    .mob-filter {
-        display: none;
-    }
+@media screen and (max-width: 991px) {
 
-/* /media query min 991 */ 
-}
-
-
-
-/* media query max 991 + iPad Pro */
-@media (max-width: 991px ) , 
-only screen 
-and (min-device-width: 1024px) 
-and (max-device-width: 1366px) 
-and (-webkit-min-device-pixel-ratio: 1.5) { 
-    /** 
-    * Main 
-    */
-    .main-wrap {
-        display: block;
-    }
-    #wrapper {
-        margin-left: 0;
-    }
-    .post-sidebar {
-        width: 100%;
-    }
-    #copyright {
-        display: none;
-    }
-    article.post , article.page {
-        .post-content {
-            padding: 50px 0 0 0;
-        }
-    }
-    .post-outer {
-        width: 100% !important;
-    }
-    .post-head {
-        height: 300px;
-        margin-top: 50px;
-        display: block;
-        h1 {
-            font-size: 40px;
-            transform: translate(0 , 50%) scale(1.0) !important;
-            right: 10%;
-            padding: 30px;
-        }
-    }
-    .post-sidebar {
-        transition: none;
-    }
-    #left-sidebar-outer #left-sidebar {
-        background: #000;
-        .logo {
-            img {
-                width: unset;
-                max-height: 40px;
-                max-width: 150px;
-                margin: 5px 0 0 30px;
-            }
-        }
-    }
-    #right-sidebar-outer {
-        display: none;
-    } 
-    /** 
-    * Home page 
-    */
-    .home-articles {
-        width: 100%;
-        .home-title {
-            padding-top: 200px;
-        }
-        .left {
-            h3 {
-                left: 10%;
-                font-size: 50px;
-                top: 50%;
-                span:nth-of-type(2) {
-                    font-size: 30px;
-                }
-            }
-            .article-excerpt {
-                .read-more {
-                    margin-bottom: 15px;
-                    a {
-                        border: 0;
+    html {
+        body.home {
+            #wrapper {
+                main {
+                    .post-outer {
+                        position: relative;
+                        display: block;
+                        .control-share {
+                            padding: 30px 0;
+                            width: 100%;
+                            .controls {
+                                top: 0;
+                                left: 0;
+                                transform: translate(0% , 0%);
+                                margin: 0 auto;
+                                float: unset;
+                                width: 100px;
+                            }
+                        }
+                        .page-title {
+                            display: none;
+                        }
+                        &.post189 {
+                            .post-excerpt {
+                                height: 100vh;
+                                #home-post-outer {
+                                    h1 {
+                                        font-size: 50px;
+                                        line-height: 50px;
+                                    }
+                                }
+                            }
+                        }
+                        &.post242 {
+                            padding-top: 30px;
+                            .team-post-outer {
+                                width: 100%;
+                                margin-left: 0;
+                                .team-post-wrap {
+                                    height: auto;
+                                    .team-post {
+                                        position: relative;
+                                        height: auto;
+                                        .info-outer , .profile-pic {
+                                            float: unset;
+                                            width: 100%;
+                                            height: auto;
+                                        }
+                                        .profile-pic-outer {
+                                            width: 100%;
+                                            top: 0;
+                                            left: 0;
+                                            transform: translate(0% , 0%);
+                                            .pp-inner.pp-center {
+                                                width: 100%;
+                                                top: 0;
+                                                .top-text , .bottom-text {
+                                                    display: none;
+                                                }
+                                            }
+                                            .pp-left , .pp-right {
+                                                display: none;
+                                            }
+                                        }
+                                        .info {
+                                            img {
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.post212 {
+                            #active-post {
+                                width: 100%;
+                                margin-left: 0;
+                                top: unset;
+                                #img-outer {
+                                    transform: translateX(0);
+                                    max-width: 100%;
+                                    left: 0;
+                                    min-height: 500px;
+                                    img {
+                                        padding: 15px;
+                                            max-width: 100%;
+                                            max-height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                        &.post260 {
+                            #contact-left {
+                                width: 100%;
+                                float: unset;
+                                #contact-left-wrap {
+                                    position: relative;
+                                    top: 0;
+                                    left: 0;
+                                    transform: translate(0%,0%);
+                                    font-size: 25px;
+                                }
+                            }
+                            #contact-right {
+                                width: 100%;
+                                float: unset;
+                                #home-contact-inner {
+                                    transform: translate(0%,0%);
+                                    top: 0;
+                                    left: 0;
+                                }
+                            }
+                        }
                     }
                 }
             }
-            .sb-page-title {
-                display: none;
-            }
-        }
-        .right {
-            width: 80%;
-        }
-    }
-    #home-pagination {
-        display: none;
-    }
-    /**
-    * About page 
-    */
-    body.post-template-template-single-about {
-        .post-outer {
-            h1 {
-                padding-left: 0px;
-            }
-        }
-        article {
-            margin: 0;
-        }
-        svg {
-            width: 100%;
-        }
-    }
-    /**
-    * News main page
-    */
-    body.post-template-template-main-news {
-        #all-news {
-            margin-top: unset; 
-        }
-        .post-outer {
-            padding-top: 50px; 
-        }
-    } 
-    /**
-    * Games page
-    */
-    body.post-template-template-single-games {
-        .post-outer {
-            width: 100%;
-        }
-        #games {
-            .game-single {
-                width: 46.9%;
-            }
-        }
-        .post-sidebar {
-            #latest-games {
-                display: none;
-            }
-            #filter {
-                display: none;
-            }
-    }
-    .mob-filter {
-        display: block;
-    }
-}
 
-    /**
-    * Contact page
-    */
-    body.page-template-template-single-contact {
-        .post-outer {
-            form {
-                max-width: 600px;
-                margin: 0 auto !important;
-            }
-            h3 {
-                max-width: 600px;
-                margin: 0 auto;
-                padding: 0 0 15px 0;
-            }
-        }
-        .post-sidebar {
-            #newsletter-form {
-                margin: 0 auto;
-                max-width: 600px;
-            }
-            h3 {
-                padding: 0 0 15px 0;
-                margin: 0 auto;
-                max-width: 600px;
-            }
         }
     }
-
-
-    /**
-    * News page
-    */
-    #all-news {
-        margin-top: 30px;
-    }
-
-    /** 
-    * Main navigation 
-    */
-    #main-nav-outer {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: unset; 
-        nav {
-            ul {
-                padding: 0;
-                li {
-                    a, a:hover , a:active , a:focus {
-                        width: 100% !important;
-                        text-align: center;
-                        left: 0 !important;
-                    }
-                }
-            }
-        }
-        #search {
-            position: relative;
-            margin-top: 5px;
-            img {
-                display: none !important;
-            }
-        }
-    }
-    /** 
-    * Left sidebar
-     */
     #left-sidebar-outer {
-        top: 0;
         width: 100%;
         #left-sidebar {
             height: 50px;
-        }
-    }
-    /**
-    * Right sidebar 
-    */
-    body.home #right-sidebar-outer {
-        display: none;
-    }
-
-/* /media query max 991 + iPad Pro */
-}
-
-
-
-/* media query iPad Pro 991 */
-@media only screen 
-and (min-device-width: 1024px) 
-and (max-device-width: 1366px) 
-and (orientation: portrait) 
-and (-webkit-min-device-pixel-ratio: 1.5) {
-    #wrapper , #left-sidebar-outer , #main-nav-outer {
-        width: 100%;
-        float: unset;
-        margin: 0;
-    }
-    #copyright {
-        display: none;
-    }
-    #main-nav-outer {
-        #search {
-            margin: 0 auto;
-            width: 100%;
-            right: unset;
-            bottom: unset;
-            height: auto;
-            .widget-area {
-                form {
-                    position: relative;
-                    bottom: unset;
-                    transform: unset;
-                    left: unset;
+            background: #000;
+            .logo {
+                width: auto;
+                svg {
+                    max-width: 100px;
                 }
             }
-            img {
-                display: none !important;
+            #copyright {
+                display: none;
             }
         }
     }
 
-/* /media query iPad Pro 991 */
+    #right-sidebar-outer {
+        #right-sidebar {
+            #sb-wrap {
+                display: none;
+            }
+            .scroll {
+                display: none;
+            }
+        }
+    }  
+
 }
-
-
-
-
-/* media query max 767 */
-@media (max-width: 767px ) {
-    body.post-template-template-single-games {
-        #games {
-            .game-single {
-                width: 100%;
-                margin: 0 0 15px 0;
-            }
-        }
-    }
-    }
-

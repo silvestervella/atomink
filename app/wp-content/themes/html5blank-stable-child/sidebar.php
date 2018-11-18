@@ -32,7 +32,7 @@
 						</a>
 					</div>
 				</div>
-			<div>
+			<div id="sb-wrap">
 				<div id="sb-pag-outer">
 					<?php if(function_exists('atominktheme_generate_rightnav_drops')){
 						atominktheme_generate_rightnav_drops();
