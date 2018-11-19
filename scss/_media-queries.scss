@@ -18,6 +18,10 @@
                                 float: unset;
                                 width: 100px;
                             }
+                            #share {
+                                position: absolute;
+                                transform: translate(100%,-50%);
+                            }
                         }
                         .page-title {
                             display: none;
@@ -90,11 +94,29 @@
                                     }
                                 }
                             }
+                            #ink-back-imgs {
+                                overflow: hidden;
+                                border-radius: 30px;
+                            }
+                            #gallery-link {
+                                display: none;
+                            }
                         }
                         &.post260 {
+                            #contact-home-outer {
+                                margin: 0;
+                                padding: 15px;
+                                width: 100%;
+                                form {
+                                    input {
+                                        max-width: 100%;
+                                    }
+                                }
+                            }
                             #contact-left {
                                 width: 100%;
                                 float: unset;
+                                padding-top: 30px;
                                 #contact-left-wrap {
                                     position: relative;
                                     top: 0;
@@ -106,6 +128,7 @@
                             #contact-right {
                                 width: 100%;
                                 float: unset;
+                                padding-top: 30px;
                                 #home-contact-inner {
                                     transform: translate(0%,0%);
                                     top: 0;
@@ -119,6 +142,26 @@
 
         }
     }
+
+
+    /* Pages */
+    /* Ink page .postid-212 */
+    body {
+        &.postid-212 {
+            #active-post {
+                display: none;
+                transition: opacity 1s;
+            }
+            #gallery-posts-outer {
+                width: 100%!important;
+                left: 0;
+            }
+        }
+    }
+
+
+
+
     #left-sidebar-outer {
         width: 100%;
         #left-sidebar {

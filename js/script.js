@@ -298,7 +298,7 @@ var galleryPost = jQuery('.gallery-post'),
 function activeSrcFunc() {
   jQuery('#active-post').fadeOut(function(){
     jQuery(this).find('img').attr('src' , activeSrc);
-    jQuery(this).find('#share > a').attr('href' , 'https://www.facebook.com/sharer/sharer.php?u=' + activeShareVal + '&text=The Ink');
+    jQuery(this).siblings('.control-share').find('#share > a').attr('href' , 'https://www.facebook.com/sharer/sharer.php?u=' + activeShareVal + '&text=The Ink');
     if (jQuery('body.post-template-template-ink-page').length > 0) {
     jQuery(this).children('#active-post-blur').css({
       'background-image' : 'url('+ activeSrc +')'
@@ -325,7 +325,10 @@ function activeSrcFunc() {
       });
     }).fadeIn()
   }
-  }).fadeIn();
+  if (jQuery(window).innerWidth() >= 991) {
+    jQuery(this).fadeIn();
+  }
+  });
 };
 activeSrcFunc();
 
@@ -379,11 +382,12 @@ galleryPost.on('click' , function(){
 /**
  * 3. Gallery thumbs positioning using jquery masonary
 */
-jQuery('#gallery-posts-outer').masonry({
-  // options...
-  itemSelector: '.gallery-post'
-});
-
+if (jQuery(window).innerWidth() >= 991) {
+  jQuery('#gallery-posts-outer').masonry({
+    // options...
+    itemSelector: '.gallery-post'
+  });
+}
 
 
 /**
